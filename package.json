@@ -9,12 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reclaimprotocol/js-sdk": "^2.0.0",
     "@solana/actions": "^1.6.5",
     "@solana/spl-token": "^0.4.8",
     "@solana/web3.js": "^1.95.3",
     "next": "14.2.14",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-qr-code": "^2.0.15"
   },
   "devDependencies": {
     "@types/node": "^20",
