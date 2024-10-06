@@ -64,7 +64,10 @@ export  async function POST(request:Request){
         message: "Transaction created",
     };
     return Response.json(payload, {
-        headers: ACTIONS_CORS_HEADERS,
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json'
+        },
     });
         
 }
