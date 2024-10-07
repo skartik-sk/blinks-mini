@@ -26,7 +26,7 @@ export default function CreatorForm() {
       amount: formData.get('amount'),
       icons: formData.get('icons'),
     };
-    console.log('Data:', data);
+
 
     try {
       const response = await axios.post('/api/posts', data, {

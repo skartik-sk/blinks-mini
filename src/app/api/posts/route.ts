@@ -9,7 +9,7 @@ import Creator from '@/lib/models/creater';
 await connectDB();
     try {
         const data = await req.json();
-        console.log('Data:', data);
+      
 
       const newPost = new Creator({
         solAdd: data.solAdd,

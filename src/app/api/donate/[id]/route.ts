@@ -3,16 +3,19 @@ import {  ActionGetResponse, ActionPostRequest, ActionPostResponse, ACTIONS_CORS
 import { clusterApiUrl, Connection, LAMPORTS_PER_SOL, PublicKey, SystemProgram, Transaction } from "@solana/web3.js";
 
 
-export  async function GET(request:Request ,params:{ id: string }){ 
+export  async function GET(request:Request ,params:{params:{id:string}  }){ 
     const url = new URL(request.url);
     // console.log("url: ",);
     // const { searchParams } = new URL(request.url);
     // console.log("searchParams: " +searchParams);
     // const id = searchParams.get('id')||"";
     // console.log("id" +id);
+    const id = await params.params.id;
+
+
     let creator;
     try{
-         creator = await Creator.findOne({ id: params.id });
+        creator = await Creator.findOne({ _id: id });
 console.log(creator);
 if (!creator) {
     creator = {
@@ -23,7 +26,6 @@ if (!creator) {
     };
 }
 
-console.log("outside",creator);
         // console.log(creator);
         
 
