@@ -2,9 +2,12 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/navigation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCopy } from '@fortawesome/free-solid-svg-icons';
 
 export default function ConnectPhantomWallet() {
   const [walletAddress, setWalletAddress] = useState(null);
+  const [copySuccess, setCopySuccess] = useState(false);
   const router = useRouter();
 
 
@@ -34,6 +37,19 @@ export default function ConnectPhantomWallet() {
     router.push('/form');
   }
 
+  const handleCopy = () => {
+    if (walletAddress) {
+      navigator.clipboard.writeText(walletAddress)
+        .then(() => {
+          setCopySuccess(true);
+          setTimeout(() => setCopySuccess(false), 2000); // Reset after 2 seconds
+        })
+        .catch(err => {
+          console.error('Failed to copy: ', err);
+        });
+    }
+  };
+
   return (
     <main className="bg-[#000000] shadow-lg rounded-lg p-0 sm:p-6 max-w-[20rem] sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl text-center ">
       <h1 className="text-2xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-gray-500 via-white to-gray-500 mb-4">
@@ -50,7 +66,19 @@ export default function ConnectPhantomWallet() {
       ) : (
         <div className="bg-[#000000] p-1 sm:p-6 rounded-lg shadow-md w-full max-w-md mx-auto">
           <p className="text-green-600 font-semibold mb-2">Connected:</p>
-          <p className="text-green-600 font-semibold break-words">{walletAddress}</p>
+          <div className='flex justify-center'>
+            <p 
+              className="text-green-600 font-semibold break-words cursor-pointer" 
+              onClick={handleCopy}
+            >
+              {copySuccess ? 'Copied!' : walletAddress}
+            </p>
+            <FontAwesomeIcon 
+                  icon={faCopy} 
+                  className="ml-2 text-blue-500 cursor-pointer" 
+                  onClick={handleCopy} 
+            />
+          </div>
           <div className="flex flex-col sm:flex-row justify-between gap-2 mt-6">
             <button 
               onClick={handleCreator} 
