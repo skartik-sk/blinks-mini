@@ -66,7 +66,7 @@ export default function ConnectPhantomWallet() {
       ) : (
         <div className="bg-[#000000] p-1 sm:p-6 rounded-lg shadow-md w-full max-w-md mx-auto">
           <p className="text-green-600 font-semibold mb-2">Connected:</p>
-          <div className='flex justify-center'>
+          <div className='sm:flex sm:justify-center'>
             <p 
               className="text-green-600 font-semibold break-words cursor-pointer" 
               onClick={handleCopy}
