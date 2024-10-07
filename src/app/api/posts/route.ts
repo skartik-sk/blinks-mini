@@ -1,29 +1,27 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+// import { NextApiRequest, NextApiResponse } from 'next';
 import Creator from '@/lib/models/creater';
+// import { ICreator } from '@/lib/interface/creater';
 
 
-export  async function POST(req: NextApiRequest, res: NextApiResponse) {
-   
-        try {
-            
+  export const POST = async(req: Request)=> {
 
-            console.log(req);
-            const data = req.formdata();
+    try {
+        const data = await req.json();
+        console.log('Data:', data);
 
-            const newPost = new Creator({
-                solAdd: data.solAdd,
-                title: data.title,
-                description: data.description,
-                label: data.label,
-                amount: data.amount,
-                imgurl: data.imgurl
-            });
-console.log(newPost);
-            await newPost.save();
+      const newPost = new Creator({
+        solAdd: data.solAdd,
+        title: data.title,
+        description: data.description,
+        label: data.label,
+        amount: data.amount,
+        icon: data.imgurl,
+      });
 
-            res.status(201).json({ message: 'Post created successfully', post: newPost });
-        } catch (error) {
-            res.status(500).json({ message: 'Internal Server Error', error });
-        }
-   
+      await newPost.save();
+ console.log(newPost);
+      return Response.json({ message: 'Post created successfully', data: newPost });
+    } catch (error) {
+        return Response.json({ message: 'Internal Server Error', error });
+    }
 }
