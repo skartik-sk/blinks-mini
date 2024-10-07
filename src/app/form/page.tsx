@@ -19,7 +19,6 @@ export default function CreatorForm() {
         
     const formData = new FormData(e.target as HTMLFormElement);
     const data = {
-      solAdd: response.publicKey.toString(),
       title: formData.get('title'),
       description: formData.get('description'),
       label: formData.get('label'),
@@ -57,16 +56,7 @@ router.push(`https://dial.to/?action=solana-action:http://localhost:3000/api/don
         </CardHeader>
         <CardContent className="p-6">
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-2">
-              <Label htmlFor="solAdd" className="block text-sm font-medium text-zinc-200">Solana Address</Label>
-              <Input 
-                id="solAdd" 
-                name="solAdd" 
-                required 
-                className="bg-black border-gray-800 text-white placeholder-zinc-400 focus:border-white focus:ring-white"
-                placeholder="Enter your sol address"
-              />
-            </div>
+           
             <div className="space-y-2">
               <Label htmlFor="title" className="block text-sm font-medium text-zinc-200">Title</Label>
               <Input 
