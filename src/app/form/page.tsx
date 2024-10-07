@@ -19,6 +19,7 @@ export default function CreatorForm() {
         
     const formData = new FormData(e.target as HTMLFormElement);
     const data = {
+      solAdd: response.publicKey.toString(),
       title: formData.get('title'),
       description: formData.get('description'),
       label: formData.get('label'),
