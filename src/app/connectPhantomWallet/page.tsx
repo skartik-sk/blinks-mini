@@ -1,6 +1,6 @@
 'use client'
-import { useEffect, useState } from 'react';
-import Head from 'next/head';
+import {  useState } from 'react';
+
 import { useRouter } from 'next/navigation';
 
 export default function ConnectPhantomWallet() {
@@ -16,8 +16,8 @@ export default function ConnectPhantomWallet() {
   // Connect Phantom Wallet
   const connectPhantomWallet = async () => {
     if (isPhantomInstalled()) {
-      try {
-        const { solana } = window;
+      try { 
+        const { solana }:any = window;
         // Request connection to Phantom
         const response = await solana.connect();
         console.log('Connected to wallet:', response.publicKey.toString());

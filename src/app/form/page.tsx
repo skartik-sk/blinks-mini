@@ -12,14 +12,19 @@ export default function CreatorForm() {
   const router = useRouter()
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const { solana }:any = window;
+        // Request connection to Phantom
+        const response = await solana.connect();
+        console.log('wallet:', response.publicKey.toString());
+        
     const formData = new FormData(e.target as HTMLFormElement);
     const data = {
-      solAdd: formData.get('solAdd'),
+      solAdd: response.publicKey.toString(),
       title: formData.get('title'),
       description: formData.get('description'),
       label: formData.get('label'),
       amount: formData.get('amount'),
-      imgurl: formData.get('imgurl'),
+      icons: formData.get('icons'),
     };
     console.log('Data:', data);
 
@@ -31,9 +36,9 @@ export default function CreatorForm() {
       });
       console.log('Data successfully sent to the server:', response.data);
 
-      if(response.data != null){
+      if(response.data.data._id != undefined){
 
-router.push(`https://dial.to/?action=solana-action:http://localhost:3000/api/donate/${response.data._id}`)
+router.push(`https://dial.to/?action=solana-action:http://localhost:3000/api/donate/${response.data.data_id}`)
 
       }
 
@@ -71,10 +76,10 @@ router.push(`https://dial.to/?action=solana-action:http://localhost:3000/api/don
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="imgurl" className="block text-sm font-medium text-gray-700">Image URL</Label>
+              <Label htmlFor="icons" className="block text-sm font-medium text-gray-700">Image URL</Label>
               <Input 
-                id="imgurl" 
-                name="imgurl" 
+                id="icons" 
+                name="icons" 
                 type="url" 
                 required 
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"

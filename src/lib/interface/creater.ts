@@ -5,5 +5,5 @@ export interface ICreator  {
     description: string;
     label: string;
     amount: number;
-    imgurl: string;
+    icons: string;
   }

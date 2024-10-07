@@ -1,10 +1,11 @@
 // import { NextApiRequest, NextApiResponse } from 'next';
+import connectDB from '@/lib/dbconnect';
 import Creator from '@/lib/models/creater';
 // import { ICreator } from '@/lib/interface/creater';
 
 
   export const POST = async(req: Request)=> {
-
+await connectDB();
     try {
         const data = await req.json();
         console.log('Data:', data);
@@ -15,7 +16,7 @@ import Creator from '@/lib/models/creater';
         description: data.description,
         label: data.label,
         amount: data.amount,
-        icon: data.imgurl,
+        icons: data.icons,
       });
 
       await newPost.save();

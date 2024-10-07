@@ -88,7 +88,7 @@ export default function FrontPage() {
   )
 }
 
-function CombineIcon(props) {
+function CombineIcon(props:any) {
   return (
     <svg
       {...props}
@@ -113,7 +113,7 @@ function CombineIcon(props) {
 }
 
 
-function InboxIcon(props) {
+function InboxIcon(props:any) {
   return (
     <svg
       {...props}
@@ -134,7 +134,7 @@ function InboxIcon(props) {
 }
 
 
-function LockIcon(props) {
+function LockIcon(props:any) {
   return (
     <svg
       {...props}
@@ -155,7 +155,7 @@ function LockIcon(props) {
 }
 
 
-function MergeIcon(props) {
+function MergeIcon(props:any) {
   return (
     <svg
       {...props}
@@ -177,7 +177,7 @@ function MergeIcon(props) {
 }
 
 
-function SearchIcon(props) {
+function SearchIcon(props:any) {
   return (
     <svg
       {...props}
@@ -198,7 +198,7 @@ function SearchIcon(props) {
 }
 
 
-function SettingsIcon(props) {
+function SettingsIcon(props:any) {
   return (
     <svg
       {...props}
