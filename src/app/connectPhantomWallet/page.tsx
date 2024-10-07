@@ -13,7 +13,7 @@ export default function ConnectPhantomWallet() {
 
   // Check if Phantom Wallet is installed
   const isPhantomInstalled = () => {
-    return typeof window !== 'undefined' && window.solana && window.solana.isPhantom;
+    return typeof window !== 'undefined' && window.solana && (window.solana.isPhantom || window.solana.isMobile);
   };
 
   // Connect Phantom Wallet
