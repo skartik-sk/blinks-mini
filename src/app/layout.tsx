@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import connectDB from "@/lib/dbconnect";
 
 
 export const metadata: Metadata = {
@@ -12,6 +13,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  connectDB();
   return (
     <html lang="en">
       <body>

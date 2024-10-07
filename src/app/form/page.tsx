@@ -1,32 +1,40 @@
-'use client'
 
-import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
-
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
+import axios from 'axios';
+// import { useRouter } from 'next/navigation';
 export default function CreatorForm() {
-  const [formData, setFormData] = useState({
-    title: '',
-    imageUrl: '',
-    description: '',
-    label: '',
-    amount: '',
-  })
+  // const router = useRouter();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData(prevData => ({
-      ...prevData,
-      [name]: value
-    }))
-  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = {
+      title: formData.get('title'),
+      imageUrl: formData.get('imageUrl'),
+      description: formData.get('description'),
+      label: formData.get('label'),
+      amount: formData.get('amount'),
+    };
+    console.log('Data:', data);
+
+  
+
+    axios.post('/api/posts', data)
+      .then(response => {
+        if (response.status !== 200) {
+
+          // router.push(`https://dial.to/?action=solana-action:http://localhost:3000/api/donate/${response.data._id}`);
+          console.log('Data successfully sent to the server:', response.data);
+        }
+      })
+      .catch(error => {
+        console.error('There was an error sending the data:', error);
+      });
     // Here you would typically send the data to an API or perform some action
   }
 
@@ -45,8 +53,6 @@ export default function CreatorForm() {
               <Input 
                 id="title" 
                 name="title" 
-                value={formData.title} 
-                onChange={handleChange} 
                 required 
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
@@ -57,8 +63,6 @@ export default function CreatorForm() {
                 id="imageUrl" 
                 name="imageUrl" 
                 type="url" 
-                value={formData.imageUrl} 
-                onChange={handleChange} 
                 required 
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
@@ -68,8 +72,6 @@ export default function CreatorForm() {
               <Textarea 
                 id="description" 
                 name="description" 
-                value={formData.description} 
-                onChange={handleChange} 
                 required 
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
@@ -79,8 +81,6 @@ export default function CreatorForm() {
               <Input 
                 id="label" 
                 name="label" 
-                value={formData.label} 
-                onChange={handleChange} 
                 required 
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
@@ -91,8 +91,6 @@ export default function CreatorForm() {
                 id="amount" 
                 name="amount" 
                 type="number" 
-                value={formData.amount} 
-                onChange={handleChange} 
                 required 
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
