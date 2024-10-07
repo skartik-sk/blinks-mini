@@ -1,4 +1,5 @@
 import Creator from "@/lib/models/creater";
+import User from "@/lib/models/user";
 import {  ActionGetResponse, ActionPostRequest, ActionPostResponse, ACTIONS_CORS_HEADERS } from "@solana/actions";
 import { clusterApiUrl, Connection, LAMPORTS_PER_SOL, PublicKey, SystemProgram, Transaction } from "@solana/web3.js";
 
@@ -61,6 +62,7 @@ export const OPTIONS = GET;
 export  async function POST(request:Request){
     const body: ActionPostRequest = await request.json();
     const url = new URL(request.url);
+
     const amount  =  Number(url.searchParams.get("amount")) || 0.2;
 
     let sender ;
@@ -94,7 +96,28 @@ export  async function POST(request:Request){
         transaction: transaction.serialize({ verifySignatures: false }).toString("base64"),
         message: "Transaction created",
     };
-    
+    try {
+
+      const newUser = new User({
+        solAdd: sender.toString(),
+  post:  url.href.toString(), 
+  isAwarded: false,
+
+
+        
+      });
+
+      await newUser.save();
+      console.log(newUser);
+      return Response.json(payload, {
+        headers: ACTIONS_CORS_HEADERS,
+    });    
+        
+    } catch (error) {
+        return Response.json({error:error},{status:400,headers:ACTIONS_CORS_HEADERS});
+        
+    }
+
 
     // // Redirect to a specific page after transaction creation
     // const redirectUrl = new URL('/some-page', url.origin);
@@ -102,8 +125,8 @@ export  async function POST(request:Request){
     // redirectUrl.searchParams.set('message', payload.message);
 
     // return Response.redirect(redirectUrl.toString(), 302);
-    return Response.json(payload, {
-        headers: ACTIONS_CORS_HEADERS,
-    });
+    // return Response.json(payload, {
+    //     headers: ACTIONS_CORS_HEADERS,
+    // });
         
 }

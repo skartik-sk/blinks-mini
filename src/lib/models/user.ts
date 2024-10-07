@@ -6,7 +6,7 @@ import { IUser } from '../interface/user';
 const UserSchema: Schema = new Schema({
 
   solAdd: { type: String, required: true },
-  post: { type: Schema.Types.ObjectId, ref: 'Creator', required: true },
+  post: { type: String, required: true },
   isAwarded: { type: Boolean, required: true,default:false },
   igProfile: { type: String,  },
   views: { type: Number, default: 0 },
