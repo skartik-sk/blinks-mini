@@ -4,6 +4,7 @@ import {  ActionGetResponse, ActionPostRequest, ActionPostResponse, ACTIONS_CORS
 import { clusterApiUrl, Connection, LAMPORTS_PER_SOL, PublicKey, SystemProgram, Transaction } from "@solana/web3.js";
 
 
+
 export  async function GET(request:Request ,params:{params:{id:string}  }){ 
     const url = new URL(request.url);
     // console.log("url: ",);
@@ -47,6 +48,13 @@ if (!creator) {
                 label:"Participate 0.1 Sol",
                 href:`${url.href}?amount=0.1`,
             },
+            {
+                type:"external-link",
+                label:"Reclaim",
+                href:"https://localhost:3000/api/donate/redirect",
+               
+            },
+            
         ]
     }
 
@@ -93,8 +101,16 @@ export  async function POST(request:Request){
 
     const payload: ActionPostResponse = {
         type: "transaction",
+        // externalLink: "https://localhost:3000/form",
         transaction: transaction.serialize({ verifySignatures: false }).toString("base64"),
-        message: "Transaction created",
+        message: "Transaction completed",
+
+        links: {
+            next: {
+                type:"post",
+                href: "https://localhost:3000/api/donate/redirect",
+            },
+        }
     };
     try {
 
@@ -109,9 +125,11 @@ export  async function POST(request:Request){
 
       await newUser.save();
       console.log(newUser);
-      return Response.json(payload, {
-        headers: ACTIONS_CORS_HEADERS,
-    });    
+    //   redirect("https://blinks.knowflow.study");
+      return Response.json(payload,{
+        headers : ACTIONS_CORS_HEADERS,
+      });
+
         
     } catch (error) {
         return Response.json({error:error},{status:400,headers:ACTIONS_CORS_HEADERS});
