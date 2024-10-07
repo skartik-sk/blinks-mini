@@ -37,8 +37,8 @@ export default function CreatorForm() {
       console.log('Data successfully sent to the server:', response.data);
 
       if(response.data.data._id != undefined){
-
-router.push(`https://dial.to/?action=solana-action:http://localhost:3000/api/donate/${response.data.data_id}`)
+console.log(response.data.data._id);
+router.push(`https://dial.to/?action=solana-action:http://blinks.knowflow.study/api/donate/${response.data.data._id}`)
 
       }
 

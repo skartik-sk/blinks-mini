@@ -10,9 +10,10 @@ export  async function GET(request:Request ,params:{params:{id:string}  }){
     // console.log("searchParams: " +searchParams);
     // const id = searchParams.get('id')||"";
     // console.log("id" +id);
+    console.log("params",params);
     const id = await params.params.id;
-
-
+ 
+console.log("id", id);
     let creator;
     try{
         creator = await Creator.findOne({ _id: id });
