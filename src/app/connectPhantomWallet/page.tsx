@@ -35,8 +35,8 @@ export default function ConnectPhantomWallet() {
   }
 
   return (
-    <main className="bg-white shadow-lg rounded-lg p-6 max-w-md w-full text-center">
-        <h1 className="text-2xl font-bold text-gray-800 mb-4">Phantom Wallet Connection</h1>
+    <main className="bg-[#000000] shadow-lg rounded-lg p-6 max-w-md w-full text-center">
+        <h1 className="text-2xl font-bold text-white mb-4">Phantom Wallet Connection</h1>
 
         {!walletAddress ? (
           <button 
@@ -46,7 +46,7 @@ export default function ConnectPhantomWallet() {
             Connect Phantom Wallet
           </button>
         ) : (
-          <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md mx-auto">
+          <div className="bg-[#000000] p-6 rounded-lg shadow-md w-full max-w-md mx-auto">
             <p className="text-green-600 font-semibold mb-2">Connected:</p>
             <p className="text-green-600 font-semibold break-words">{walletAddress}</p>
             <div className="flex justify-between gap-2 mt-6">
