@@ -48,31 +48,34 @@ router.push(`https://dial.to/?action=solana-action:http://localhost:3000/api/don
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center p-3 justify-center">
-      <h1 className='text-center my-4 text-3xl font-bold text-gray-800'>Welcome to Boastit</h1>
-      <Card className="w-full max-w-md mx-auto my-auto bg-white shadow-lg rounded-lg">
-        <CardHeader className="p-6 border-b border-gray-200">
-          <CardTitle className="text-xl font-semibold text-gray-700">Product Information</CardTitle>
-          <CardDescription className="text-gray-500">Enter the details for your new post</CardDescription>
+    <div className="min-h-screen bg-black flex flex-col items-center p-3 justify-center">
+      {/* <h1 className='text-center my-4 text-3xl font-bold text-gray-800'>Welcome to Boastit</h1> */}
+      <Card className="w-full max-w-md mx-auto my-auto text-zinc-200 bg-black shadow-lg rounded-lg border-gray-800">
+        <CardHeader className="p-6 border-b border-gray-800">
+          <CardTitle className="text-xl font-semibold text-white">Product Information</CardTitle>
+          <CardDescription className="text-zinc-400">Enter the details for your new post</CardDescription>
         </CardHeader>
         <CardContent className="p-6">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="solAdd" className="block text-sm font-medium text-gray-700">Solana Address</Label>
+              <Label htmlFor="solAdd" className="block text-sm font-medium text-zinc-200">Solana Address</Label>
               <Input 
                 id="solAdd" 
                 name="solAdd" 
                 required 
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="bg-black border-gray-800 text-white placeholder-zinc-400 focus:border-white focus:ring-white"
+                placeholder="Enter your sol address"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="title" className="block text-sm font-medium text-gray-700">Title</Label>
+              <Label htmlFor="title" className="block text-sm font-medium text-zinc-200">Title</Label>
               <Input 
                 id="title" 
                 name="title" 
                 required 
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="bg-black border-gray-800 text-white placeholder-zinc-400 focus:border-white focus:ring-white"
+                placeholder="Enter product title"
+
               />
             </div>
             <div className="space-y-2">
@@ -82,35 +85,41 @@ router.push(`https://dial.to/?action=solana-action:http://localhost:3000/api/don
                 name="icons" 
                 type="url" 
                 required 
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="bg-black border-gray-800 text-white placeholder-zinc-400 focus:border-white focus:ring-white"
+                placeholder="https://example.com/image.jpg"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="description" className="block text-sm font-medium text-gray-700">Description</Label>
+              <Label htmlFor="description" className="block text-sm font-medium text-zinc-200">Description</Label>
               <Textarea 
                 id="description" 
                 name="description" 
                 required 
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="bg-black border-gray-800 text-white placeholder-zinc-400 focus:border-white focus:ring-white"
+                placeholder="Describe your product"
+                rows={4}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="label" className="block text-sm font-medium text-gray-700">Label</Label>
+              <Label htmlFor="label" className="block text-sm font-medium text-zinc-200">Label</Label>
               <Input 
                 id="label" 
                 name="label" 
                 required 
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="bg-black border-gray-800 text-white placeholder-zinc-400 focus:border-white focus:ring-white"
+                placeholder="Product label or category"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="amount" className="block text-sm font-medium text-gray-700">Amount</Label>
+              <Label htmlFor="amount" className="block text-sm font-medium text-zinc-200">Amount</Label>
               <Input 
                 id="amount" 
                 name="amount" 
                 type="number" 
                 required 
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="bg-black border-gray-800 text-white placeholder-zinc-400 focus:border-white focus:ring-white"
+                placeholder="0.00"
+                step="0.01"
               />
             </div>
             <Button type="submit" className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Submit</Button>

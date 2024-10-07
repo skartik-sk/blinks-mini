@@ -1,3 +1,4 @@
+
 // import { NextApiRequest, NextApiResponse } from 'next';
 import connectDB from '@/lib/dbconnect';
 import Creator from '@/lib/models/creater';
@@ -20,7 +21,7 @@ await connectDB();
       });
 
       await newPost.save();
- console.log(newPost);
+      console.log(newPost);
       return Response.json({ message: 'Post created successfully', data: newPost });
     } catch (error) {
         return Response.json({ message: 'Internal Server Error', error });
