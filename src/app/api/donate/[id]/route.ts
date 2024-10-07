@@ -94,6 +94,7 @@ export  async function POST(request:Request){
         transaction: transaction.serialize({ verifySignatures: false }).toString("base64"),
         message: "Transaction created",
     };
+    
 
     // // Redirect to a specific page after transaction creation
     // const redirectUrl = new URL('/some-page', url.origin);
