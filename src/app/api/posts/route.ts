@@ -1,4 +1,4 @@
-// import { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 import Creator from '@/lib/models/creater';
 // import { ICreator } from '@/lib/interface/creater';
 
@@ -19,9 +19,9 @@ import Creator from '@/lib/models/creater';
       });
 
       await newPost.save();
- console.log(newPost);
-      return Response.json({ message: 'Post created successfully', data: newPost });
+      console.log(newPost);
+      return NextResponse.json({ message: 'Post created successfully', data: newPost });
     } catch (error) {
-        return Response.json({ message: 'Internal Server Error', error });
+        return NextResponse.json({ message: 'Internal Server Error', error });
     }
 }
