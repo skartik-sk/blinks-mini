@@ -9,7 +9,7 @@ import Cors from 'cors';
 // Initializing the cors middleware
 const cors = Cors({
   methods: ['GET', 'HEAD', 'PUT', 'POST', 'DELETE'],
-  origin: '', // Replace '' with your frontend domain in production
+  origin: '*', // Replace '' with your frontend domain in production
 });
 
 // Helper method to wait for middleware to execute before continuing
