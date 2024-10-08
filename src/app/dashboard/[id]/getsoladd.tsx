@@ -25,11 +25,12 @@ const Getsoladd = ({leaderboard,id}:{leaderboard:IUser[],id:string}) => {
             }
           } 
     }
+    console.log(`https://reclaim-verify-xmm5.vercel.app/?id=${id}`);
   return (
 <div className='text-white'>
     {
         leaderboard.some(item => item.solAdd == walletAddress) && (
-        <Link href={`https://reclaim-verify-xmm5.vercel.app?id=${id}`}>
+        <Link href={`https://reclaim-verify-xmm5.vercel.app/?id=${id}`}>
             <button className="mt-4 px-4 py-2 bg-blue-600 text-white text-xl font-medium rounded hover:bg-blue-700">
                 Reclaim
             </button>
