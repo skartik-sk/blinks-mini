@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { Badge } from "@/components/ui/badge";
 import { Zap } from "lucide-react";
-import SolanaBlinksCard from '../blinkcard/page';
+import {SolanaBlinksCard} from '../blinkcard/page';
 import connectDB from "@/lib/dbconnect";
 import { ICreator } from "@/lib/interface/creater";
 import Creator from "@/lib/models/creater";
