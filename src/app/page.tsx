@@ -14,7 +14,7 @@ export default function FrontPage() {
             <div className="flex flex-col justify-center items-center space-y-8 text-center gap-7">
               <ConnectPhantomWallet />
               <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 p-2">
                   Engage and Earn with Instagram Stories
                 </h1>
                 <p className="max-w-[600px] text-zinc-200 md:text-xl dark:text-zinc-100 mx-auto">
