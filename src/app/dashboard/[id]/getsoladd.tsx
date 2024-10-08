@@ -5,7 +5,6 @@ import React, { useEffect,useState } from 'react'
 
 const Getsoladd = ({leaderboard,id}:{leaderboard:IUser[],id:string}) => {
     const [walletAddress, setWalletAddress] = useState(null);
- console.log(id);
     const isPhantomInstalled = () => {
         return typeof window !== 'undefined' && window.solana && (window.solana.isPhantom || window.solana.isMobile);
       };

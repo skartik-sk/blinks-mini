@@ -35,6 +35,7 @@ export default async function Component() {
         <div className="flex flex-wrap justify-center gap-5">
           {
             creators.map((creator) => {
+              console.log(creator);
               return (
                <>
                <Link href={`/dashboard/${creator.id}`}>

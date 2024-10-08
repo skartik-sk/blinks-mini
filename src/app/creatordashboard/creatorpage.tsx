@@ -50,21 +50,22 @@ const Creatorpage = ({creator}:{creator: ICreator[]}) => {
             <div className="flex flex-wrap gap-5 justify-center md:col-span-2 lg:col-span-1">
                 
             {
-                creator.map((creator) => {
+                creator.map((cat) => {
+
                 return (
                 <>
-                    <Link href={`/dashboard/${creator.id}`}>
+                    <Link href={`/dashboard/${cat._id}`}>
                         <Card  className="bg-black text-white h-fit border-gray-800">
                             <CardHeader>
                                 <CardTitle className="text-xl sm:text-2xl font-bold flex items-center gap-2">
                                 <Zap className="w-5 h-5 sm:w-6 sm:h-6" />
-                                {creator.title}
+                                {cat.title}
                                 </CardTitle>
                             </CardHeader>
                             <CardContent className="space-y-4 pb-0">
                                 <div>
                                 <h3 className="text-lg font-semibold mb-1 text-gray-400">Total Prize</h3>
-                                <p className="text-2xl sm:text-3xl font-bold text-white">{creator.amount}</p>
+                                <p className="text-2xl sm:text-3xl font-bold text-white">{cat.amount}</p>
                                 </div>
                                 <div>
                                 <h3 className="text-lg font-semibold mb-1 text-gray-400">Top Performer</h3>
@@ -80,7 +81,7 @@ const Creatorpage = ({creator}:{creator: ICreator[]}) => {
                                 </Badge>
                                 </div>
                             </CardContent>
-                            <SolanaBlinksCard content ={creator}  id={creator.id}/>
+                            <SolanaBlinksCard content ={cat}  id={cat._id}/>
                         </Card>
                     </Link>
                     </>

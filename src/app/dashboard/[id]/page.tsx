@@ -17,7 +17,7 @@ const Page = async({params}:{params:{id:string}} ) => {
     await connectDB();
     let leaderboard: IUser[] = [];
     try {
-    leaderboard = await User.find({ 'post': `https://blinks.knowflow.study/api/donate/${params.id}?amount=0.1` }).sort({ views: -1 });
+    leaderboard = await User.find({ 'post': `http://localhost:3000/api/donate/${params.id}?amount=0.1` }).sort({ views: -1 });
     } catch (error) {
       console.error(error);
       
