@@ -34,7 +34,7 @@ export default function ConnectPhantomWallet() {
   };
 
   const handleCreator = () => {
-    router.push('/form');
+    router.push('/creatorlogin');
   }
 
   const handleCopy = () => {
