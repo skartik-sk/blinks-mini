@@ -61,7 +61,7 @@ const Creatorpage = ({creator}:{creator: ICreator[]}) => {
                                 {creator.title}
                                 </CardTitle>
                             </CardHeader>
-                            <CardContent className="space-y-4">
+                            <CardContent className="space-y-4 pb-0">
                                 <div>
                                 <h3 className="text-lg font-semibold mb-1 text-gray-400">Total Prize</h3>
                                 <p className="text-2xl sm:text-3xl font-bold text-white">{creator.amount}</p>
