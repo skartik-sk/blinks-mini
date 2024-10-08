@@ -1,7 +1,16 @@
 
 # DASHH - Decentralized Engagement Platform
 
-DASHH is a decentralized platform that revolutionizes influencer marketing. By leveraging the **Reclaim Protocol** and **Solana Blinks**, we ensure transparency, fairness, and real engagement verification. Brands can create campaigns, and influencers are rewarded based on genuine interaction data, eliminating intermediaries and promoting trust through blockchain technology.
+DASHH is the new ad platform focused on helping brands reach the masses through micro-influencers. 
+
+Check out here: https://blinks.knowflow.study/
+
+➤ Reclaim Protocol for secure, private engagement verification.
+➤ Solana Blink Actions to track campaigns and real-time interactions.
+➤ zkTLS proofs ensuring genuine user engagement and transparency.
+➤ Currently supports Instagram Story views, expanding to other platforms.
+➤ Targeting micro-influencers to amplify brand reach directly.
+➤ Scalable, trust-based platform—no middlemen, just results.
 
 ## 🌟 Why DASHH?
 
