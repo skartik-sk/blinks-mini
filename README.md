@@ -1,37 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# DASHH - Decentralized Engagement Platform
 
-First, run the development server:
+DASHH is a decentralized platform that revolutionizes influencer marketing. By leveraging the **Reclaim Protocol** and **Solana Blinks**, we ensure transparency, fairness, and real engagement verification. Brands can create campaigns, and influencers are rewarded based on genuine interaction data, eliminating intermediaries and promoting trust through blockchain technology.
+
+## 🌟 Why DASHH?
+
+- **Transparency & Accountability**: Verified engagement through the Reclaim Protocol, ensuring real data and eliminating fake views.
+- **Decentralized Influencer Marketing**: Rewards are distributed fairly, based on true engagement, not follower count.
+- **Sybil Resistance**: Protects against fake accounts and bots by verifying participant identity and reputation.
+- **On-Chain Trust**: Payments are securely handled through on-chain escrow contracts, ensuring safe and transparent payouts.
+
+---
+
+## 🚀 Getting Started
+
+To run this project locally:
 
 ```bash
+# Using npm
 npm run dev
-# or
+
+# Or using yarn
 yarn dev
-# or
+
+# Or using pnpm
 pnpm dev
-# or
+
+# Or using bun
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📈 How DASHH Works
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 1. **Campaign Creation**
+Brands set up campaigns, allocate a budget, and share them through Solana Actions using Reclaim Protocol for Instagram verification and zkTLS proof to ensure privacy and security.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 2. **User Participation**
+Influencers connect their wallets, verify their Instagram account via Reclaim, and participate by posting stories that will generate real engagement.
 
-## Learn More
+### 3. **Engagement Proof**
+Reclaim Protocol collects engagement data (e.g., Instagram views) and generates zkTLS proofs, ensuring that the engagement is real and verified.
 
-To learn more about Next.js, take a look at the following resources:
+### 4. **Payment Distribution**
+Once engagement is verified, payments are processed through a secure escrow smart contract on Solana, ensuring influencers are rewarded fairly and without delay.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠 Platform Integration
 
-## Deploy on Vercel
+- **URL Scheme**: Define actions using the `solana-action:` URL scheme.
+- **Handling Requests**: Ensure your platform can handle GET and POST requests properly with valid headers for CORS compliance.
+- **Response Metadata**: Return necessary metadata, including a signable transaction or message, for wallets to process.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# blinks-mini
+## 📊 Execution Flow
+
+1. **Campaign Setup** → **Reclaim Verification** → **Solana Action (Blink URL)**
+2. **User Participation** → **Reclaim Proof** → **Instagram Engagement**
+3. **Proof Collection** → **zkTLS Proof** → **Blink URL Submission**
+4. **Payout** → **Escrow Smart Contract Verification** → **Funds Released**
+
+---
+
+## 🌐 Causes We Serve
+
+- **Fair Compensation**: Influencers are paid based on real engagement, not just follower numbers.
+- **Data Ownership**: Influencers retain control of their data, with cryptographic proof provided by Reclaim.
+- **Automation & Trust**: Payments are automated and secured through blockchain, eliminating the need for intermediaries.
