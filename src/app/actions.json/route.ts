@@ -7,10 +7,11 @@ export const GET = async () => {
       {
         pathPattern: "/",
         apiPath: "/api/donate/",
-      }, {
-        pathPattern: "/redirect",
-        apiPath: "/api/donate/redirect",
       },
+      //  {
+      //   pathPattern: "/redirect/",
+      //   apiPath: `/api/redirect/`,
+      // },
     ],
   };
 

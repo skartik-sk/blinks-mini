@@ -12,7 +12,7 @@ export  async function GET(request:Request ,params:{params:{id:string}  }){
     // console.log("searchParams: " +searchParams);
     // const id = searchParams.get('id')||"";
     // console.log("id" +id);
-    console.log("params",params);
+
     const id = await params.params.id;
  
 console.log("id", id);
@@ -22,8 +22,8 @@ console.log("id", id);
 console.log(creator);
 if (!creator) {
     creator = {
-        icons: "https://instagram.fbho3-4.fna.fbcdn.net/v/t51.2885-19/344094165_1428989347924242_319794666472247536_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.fbho3-4.fna.fbcdn.net&_nc_cat=106&_nc_ohc=EWLNdoJWV4IQ7kNvgEYR9wa&_nc_gid=28bc22d4a71f4a998b6201b6141396ba&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AYC2vVUcPuINfMw18GB5pbeekHEJDPbhs7M6MwvyT6oLSg&oe=6708078F&_nc_sid=8b3546",
-        title: "Donate to pranesh",
+        icons: "https://cdn.vectorstock.com/i/500p/04/45/solana-logo-coin-icon-isolated-vector-43670445.jpg",
+        title: "Donate to Solana",
         description: "Donate to the Solana Foundation to support the Solana ecosystem.",
         label: "Donate",    
     };
@@ -49,9 +49,9 @@ if (!creator) {
                 href:`${url.href}?amount=0.1`,
             },
             {
-                type:"external-link",
-                label:"Reclaim",
-                href:"https://localhost:3000/api/donate/redirect",
+                type:"transaction",
+                label:"redirect Reclaim",
+                href:`http://localhost:3000/api/donate/${id}/reclaim`,
                
             },
             
@@ -66,6 +66,7 @@ if (!creator) {
   });
 }
 export const OPTIONS = GET;
+
 
 export  async function POST(request:Request){
     const body: ActionPostRequest = await request.json();
