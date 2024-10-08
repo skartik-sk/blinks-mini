@@ -10,8 +10,7 @@ import { faHome, faLink } from '@fortawesome/free-solid-svg-icons';
 
 export default function SolanaBlinksCard() {
   return (
-    <div className='p-3'>
-        <div className='flex justify-center items-center'>
+    <div className='flex justify-center items-center m-2'>
             <div className="flex flex-col w-[25rem] bg-gray-800 rounded-xl shadow-lg overflow-hidden p-5">
                 <div className="relative h-48 w-full">
                     <div className='p-3'>
@@ -35,7 +34,7 @@ export default function SolanaBlinksCard() {
                     <button 
                     className="relative bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-2 px-4 rounded-full shadow-lg hover:from-indigo-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full transition-all duration-300 ease-in-out transform hover:scale-105 overflow-hidden"
                     >
-                    Connect Phantom Wallet
+                    Send 0.1 SOL
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-50 w-1/3 h-full transform -translate-x-full -translate-y-full animate-slide-diagonal"></div>
                     <style jsx>{`
                         @keyframes slide-diagonal {
@@ -53,7 +52,6 @@ export default function SolanaBlinksCard() {
                     </button>
                 </div>
             </div>
-        </div>
     </div>
   );
 }
