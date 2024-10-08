@@ -17,7 +17,7 @@ export default function CreatorLogin() {
     e.preventDefault()
     // Here you would typically handle the login logic
     console.log('Login attempted with:', { solAddress, password });
-    router.push('/form');
+    router.push('/dashboard');
 
   }
 
