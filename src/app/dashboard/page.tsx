@@ -58,7 +58,7 @@ const findTopPerformer = (leaderboard: LeaderboardItem[]): LeaderboardItem => {
             creators.map((creator) => {
               return (
                <>
-               <Link href={`http://localhost:3000/dashboard/${creator.id}`}>
+               <Link href={`/dashboard/${creator.id}`}>
                <Card  className="bg-black text-white h-fit border-gray-800">
                <CardHeader>
                  <CardTitle className="text-xl sm:text-2xl font-bold flex items-center gap-2">

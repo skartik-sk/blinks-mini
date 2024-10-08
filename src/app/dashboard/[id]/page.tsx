@@ -1,3 +1,4 @@
+
 import React from 'react'
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,15 +8,16 @@ import { Eye } from "lucide-react";
 import connectDB from '@/lib/dbconnect';
 import { IUser } from '@/lib/interface/user';
 import User from '@/lib/models/user';
+import Getsoladd from './getsoladd';
+
+
 
 const Page = async({params}:{params:{id:string}} ) => {
 //http://localhost:3000/api/donate/6704221df49eb4a6e57bac79?amount=0.1
     await connectDB();
     let leaderboard: IUser[] = [];
     try {
-    leaderboard = await User.find({ 'post': `http://localhost:3000/api/donate/${params.id}?amount=0.1` });
-
-      console.log(leaderboard);
+    leaderboard = await User.find({ 'post': `http://localhost:3000/api/donate/${params.id}?amount=0.1` }).sort({ views: -1 });
     } catch (error) {
       console.error(error);
       
@@ -26,10 +28,16 @@ const Page = async({params}:{params:{id:string}} ) => {
         {leaderboard.length>0?
         (
     <Card className="h-[calc(100vh-2rem)] sm:h-[calc(100vh-3rem)] lg:h-[calc(100vh-4rem)] flex flex-col bg-black border-gray-800">
+
+        <CardContent>
+           
+        
+        </CardContent>
       <CardHeader>
-        <CardTitle className="text-xl sm:text-2xl font-bold flex items-center gap-2 text-white">
-          <Eye className="w-5 h-5 sm:w-6 sm:h-6" />
-          Leaderboard
+        <CardTitle className="text-xl sm:text-2xl font-bold flex justify-between items-center gap-2 text-white">
+        <div className='text-xl sm:text-2xl font-bold flex  items-center gap-2 text-white'>  <Eye className="w-5 h-5 sm:w-6 sm:h-6" />
+        Leaderboard</div>
+          <Getsoladd leaderboard= {leaderboard}/>
         </CardTitle>
       </CardHeader>
       <CardContent className="flex-grow overflow-hidden">
@@ -43,6 +51,7 @@ const Page = async({params}:{params:{id:string}} ) => {
               </TableRow>
             </TableHeader>
             <TableBody>
+
               {leaderboard.map((item, index) => (
                 <TableRow key={item.id} className="border-b border-gray-800">
                   <TableCell className="font-medium text-gray-300">{index + 1}</TableCell>
@@ -62,6 +71,8 @@ const Page = async({params}:{params:{id:string}} ) => {
     
     </>)}
   </div>
+
+  
     </>
   )
 }
