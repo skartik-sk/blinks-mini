@@ -11,7 +11,7 @@ import { faHome, faLink } from '@fortawesome/free-solid-svg-icons';
 export default function SolanaBlinksCard() {
   return (
     <div className='flex justify-center items-center m-2'>
-            <div className="flex flex-col w-[25rem] bg-gray-800 rounded-xl shadow-lg overflow-hidden p-5">
+            <div className="flex flex-col w-[25rem] bg-gray-800 rounded-xl shadow-lg overflow-hidden p-5 ">
                 <div className="relative h-48 w-full">
                     <div className='p-3'>
                         <Image 
@@ -23,7 +23,7 @@ export default function SolanaBlinksCard() {
                         />
                     </div>
                 </div>
-                <Link href="/" className="text-zinc-500 flex gap-2 mt-3">
+                <Link href="#" className="text-zinc-500 flex gap-2 mt-3">
                     <FontAwesomeIcon icon={faLink} size="sm" />
                     <p className='text-[13px] font-semibold'>boostit.io</p>
                 </Link>
