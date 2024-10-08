@@ -6,4 +6,5 @@ export interface ICreator  {
     label: string;
     amount: number;
     icons: string;
+    id: string;
   }

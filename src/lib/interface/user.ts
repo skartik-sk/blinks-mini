@@ -5,4 +5,5 @@ export interface IUser  {
     isAwarded: boolean;
     igProfile: string;
     views: number;
+    id: string;
   }
