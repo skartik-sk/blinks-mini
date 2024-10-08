@@ -49,9 +49,9 @@ if (!creator) {
                 href:`${url.href}?amount=0.1`,
             },
             {
-                type:"transaction",
-                label:"redirect Reclaim",
-                href:`http://localhost:3000/api/donate/${id}/reclaim`,
+                type:"external-link",
+                label:"Verify",
+                href:`http://blinks.knowflow.study/api/donate/${id}/redirect`,
                
             },
             
@@ -109,7 +109,7 @@ export  async function POST(request:Request){
         links: {
             next: {
                 type:"post",
-                href: "https://localhost:3000/api/donate/redirect",
+                href: "https://blinks.knowflow.study/api/donate/redirect",
             },
         }
     };
