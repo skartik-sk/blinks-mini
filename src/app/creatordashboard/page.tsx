@@ -12,7 +12,7 @@ export default async function Component() {
     await connectDB();
     let creators: ICreator[] = [];
     try {
-      creators = await Creator.find();
+      creators = await Creator.find().sort({ _id: -1 });
 
       console.log(creators);
     } catch (error) {

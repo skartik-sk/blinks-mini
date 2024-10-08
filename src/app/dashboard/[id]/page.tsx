@@ -17,7 +17,7 @@ const Page = async({params}:{params:{id:string}} ) => {
     await connectDB();
     let leaderboard: IUser[] = [];
     try {
-    leaderboard = await User.find({ 'post': `http://blinks.knowflow.study/api/donate/${params.id}?amount=0.1` }).sort({ views: -1 });
+    leaderboard = await User.find({ 'post': `https://blinks.knowflow.study/api/donate/${params.id}?amount=0.1` }).sort({ views: -1 });
     } catch (error) {
       console.error(error);
       
@@ -36,7 +36,7 @@ const Page = async({params}:{params:{id:string}} ) => {
                   <CardTitle className="text-xl sm:text-2xl font-bold flex justify-between items-center gap-2 text-white">
                   <div className='text-xl sm:text-2xl font-bold flex  items-center gap-2 text-white'>  <Eye className="w-5 h-5 sm:w-6 sm:h-6" />
                     Leaderboard</div>
-                    <Getsoladd leaderboard= {leaderboard}/>
+                    <Getsoladd leaderboard= {leaderboard} id={params.id}/>
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="flex-grow overflow-hidden">

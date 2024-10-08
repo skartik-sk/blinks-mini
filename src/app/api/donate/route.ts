@@ -5,42 +5,13 @@ import { clusterApiUrl, Connection, LAMPORTS_PER_SOL, PublicKey, SystemProgram, 
 
 
 
-export  async function GET(request:Request ,params:{params:{id:string}  }){ 
+export  async function GET(request:Request   ){ 
     const url = new URL(request.url);
-    // console.log("url: ",);
-    // const { searchParams } = new URL(request.url);
-    // console.log("searchParams: " +searchParams);
-    // const id = searchParams.get('id')||"";
-    // console.log("id" +id);
-
-    const id = await params.params.id;
- 
-console.log("id", id);
-    let creator;
-    try{
-        creator = await Creator.findOne({ _id: id });
-console.log(creator);
-if (!creator) {
-    creator = {
-        icons: "https://cdn.vectorstock.com/i/500p/04/45/solana-logo-coin-icon-isolated-vector-43670445.jpg",
+    const payload:ActionGetResponse = {
+    icon: "https://cdn.vectorstock.com/i/500p/04/45/solana-logo-coin-icon-isolated-vector-43670445.jpg",
         title: "Donate to Solana",
         description: "Donate to the Solana Foundation to support the Solana ecosystem.",
         label: "Donate",    
-    };
-}
-
-        // console.log(creator);
-        
-
-    }
-    catch(e){
-        return Response.json({error:e},{status:400,headers:ACTIONS_CORS_HEADERS});
-    }
-  const payload:ActionGetResponse = {
-    icon: creator.icons,
-    title: creator.title,
-    description:creator.description ,
-    label:creator.label,
     links: {
         actions :[
             {

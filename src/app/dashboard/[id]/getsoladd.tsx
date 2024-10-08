@@ -3,7 +3,7 @@ import { IUser } from '@/lib/interface/user'
 import Link from 'next/link';
 import React, { useEffect,useState } from 'react'
 
-const Getsoladd = ({leaderboard}:{leaderboard:IUser[]}) => {
+const Getsoladd = ({leaderboard,id}:{leaderboard:IUser[],id:string}) => {
     const [walletAddress, setWalletAddress] = useState(null);
  
     const isPhantomInstalled = () => {
@@ -30,9 +30,7 @@ const Getsoladd = ({leaderboard}:{leaderboard:IUser[]}) => {
 <div className='text-white'>
     {
         leaderboard.some(item => item.solAdd == walletAddress) && (
-        <Link href='/verifyClaim'>
-
-
+        <Link href='https://build.superteam.fun/ideas?category=Blinks'>
             <button className="mt-4 px-4 py-2 bg-blue-600 text-white text-xl font-medium rounded hover:bg-blue-700">
                 Reclaim
             </button>
