@@ -17,7 +17,7 @@ Check out here: https://blinks.knowflow.study/
 - **Transparency & Accountability**: Verified engagement through the Reclaim Protocol, ensuring real data and eliminating fake views.
 - **Decentralized Influencer Marketing**: Rewards are distributed fairly, based on true engagement, not follower count.
 - **Sybil Resistance**: Protects against fake accounts and bots by verifying participant identity and reputation.
-- **On-Chain Trust**: Payments are securely handled through on-chain escrow contracts, ensuring safe and transparent payouts.
+- **On-Chain Trust**: Payments are securely handled through on-chain escrow programs, ensuring safe and transparent payouts.
 
 ## Features
 
@@ -61,7 +61,7 @@ Influencers connect their wallets, verify their Instagram account via Reclaim, a
 Reclaim Protocol collects engagement data (e.g., Instagram views) and generates zkTLS proofs, ensuring that the engagement is real and verified.
 
 ### 4. **Payment Distribution**
-Once engagement is verified, payments are processed through a secure escrow smart contract on Solana, ensuring influencers are rewarded fairly and without delay.
+Once engagement is verified, payments are processed through a secure escrow programs on Solana, ensuring influencers are rewarded fairly and without delay.
 
 ---
 
