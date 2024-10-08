@@ -71,8 +71,7 @@ export const OPTIONS = GET;
 export  async function POST(request:Request){
     const body: ActionPostRequest = await request.json();
     const url = new URL(request.url);
-
-    const amount  =  Number(url.searchParams.get("amount")) || 0.2;
+const amount  =  Number(url.searchParams.get("amount")) || 0.2;
 
     let sender ;
     try{
