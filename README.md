@@ -10,6 +10,16 @@ DASHH is a decentralized platform that revolutionizes influencer marketing. By l
 - **Sybil Resistance**: Protects against fake accounts and bots by verifying participant identity and reputation.
 - **On-Chain Trust**: Payments are securely handled through on-chain escrow contracts, ensuring safe and transparent payouts.
 
+## Features
+
+➤ **Reclaim Protocol** for secure, private engagement verification.  
+➤ **Solana Blink Actions** to track campaigns and real-time interactions.  
+➤ **zkTLS proofs** ensuring genuine user engagement and transparency.  
+➤ Currently supports **Instagram Story views**, expanding to other platforms.  
+➤ Targeting **micro-influencers** to amplify brand reach directly.  
+➤ Scalable, trust-based platform—**no middlemen, just results**.
+
+
 ---
 
 ## 🚀 Getting Started
@@ -46,13 +56,6 @@ Once engagement is verified, payments are processed through a secure escrow smar
 
 ---
 
-## 🛠 Platform Integration
-
-- **URL Scheme**: Define actions using the `solana-action:` URL scheme.
-- **Handling Requests**: Ensure your platform can handle GET and POST requests properly with valid headers for CORS compliance.
-- **Response Metadata**: Return necessary metadata, including a signable transaction or message, for wallets to process.
-
----
 
 ## 📊 Execution Flow
 
@@ -71,7 +74,7 @@ Once engagement is verified, payments are processed through a secure escrow smar
 
 ---
 
-## 🚀 Use Case: Decentralized Marketing with DASHH
+## What we are doing: Decentralized Marketing with DASHH
 
 ### 1. **No Middlemen, Direct Payments**
 - Brands bid on Instagram engagement through Solana Blinks.
@@ -81,7 +84,7 @@ Once engagement is verified, payments are processed through a secure escrow smar
 - Track every view, like, and interaction on-chain.
 - Solana's high throughput ensures real-time campaign performance updates without bottlenecks.
 
-### 3. **Smart Contract Automation**
+### 3. **Program Automation**
 - Automatic payments based on pre-defined metrics (e.g., 10,000 views).
 - Solana’s fast block finality ensures instant payouts upon reaching campaign goals.
 
@@ -89,13 +92,9 @@ Once engagement is verified, payments are processed through a secure escrow smar
 - Authentic engagement guaranteed using Reclaim Protocol's zkTLS proofs.
 - Protects against bot-driven ad fraud, ensuring real interactions.
 
-### 5. **User Privacy and Data Ownership**
-- Influencers control their data and can monetize engagement metrics.
-- Ethical, transparent advertising without compromising personal privacy.
-
 ## 🔗 Powered by Solana
 - **Low Fees**: Microtransactions with minimal cost.
 - **High Speed**: Real-time updates and payments without delays.
 - **Scalable**: Supports large-scale campaigns effortlessly.
 
-DASHH is the future of decentralized advertising, offering transparency, trust, and efficiency through Solana’s powerful blockchain technology.
+DASHH is the future of advertising, offering transparency, trust, and efficiency through Solana’s powerful blockchain technology.
