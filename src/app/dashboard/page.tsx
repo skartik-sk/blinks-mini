@@ -50,43 +50,49 @@ const findTopPerformer = (leaderboard: LeaderboardItem[]): LeaderboardItem => {
    
 
   return (
-    <div className="min-h-screen bg-black text-white p-4 sm:p-6 lg:p-8">
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div className="flex flex-col bg-black text-white p-4 sm:p-6 lg:p-8">
+      <div className="my-4 ">
+        <h2 className="text-2xl font-bold text-white text-center">
+          Events till now
+        </h2>
+      </div>
+      <div className="flex ">
        
-        <div className="md:col-span-2 lg:col-span-1">
+        <div className="flex flex-wrap justify-center gap-5">
           {
             creators.map((creator) => {
               return (
                <>
                <Link href={`/dashboard/${creator.id}`}>
-               <Card  className="bg-black text-white h-fit border-gray-800">
-               <CardHeader>
-                 <CardTitle className="text-xl sm:text-2xl font-bold flex items-center gap-2">
-                   <Zap className="w-5 h-5 sm:w-6 sm:h-6" />
-                   {creator.title}
-                 </CardTitle>
-               </CardHeader>
-               <CardContent className="space-y-4">
-                 <div>
-                   <h3 className="text-lg font-semibold mb-1 text-gray-400">Total Prize</h3>
-                   <p className="text-2xl sm:text-3xl font-bold text-white">{creator.amount}</p>
-                 </div>
-                 <div>
-                   <h3 className="text-lg font-semibold mb-1 text-gray-400">Top Performer</h3>
-                   <p className="font-mono text-xs sm:text-sm mb-1 break-all text-gray-500">{topPerformer.address}</p>
-                   <Badge variant="secondary" className="bg-purple-900 text-purple-100 hover:bg-purple-800">
-                     {topPerformer.views.toLocaleString()} views
-                   </Badge>
-                 </div>
-                 <div>
-                   <h3 className="text-lg font-semibold mb-1 text-gray-400">Network Status</h3>
-                   <Badge variant="secondary" className="bg-green-900 text-green-100 hover:bg-green-800">
-                     Active
-                   </Badge>
-                 </div>
-               </CardContent>
-               <SolanaBlinksCard content ={creator}  id={creator.id}/>
-             </Card></Link></>
+                <Card  className="bg-black text-white h-fit border-gray-800">
+                  <CardHeader>
+                    <CardTitle className="text-xl sm:text-2xl font-bold flex items-center gap-2">
+                      <Zap className="w-5 h-5 sm:w-6 sm:h-6" />
+                      {creator.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div>
+                      <h3 className="text-lg font-semibold mb-1 text-gray-400">Total Prize</h3>
+                      <p className="text-2xl sm:text-3xl font-bold text-white">{creator.amount}</p>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-1 text-gray-400">Top Performer</h3>
+                      <p className="font-mono text-xs sm:text-sm mb-1 break-all text-gray-500">{topPerformer.address}</p>
+                      <Badge variant="secondary" className="bg-purple-900 text-purple-100 hover:bg-purple-800">
+                        {topPerformer.views.toLocaleString()} views
+                      </Badge>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-1 text-gray-400">Network Status</h3>
+                      <Badge variant="secondary" className="bg-green-900 text-green-100 hover:bg-green-800">
+                        Active
+                      </Badge>
+                    </div>
+                  </CardContent>
+                  <SolanaBlinksCard content ={creator}  id={creator.id}/>
+                </Card>
+              </Link></>
               )
             })
           }
