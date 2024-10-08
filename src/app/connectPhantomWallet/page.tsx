@@ -1,14 +1,13 @@
 'use client'
 import {  useState } from 'react';
-
-import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link';
 
 export default function ConnectPhantomWallet() {
   const [walletAddress, setWalletAddress] = useState(null);
   const [copySuccess, setCopySuccess] = useState(false);
-  const router = useRouter();
+
 
 
   // Check if Phantom Wallet is installed
@@ -33,9 +32,6 @@ export default function ConnectPhantomWallet() {
     }
   };
 
-  const handleCreator = () => {
-    router.push('/dashboard');
-  }
 
   const handleCopy = () => {
     if (walletAddress) {
@@ -94,17 +90,20 @@ export default function ConnectPhantomWallet() {
             />
           </div>
           <div className="flex flex-col sm:flex-row justify-between gap-2 mt-6">
+          <Link  href="/creatordashboard">
             <button 
-              onClick={handleCreator} 
+           
               className="bg-indigo-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full"
             >
               Login As Creator
-            </button>
+            </button> </Link>
+            <Link  href="/dashboard">
             <button 
               className="bg-gray-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 w-full"
-            >
+              >
               Login As User
             </button>
+              </Link>
           </div>
         </div>
       )}
