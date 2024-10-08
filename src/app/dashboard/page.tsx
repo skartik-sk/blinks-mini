@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useState } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Badge } from "@/components/ui/badge"
-import { Eye, Zap } from "lucide-react"
-import SolanaBlinksCard from '../blinkcard/page'
+import { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
+import { Eye, Zap } from "lucide-react";
+import SolanaBlinksCard from '../blinkcard/page';
 
 export default function Component() {
   const [leaderboard, setLeaderboard] = useState([
@@ -19,7 +19,26 @@ export default function Component() {
     { address: "1xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFim", views: 321 },
     { address: "4Q544fKrFoe6tsEbD7S8EmxGTJYAKtTVhAW5Q5pge4j2", views: 210 },
     { address: "0fUAJdStEuGbc3sM84cKRL6yYaaSstyLSV", views: 109 },
-  ])
+  ]);
+
+ // Define the type for leaderboard items
+interface LeaderboardItem {
+  address: string;
+  views: number;
+}
+
+// Function to calculate the total views
+const calculateTotalViews = (leaderboard: LeaderboardItem[]): number => {
+  return leaderboard.reduce((total, item) => total + item.views, 0);
+};
+
+// Function to find the top performer
+const findTopPerformer = (leaderboard: LeaderboardItem[]): LeaderboardItem => {
+  return leaderboard.reduce((top, item) => (item.views > top.views ? item : top), leaderboard[0]);
+};
+
+  const totalViews = calculateTotalViews(leaderboard);
+  const topPerformer = findTopPerformer(leaderboard);
 
   return (
     <div className="min-h-screen bg-black text-white p-4 sm:p-6 lg:p-8">
@@ -67,13 +86,13 @@ export default function Component() {
             <CardContent className="space-y-4">
               <div>
                 <h3 className="text-lg font-semibold mb-1 text-gray-400">Total Views</h3>
-                <p className="text-2xl sm:text-3xl font-bold text-white">5,923</p>
+                <p className="text-2xl sm:text-3xl font-bold text-white">{totalViews.toLocaleString()}</p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-1 text-gray-400">Top Performer</h3>
-                <p className="font-mono text-xs sm:text-sm mb-1 break-all text-gray-500">7fUAJdStEuGbc3sM84cKRL6yYaaSstyLSU</p>
+                <p className="font-mono text-xs sm:text-sm mb-1 break-all text-gray-500">{topPerformer.address}</p>
                 <Badge variant="secondary" className="bg-purple-900 text-purple-100 hover:bg-purple-800">
-                  1,024 views
+                  {topPerformer.views.toLocaleString()} views
                 </Badge>
               </div>
               <div>
@@ -83,10 +102,10 @@ export default function Component() {
                 </Badge>
               </div>
             </CardContent>
-            <SolanaBlinksCard/> 
+            <SolanaBlinksCard />
           </Card>
         </div>
       </div>
     </div>
-  )
+  );
 }
