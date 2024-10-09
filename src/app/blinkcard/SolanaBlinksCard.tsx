@@ -11,7 +11,7 @@ import { ICreator } from '@/lib/interface/creater';
 
 export  function SolanaBlinksCard({content,id}:{content:ICreator,id:string}) {
   return (
-    <Link passHref={true} href={`https://dial.to/?action=solana-action:http://localhost:3000/api/donate/${id}&cluster=devnet`}>
+    <Link passHref={true} href={`https://dial.to/?action=solana-action:https://blinks.knowflow.study/api/donate/${id}&cluster=devnet`}>
         <div className='flex justify-center items-center m-2'>
                 <div className="flex flex-col w-[25rem] bg-black rounded-xl shadow-lg overflow-hidden p-5 ">
                     <div className="relative h-48 w-full">

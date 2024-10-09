@@ -13,11 +13,11 @@ import Getsoladd from './getsoladd';
 
 
 const Page = async({params}:{params:{id:string}} ) => {
-//http://localhost:3000/api/donate/6704221df49eb4a6e57bac79?amount=0.1
-    await connectDB();
-    let leaderboard: IUser[] = [];
-    try {
-    leaderboard = await User.find({ 'post': `http://localhost:3000/api/donate/${params.id}?amount=0.1` }).sort({ views: -1 });
+
+let leaderboard: IUser[] = [];
+try {
+      await connectDB();
+    leaderboard = await User.find({ 'post': `https://blinks.knowflow.study/api/donate/${params.id}?amount=0.1` }).sort({ views: -1 });
     } catch (error) {
       console.error(error);
       

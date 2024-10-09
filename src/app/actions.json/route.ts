@@ -34,12 +34,9 @@ export const POST = async () => {
       // map all root level routes to an action
       {
         pathPattern: "/",
-        apiPath: "/api/donate/",
+        apiPath: "/api/donate?amount=0.1",
       },
-      //  {
-      //   pathPattern: "/redirect/",
-      //   apiPath: `/api/redirect/`,
-      // },
+      
     ],
   };
 

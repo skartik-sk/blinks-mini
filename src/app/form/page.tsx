@@ -38,7 +38,7 @@ export default function CreatorForm() {
 
       if(response.data.data._id != undefined){
 console.log(response.data.data._id);
-router.push(`https://dial.to/?action=solana-action:http://localhost:3000/api/donate/${response.data.data._id}&cluster=devnet`);
+router.push(`https://dial.to/?action=solana-action:https://blinks.knowflow.study/api/donate/${response.data.data._id}&cluster=devnet`);
 
       }
 

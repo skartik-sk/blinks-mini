@@ -60,12 +60,6 @@ if (!creator) {
                 label:"Participate 0.1 Sol",
                 href:`${url.href}?amount=0.1`,
             },
-            // {
-            //     type:"external-link",
-            //     label:"Verify",
-            //     href:`http://localhost:3000/api/donate/${id}/redirect`,
-               
-            // },
             
         ]
     }
@@ -113,14 +107,13 @@ const amount  =  Number(url.searchParams.get("amount")) || 0.2;
 
     const payload: ActionPostResponse = {
         type: "transaction",
-        // externalLink: "https://localhost:3000/form",
         transaction: transaction.serialize({ verifySignatures: false }).toString("base64"),
         message: "Transaction completed",
 
         links: {
             next: {
                 type:"post",
-                href: "https://blinks.knowflow.study/api/donate/redirect",
+                href: "https://blinks.knowflow.study/api/donate",
             },
         }
     };
