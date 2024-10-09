@@ -20,11 +20,7 @@ const Creatorpage = ({creator}:{creator: ICreator[]}) => {
     const isPhantomInstalled = () => {
         return typeof window !== 'undefined' && window.solana && (window.solana.isPhantom || window.solana.isMobile);
       };
-    useEffect(() => {
-        getSolanaAddress();
-    }
-    , [])
-    async function  getSolanaAddress() {
+      async function  getSolanaAddress() {
         if (isPhantomInstalled()) {
             try { 
               const { solana }:any = window;
@@ -37,6 +33,11 @@ const Creatorpage = ({creator}:{creator: ICreator[]}) => {
             }
           } 
     }
+    useEffect(() => {
+        getSolanaAddress();
+    }
+    , [])
+    
     creator = creator.filter((creator) => creator.solAdd == walletAddress);
     return (
         <div className='flex flex-col gap-5'>

@@ -1,5 +1,4 @@
 
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { Badge } from "@/components/ui/badge";
@@ -9,19 +8,16 @@ import connectDB from "@/lib/dbconnect";
 import { ICreator } from "@/lib/interface/creater";
 import Creator from "@/lib/models/creater";
 import Link from "next/link";
+export const dynamic = 'force-dynamic'
 export default async function Component() {
 
   let creators: ICreator[] = [];
   try {
-      await connectDB();
-      creators = await Creator.find().sort({ _id: -1 });
-
-      console.log(creators);
-    } catch (error) {
-      console.error(error);
-      
-    }
-   
+    await connectDB();
+    creators = await Creator.find().sort({ _id: -1 });
+  } catch (error) {
+    console.error(error);
+  }
 
   return (
     <div className="flex flex-col bg-black text-white p-4 sm:p-6 lg:p-8">

@@ -5,7 +5,7 @@ import { ICreator } from "@/lib/interface/creater";
 import Creator from "@/lib/models/creater";
 
 import Creatorpage from "./creatorpage";
-
+export const dynamic = 'force-dynamic'
 export default async function Component() {
   
 
