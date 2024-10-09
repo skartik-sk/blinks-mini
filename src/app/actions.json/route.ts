@@ -8,7 +8,7 @@ export const GET = async () => {
       // map all root level routes to an action
       {
         pathPattern: "/",
-        apiPath: "/api/donate/67055f2953cf14b867d81ffb",
+        apiPath: "/api/donate/",
       },
       //  {
       //   pathPattern: "/redirect/",
@@ -34,7 +34,7 @@ export const POST = async () => {
       // map all root level routes to an action
       {
         pathPattern: "/",
-        apiPath: "/api/donate/67055f2953cf14b867d81ffb?amount=0.1",
+        apiPath: "/api/donate/",
       },
       //  {
       //   pathPattern: "/redirect/",

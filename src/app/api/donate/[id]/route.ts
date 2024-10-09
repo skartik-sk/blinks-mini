@@ -2,6 +2,7 @@ import Creator from "@/lib/models/creater";
 import User from "@/lib/models/user";
 import {  ActionGetResponse, ActionPostRequest, ActionPostResponse, ACTIONS_CORS_HEADERS } from "@solana/actions";
 import { clusterApiUrl, Connection, LAMPORTS_PER_SOL, PublicKey, SystemProgram, Transaction } from "@solana/web3.js";
+import mongoose from "mongoose";
 export  async function GET(request:Request ,params:{params:{id:string}  }){ 
     const url = new URL(request.url);
     // console.log("url: ",);
@@ -14,6 +15,17 @@ export  async function GET(request:Request ,params:{params:{id:string}  }){
  
 console.log("id", id);
     let creator;
+    if (!mongoose.Types.ObjectId.isValid(id as string)) {
+        creator = {
+            icons: "https://cdn.vectorstock.com/i/500p/04/45/solana-logo-coin-icon-isolated-vector-43670445.jpg",
+            title: "Donate to Solana",
+            description: "Donate to the Solana Foundation to support the Solana ecosystem.",
+            label: "Donate",    
+        };
+      }
+    else{
+
+ 
     try{
         creator = await Creator.findOne({ _id: id });
 console.log(creator);
@@ -32,7 +44,8 @@ if (!creator) {
     }
     catch(e){
         return Response.json({error:e},{status:400,headers:ACTIONS_CORS_HEADERS});
-    }
+    }   
+}
   const payload:ActionGetResponse = {
     icon: creator.icons,
     title: creator.title,
