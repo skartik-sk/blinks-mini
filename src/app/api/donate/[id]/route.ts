@@ -1,3 +1,4 @@
+import connectDB from "@/lib/dbconnect";
 import Creator from "@/lib/models/creater";
 import User from "@/lib/models/user";
 import {  ActionGetResponse, ActionPostRequest, ActionPostResponse, ACTIONS_CORS_HEADERS } from "@solana/actions";
@@ -27,6 +28,7 @@ console.log("id", id);
 
  
     try{
+    await connectDB(); 
         creator = await Creator.findOne({ _id: id });
 console.log(creator);
 if (!creator) {
