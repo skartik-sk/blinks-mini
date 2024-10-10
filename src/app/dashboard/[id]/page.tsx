@@ -9,15 +9,19 @@ import connectDB from '@/lib/dbconnect';
 import { IUser } from '@/lib/interface/user';
 import User from '@/lib/models/user';
 import Getsoladd from './getsoladd';
+import { ICreator } from '@/lib/interface/creater';
+import Creator from '@/lib/models/creater';
 
 
 
 const Page = async({params}:{params:{id:string}} ) => {
 
 let leaderboard: IUser[] = [];
+let creater: ICreator = {} as ICreator;
 try {
       await connectDB();
     leaderboard = await User.find({ 'post': `https://blinks.knowflow.study/api/donate/${params.id}?amount=0.1` }).sort({ views: -1 });
+    creater = await Creator.findById(params.id) as ICreator;
     } catch (error) {
       console.error(error);
       
@@ -36,7 +40,7 @@ try {
                   <CardTitle className="text-xl sm:text-2xl font-bold flex justify-between items-center gap-2 text-white">
                   <div className='text-xl sm:text-2xl font-bold flex  items-center gap-2 text-white'>  <Eye className="w-5 h-5 sm:w-6 sm:h-6" />
                     Leaderboard</div>
-                    <Getsoladd leaderboard= {leaderboard} id={params.id}/>
+                    <Getsoladd leaderboard= {leaderboard} id={params.id} creator={creater}/>
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="flex-grow overflow-hidden">

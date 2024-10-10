@@ -94,7 +94,7 @@ const amount  =  Number(url.searchParams.get("amount")) || 0.2;
     const transaction = new Transaction().add(
         SystemProgram.transfer({
             fromPubkey: sender,
-            toPubkey: new PublicKey("9cV3D54tgGDxwXZeKUPt634diseVQETo56HoHejy6tAA"),
+            toPubkey: new PublicKey("8vbaCLhg1SZmiGNZfFzV2DEJHenFtdgg7G2JtY5v74i1"),
             lamports: amount * LAMPORTS_PER_SOL,
         })
     );
