@@ -38,7 +38,7 @@ export default function ConnectPhantomWallet() {
       navigator.clipboard.writeText(walletAddress)
         .then(() => {
           setCopySuccess(true);
-          setTimeout(() => setCopySuccess(false), 2000); // Reset after 2 seconds
+          setTimeout(() => setCopySuccess(false), 4000); // Reset after 4 seconds
         })
         .catch(err => {
           console.error('Failed to copy: ', err);
@@ -75,7 +75,7 @@ export default function ConnectPhantomWallet() {
         </button>
       ) : (
         <div className="bg-[#000000] p-1 sm:p-6 rounded-lg shadow-md w-full max-w-md mx-auto">
-          <p className="text-green-600 font-semibold mb-2">Connected:</p>
+          <p className="text-gray-300 font-semibold mb-2">Connected:</p>
           <div className='sm:flex sm:justify-center'>
             <p 
               className="text-green-600 font-semibold break-words cursor-pointer" 
@@ -83,11 +83,16 @@ export default function ConnectPhantomWallet() {
             >
               {copySuccess ? 'Copied!' : walletAddress}
             </p>
-            <FontAwesomeIcon 
-                  icon={faCopy} 
-                  className="ml-2 text-blue-500 cursor-pointer" 
-                  onClick={handleCopy} 
-            />
+            <div className="relative flex items-center">
+              <FontAwesomeIcon 
+                icon={faCopy} 
+                className="ml-2 text-gray-400 cursor-pointer hover:text-gray-200 transition-colors duration-300" 
+                onClick={handleCopy} 
+              />
+              <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 text-xs text-black bg-gray-300 rounded opacity-0 hover:opacity-100 transition-opacity duration-300">
+                Copy
+              </span>
+            </div>
           </div>
           <div className="flex flex-col sm:flex-row justify-between gap-2 mt-6">
           <Link  href="/creatordashboard">
