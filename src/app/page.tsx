@@ -8,7 +8,16 @@ import ConnectPhantomWallet from "./connectPhantomWallet/page";
 export default function FrontPage() {
   return (
     <>
-      <section className="flex justify-center w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-black">
+      <div className="fixed left-0 top-0 -z-10 h-full w-full">
+        <div className="relative h-full w-full bg-black">
+          <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]">
+          </div>
+          <div className="absolute left-0 right-0 top-[-10%] h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle_400px_at_50%_300px,#fbfbfb36,#000)]">
+          </div>
+        </div>
+        
+      </div>
+      <section className=" flex justify-center w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-black">
         <div className="container px-4 md:px-6">
           <div className="grid gap-6 items-center">
             <div className="flex flex-col justify-center items-center space-y-8 text-center gap-7">
@@ -109,28 +118,31 @@ export default function FrontPage() {
             </div>
           </div>
         </div>
-      </section>
-            <footer className="bg-black py-6">
-        <div className="container mx-auto text-center text-zinc-200">
-          <p>&copy; {new Date().getFullYear()} Your Company. All rights reserved.</p>
-          <div className="flex justify-center space-x-4 mt-4">
-            <a href="#" className="text-zinc-200 hover:text-white">Privacy Policy</a>
-            <a href="#" className="text-zinc-200 hover:text-white">Terms of Service</a>
-            <a href="#" className="text-zinc-200 hover:text-white">Contact Us</a>
+        </section>
+        <footer className="bg-black py-6">
+          <div className="container mx-auto text-center text-zinc-200">
+            <p>&copy; {new Date().getFullYear()} Your Company. All rights reserved.</p>
+            <div className="flex justify-center space-x-4 mt-4">
+              <a href="#" className="text-zinc-200 hover:text-white">Privacy Policy</a>
+              <a href="#" className="text-zinc-200 hover:text-white">Terms of Service</a>
+              <a href="#" className="text-zinc-200 hover:text-white">Contact Us</a>
+            </div>
+            <div className="flex justify-center space-x-4 mt-4">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-zinc-200 hover:text-white">
+                <TwitterIcon className="h-6 w-6" />
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-zinc-200 hover:text-white">
+                <LinkedInIcon className="h-6 w-6" />
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-zinc-200 hover:text-white">
+                <InstagramIcon className="h-6 w-6" />
+              </a>
+            </div>
           </div>
-          <div className="flex justify-center space-x-4 mt-4">
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-zinc-200 hover:text-white">
-              <TwitterIcon className="h-6 w-6" />
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-zinc-200 hover:text-white">
-              <LinkedInIcon className="h-6 w-6" />
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-zinc-200 hover:text-white">
-              <InstagramIcon className="h-6 w-6" />
-            </a>
-          </div>
-        </div>
-      </footer>
+        </footer>
+
+
+      
     </>
   );
 }
