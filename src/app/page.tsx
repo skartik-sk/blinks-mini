@@ -23,9 +23,9 @@ export default function FrontPage() {
             <div className="flex flex-col justify-center items-center space-y-8 text-center gap-7">
               <ConnectPhantomWallet />
               <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 p-2">
+                <h3 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 p-2">
                   Engage and Earn with Instagram Stories
-                </h1>
+                </h3>
                 <p className="max-w-[600px] text-zinc-200 md:text-xl dark:text-zinc-100 mx-auto">
                   Perform transactions, sign up for the Reclaim Protocol, and get views on your Instagram stories. The highest engagement wins the total bid amount collected.
                 </p>
@@ -118,8 +118,8 @@ export default function FrontPage() {
             </div>
           </div>
         </div>
-        </section>
-        <footer className="bg-black py-6">
+      </section>
+      <footer className="bg-black py-6">
           <div className="container mx-auto text-center text-zinc-200">
             <p>&copy; {new Date().getFullYear()} Your Company. All rights reserved.</p>
             <div className="flex justify-center space-x-4 mt-4">
@@ -139,7 +139,7 @@ export default function FrontPage() {
               </a>
             </div>
           </div>
-        </footer>
+      </footer>
 
 
       

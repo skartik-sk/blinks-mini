@@ -47,8 +47,8 @@ export default function ConnectPhantomWallet() {
   };
 
   return (
-    <main className="bg-[#000000] shadow-lg rounded-lg p-0 sm:p-6 max-w-[20rem] sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl text-center ">
-      <h1 className="text-2xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-gray-500 via-white to-gray-500 mb-4">
+    <main className=" shadow-lg rounded-lg p-0 sm:p-6 max-w-[20rem] sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl text-center ">
+      <h1 className="text-2xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 mb-4">
         Phantom Wallet Connection
       </h1>
     
@@ -74,7 +74,7 @@ export default function ConnectPhantomWallet() {
           `}</style>
         </button>
       ) : (
-        <div className="bg-[#000000] p-1 sm:p-6 rounded-lg shadow-md w-full max-w-md mx-auto">
+        <div className=" p-1 sm:p-6 rounded-lg shadow-md w-full max-w-md mx-auto">
           <p className="text-gray-300 font-semibold mb-2">Connected:</p>
           <div className='sm:flex sm:justify-center'>
             <p 
