@@ -3,7 +3,7 @@
  * @see https://v0.dev/t/0W13RkH
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
-import { ArrowRightIcon } from "lucide-react";
+// import { ArrowRightIcon } from "lucide-react";
 import ConnectPhantomWallet from "./connectPhantomWallet/page";
 import  CustomToggle  from "@/components/custom-toggle";
 
