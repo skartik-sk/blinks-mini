@@ -3,12 +3,15 @@
  * @see https://v0.dev/t/0W13RkH
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
+import { ArrowRightIcon } from "lucide-react";
 import ConnectPhantomWallet from "./connectPhantomWallet/page";
+import { CustomToggle } from "@/components/custom-toggle";
 
 export default function FrontPage() {
   return (
     <>
-    {/* the div below is the grid background and can be used in any other projetc too */}
+      {/* the div below is the grid background and can be used in any other projetc too */}
+
       <div className="fixed left-0 top-0 -z-10 h-full w-full">
         <div className="relative h-full w-full bg-black">
           <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]">
@@ -17,10 +20,35 @@ export default function FrontPage() {
           </div>
         </div>
       </div>
-      <section className=" flex justify-center w-full py-12 md:py-24 lg:py-32 xl:py-48 ">
+      <section className=" flex justify-center w-full py-12 md:py-24 lg:py-32 xl:py-48 xl:pt-10 ">
         <div className="container px-4 md:px-6">
           <div className="grid gap-6 items-center">
             <div className="flex flex-col justify-center items-center space-y-8 text-center gap-7">
+              <CustomToggle />
+              {/* This is the chip element for toggle between creator and user  */}
+              {/* <div className="mb-8 flex dark">
+                <span className="relative inline-block overflow-hidden rounded-full p-[1px]">
+                  <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#a9a9a9_0%,#0c0c0c_50%,#a9a9a9_100%)] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#171717_0%,#737373_50%,#171717_100%)]" />
+                  <div className="inline-flex h-full w-full cursor-pointer justify-center rounded-full bg-white px-3 py-1 text-s font-medium leading-5 text-slate-600 backdrop-blur-xl dark:bg-black dark:text-slate-200">
+                    New snippets ⚡️
+                    <span className="inline-flex items-center pl-2 text-black dark:text-white">
+                      Read more{' '}
+                      <ArrowRightIcon
+                        className="pl-0.5 text-black dark:text-white"
+                        size={16}
+                      />
+                    </span>
+                  </div>
+                </span>
+                <a
+                  href="https://github.com/ibelick/background-snippets"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex"
+                >
+                </a>
+              </div> */}
+              {/* toggle element ends here */}
               <ConnectPhantomWallet />
               <div className="space-y-2">
                 <h3 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 p-2">
@@ -120,29 +148,29 @@ export default function FrontPage() {
         </div>
       </section>
       <footer className="bg-black py-6">
-          <div className="container mx-auto text-center text-zinc-200">
-            <p>&copy; {new Date().getFullYear()} Your Company. All rights reserved.</p>
-            <div className="flex justify-center space-x-4 mt-4">
-              <a href="#" className="text-zinc-200 hover:text-white">Privacy Policy</a>
-              <a href="#" className="text-zinc-200 hover:text-white">Terms of Service</a>
-              <a href="#" className="text-zinc-200 hover:text-white">Contact Us</a>
-            </div>
-            <div className="flex justify-center space-x-4 mt-4">
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-zinc-200 hover:text-white">
-                <TwitterIcon className="h-6 w-6" />
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-zinc-200 hover:text-white">
-                <LinkedInIcon className="h-6 w-6" />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-zinc-200 hover:text-white">
-                <InstagramIcon className="h-6 w-6" />
-              </a>
-            </div>
+        <div className="container mx-auto text-center text-zinc-200">
+          <p>&copy; {new Date().getFullYear()} Your Company. All rights reserved.</p>
+          <div className="flex justify-center space-x-4 mt-4">
+            <a href="#" className="text-zinc-200 hover:text-white">Privacy Policy</a>
+            <a href="#" className="text-zinc-200 hover:text-white">Terms of Service</a>
+            <a href="#" className="text-zinc-200 hover:text-white">Contact Us</a>
           </div>
+          <div className="flex justify-center space-x-4 mt-4">
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-zinc-200 hover:text-white">
+              <TwitterIcon className="h-6 w-6" />
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-zinc-200 hover:text-white">
+              <LinkedInIcon className="h-6 w-6" />
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-zinc-200 hover:text-white">
+              <InstagramIcon className="h-6 w-6" />
+            </a>
+          </div>
+        </div>
       </footer>
 
 
-      
+
     </>
   );
 }
