@@ -8,7 +8,7 @@ interface ToggleProps {
   onChange?: (selectedOption: string) => void
 }
 
-export function CustomToggle({ options = ["Creator", "User"], onChange }: ToggleProps) {
+export default function CustomToggle({ options = ["Creator", "User"], onChange }: ToggleProps) {
   const [activeOption, setActiveOption] = useState(options[0])
 
   const handleToggle = (option: string) => {
