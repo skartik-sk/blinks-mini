@@ -32,7 +32,7 @@ export default function CustomToggle({ options = ["Creator", "User"], onChange }
                   <button
                     key={option}
                     onClick={() => handleToggle(option)}
-                    className={`py-2 px-4 rounded-full text-sm font-medium transition-colors duration-200 ${activeOption === option
+                    className={`py-2 px-4 rounded-full text-sm lg:text-base font-medium transition-colors duration-200 ${activeOption === option
                         ? 'bg-white text-[#353348]'
                         : 'bg-transparent text-white'
                       }`}
