@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import connectDB from "@/lib/dbconnect";
+import Header from "@/components/header";
 
 
 export const metadata: Metadata = {
@@ -17,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Header />
         {children}
       </body>
     </html>

@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { Badge } from "@/components/ui/badge";
 import { Zap } from "lucide-react";
-import {SolanaBlinksCard} from '../blinkcard/SolanaBlinksCard';
+import { SolanaBlinksCard } from '../blinkcard/SolanaBlinksCard';
 import connectDB from "@/lib/dbconnect";
 import { ICreator } from "@/lib/interface/creater";
 import Creator from "@/lib/models/creater";
@@ -26,43 +26,40 @@ export default async function Component() {
           Events till now
         </h2>
       </div>
-      <div className="flex ">
-       
-        <div className="flex flex-wrap justify-center gap-5">
-          {
-            creators.map((creator) => {
-              console.log(creator);
-              return (
-               <>
-               <Link href={`/dashboard/${creator.id}`}>
-                <Card  className="bg-black text-white h-fit border-gray-800">
-                  <CardHeader>
-                    <CardTitle className="text-xl sm:text-2xl font-bold flex items-center gap-2">
-                      <Zap className="w-5 h-5 sm:w-6 sm:h-6" />
-                      {creator.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div>
-                      <h3 className="text-lg font-semibold mb-1 text-gray-400">Total Prize</h3>
-                      <p className="text-2xl sm:text-3xl font-bold text-white">{creator.amount}</p>
-                    </div>
+      <div className="flex flex-wrap justify-center gap-5">
+        {
+          creators.map((creator) => {
+            console.log(creator);
+            return (
+              <>
+                <Link href={`/dashboard/${creator.id}`}>
+                  <Card className="bg-black text-white h-fit border-gray-800">
+                    <CardHeader>
+                      <CardTitle className="text-xl sm:text-2xl font-bold flex items-center gap-2">
+                        <Zap className="w-5 h-5 sm:w-6 sm:h-6" />
+                        {creator.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div>
+                        <h3 className="text-lg font-semibold mb-1 text-gray-400">Total Prize</h3>
+                        <p className="text-2xl sm:text-3xl font-bold text-white">{creator.amount}</p>
+                      </div>
 
-                    <div>
-                      <h3 className="text-lg font-semibold mb-1 text-gray-400">Network Status</h3>
-                      <Badge variant="secondary" className="bg-green-900 text-green-100 hover:bg-green-800">
-                        Active
-                      </Badge>
-                    </div>
-                  </CardContent>
-                  <SolanaBlinksCard content ={creator}  id={creator.id}/>
-                </Card>
-              </Link></>
-              )
-            })
-          }
-          
-        </div>
+                      <div>
+                        <h3 className="text-lg font-semibold mb-1 text-gray-400">Network Status</h3>
+                        <Badge variant="secondary" className="bg-green-900 text-green-100 hover:bg-green-800">
+                          Active
+                        </Badge>
+                      </div>
+                    </CardContent>
+                    <SolanaBlinksCard content={creator} id={creator.id} />
+                  </Card>
+                </Link></>
+            )
+          })
+        }
+
       </div>
     </div>
   );

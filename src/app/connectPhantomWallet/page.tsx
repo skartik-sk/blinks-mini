@@ -48,16 +48,16 @@ export default function ConnectPhantomWallet() {
 
   return (
     <main className=" shadow-lg rounded-lg p-0 sm:p-6 max-w-[20rem] sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl text-center ">
-      <h1 className="text-2xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 mb-4">
+      {/* <h1 className="text-2xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 mb-4">
         Phantom Wallet Connection
-      </h1>
+      </h1> */}
     
       {!walletAddress ? (
         <button 
           onClick={connectPhantomWallet} 
           className="relative bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-2 px-4 rounded-lg shadow-lg hover:from-indigo-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full transition-all duration-300 ease-in-out transform hover:scale-105 overflow-hidden"
         >
-          Connect Phantom Wallet
+          Connect Wallet
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-50 transform -translate-x-full animate-slide"></div>
           <style jsx>{`
             @keyframes slide {

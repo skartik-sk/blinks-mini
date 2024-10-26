@@ -20,11 +20,11 @@ export default function FrontPage() {
           </div>
         </div>
       </div>
-      <section className=" flex justify-center w-full py-12 md:py-24 lg:py-32 xl:py-48 xl:pt-10 ">
+      <section className=" flex justify-center w-full py-12 md:py-24 lg:py-32 xl:py-48 xl:pt-40 ">
         <div className="container px-4 md:px-6">
           <div className="grid gap-6 items-center">
             <div className="flex flex-col justify-center items-center space-y-8 text-center gap-7">
-              <CustomToggle />
+              {/* <CustomToggle /> */}
               {/* This is the chip element for toggle between creator and user  */}
               {/* <div className="mb-8 flex dark">
                 <span className="relative inline-block overflow-hidden rounded-full p-[1px]">
@@ -49,7 +49,7 @@ export default function FrontPage() {
                 </a>
               </div> */}
               {/* toggle element ends here */}
-              <ConnectPhantomWallet />
+              {/* <ConnectPhantomWallet /> */}
               <div className="space-y-2">
                 <h3 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 p-2">
                   Engage and Earn with Instagram Stories
