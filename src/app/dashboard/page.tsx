@@ -1,8 +1,8 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-import { Badge } from "@/components/ui/badge";
-import { Zap } from "lucide-react";
+// import { Badge } from "@/components/ui/badge";
+// import { Zap } from "lucide-react";
 import { SolanaBlinksCard } from '../blinkcard/SolanaBlinksCard';
 import connectDB from "@/lib/dbconnect";
 import { ICreator } from "@/lib/interface/creater";
@@ -34,7 +34,7 @@ export default async function Component() {
               <>
                 <Link href={`/dashboard/${creator.id}`}>
                   <Card className="bg-black text-white h-fit border-gray-800">
-                    <CardHeader>
+                    {/* <CardHeader>
                       <CardTitle className="text-xl sm:text-2xl font-bold flex items-center gap-2">
                         <Zap className="w-5 h-5 sm:w-6 sm:h-6" />
                         {creator.title}
@@ -52,7 +52,7 @@ export default async function Component() {
                           Active
                         </Badge>
                       </div>
-                    </CardContent>
+                    </CardContent> */}
                     <SolanaBlinksCard content={creator} id={creator.id} />
                   </Card>
                 </Link></>
