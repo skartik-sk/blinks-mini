@@ -6,6 +6,7 @@
 // import { ArrowRightIcon } from "lucide-react";
 import ConnectPhantomWallet from "./connectPhantomWallet/page";
 import  CustomToggle  from "@/components/custom-toggle";
+ 
 
 export default function FrontPage() {
   return (
