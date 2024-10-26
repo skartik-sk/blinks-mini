@@ -4,8 +4,8 @@
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
 // import { ArrowRightIcon } from "lucide-react";
-import ConnectPhantomWallet from "./connectPhantomWallet/page";
-import  CustomToggle  from "@/components/custom-toggle";
+// import ConnectPhantomWallet from "./connectPhantomWallet/page";
+// import  CustomToggle  from "@/components/custom-toggle";
  
 
 export default function FrontPage() {
