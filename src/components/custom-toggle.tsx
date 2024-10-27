@@ -13,9 +13,12 @@ export default function CustomToggle({ options = ["Creator", "User"], onChange }
 
   const handleToggle = (option: string) => {
     setActiveOption(option)
+    console.log(option)
+    console.log(activeOption)
     if (onChange) {
       onChange(option)
     }
+    console.log(activeOption)
   }
 
   return (
