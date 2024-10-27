@@ -20,7 +20,7 @@ export default async function Component() {
     }
 
     return (
-      <div className="min-h-screen bg-black text-white p-4 sm:p-6 lg:p-8">
+      <div className="min-h-screen text-white p-4 sm:p-6 lg:p-8">
         <div className="flex gap-6 ">
           <Creatorpage creator={creators} />
         </div>
