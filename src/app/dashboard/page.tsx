@@ -8,6 +8,7 @@ import connectDB from "@/lib/dbconnect";
 import { ICreator } from "@/lib/interface/creater";
 import Creator from "@/lib/models/creater";
 import Link from "next/link";
+import Footer from "@/components/footer";
 export const dynamic = 'force-dynamic'
 export default async function Component() {
 
@@ -61,6 +62,7 @@ export default async function Component() {
         }
 
       </div>
+      <Footer />
     </div>
   );
 }

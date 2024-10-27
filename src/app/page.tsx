@@ -6,6 +6,9 @@
 // import { ArrowRightIcon } from "lucide-react";
 // import ConnectPhantomWallet from "./connectPhantomWallet/page";
 // import  CustomToggle  from "@/components/custom-toggle";
+
+import Footer from "@/components/footer";
+
  
 
 export default function FrontPage() {
@@ -148,7 +151,10 @@ export default function FrontPage() {
           </div>
         </div>
       </section>
-      <footer className="bg-black py-6">
+      <Footer/>
+
+      
+      {/* <footer className="bg-black py-6">
         <div className="container mx-auto text-center text-zinc-200">
           <p>&copy; {new Date().getFullYear()} Your Company. All rights reserved.</p>
           <div className="flex justify-center space-x-4 mt-4">
@@ -168,7 +174,7 @@ export default function FrontPage() {
             </a>
           </div>
         </div>
-      </footer>
+      </footer> */}
 
 
 
