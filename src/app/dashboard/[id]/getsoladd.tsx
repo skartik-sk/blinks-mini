@@ -68,7 +68,7 @@ const Getsoladd = ({ leaderboard, id, creator }: { leaderboard: IUser[], id: str
   }
 
   return (
-    <div className='text-white flex gap-3'>
+    <div className='text-white flex justify-end m-5 gap-3'>
       {leaderboard.some(item => item.solAdd == walletAddress) && (
         <Link href={`https://reclaim-verify-xmm5.vercel.app/?id=${id}`}>
           <button className="mt-4 px-4 py-2 bg-blue-600 text-white text-xl font-medium rounded hover:bg-blue-700">
