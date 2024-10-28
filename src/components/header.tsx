@@ -15,7 +15,7 @@ const Header = () => {
                         </div>
                         {/* Toggle thingg */}
                     </div>
-                    <div className="hidden sm:flex justify-center items-center">
+                    <div className="hidden sm:flex pl-28 justify-center items-center">
                         <div className=" flex justify-center items-center">
                             <CustomToggle />
                         </div>

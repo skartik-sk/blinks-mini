@@ -12,7 +12,7 @@ import { Badge } from '@/components/ui/badge';
 
 export function SolanaBlinksCard({ content, id }: { content: ICreator, id: string }) {
     return (
-        <Link passHref={true} href={`https://dial.to/?action=solana-action:https://blinks.knowflow.study/api/donate/${id}&cluster=devnet`}>
+        
       <div className='flex justify-center items-center p-2'>
         <div className="flex flex-col w-full max-w-[25rem] min-w-80 bg-black rounded-xl shadow-lg overflow-hidden p-1 sm:w-[20rem] md:w-[25rem]">
           <div className="relative h-48">
@@ -44,28 +44,29 @@ export function SolanaBlinksCard({ content, id }: { content: ICreator, id: strin
               </Badge>
             </div>
             <p className="text-gray-400 mb-4">{content.description}</p>
-            <button
-              className="relative bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-2 px-4 rounded-full shadow-lg hover:from-indigo-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full transition-all duration-300 ease-in-out transform hover:scale-105 overflow-hidden"
-            >
-              Participate 0.1 SOL
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-50 w-2/3 h-full transform -translate-x-full -translate-y-full animate-slide-diagonal"></div>
-              <style jsx>{`
-                @keyframes slide-diagonal {
-                  0% {
-                    transform: translateX(-100%) translateY(-0%);
+            <Link passHref={true} href={`https://dial.to/?action=solana-action:https://blinks.knowflow.study/api/donate/${id}&cluster=devnet`}>
+              <button
+                className="relative bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-2 px-4 rounded-full shadow-lg hover:from-indigo-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full transition-all duration-300 ease-in-out transform hover:scale-105 overflow-hidden"
+              >
+                Participate 0.1 SOL
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-50 w-2/3 h-full transform -translate-x-full -translate-y-full animate-slide-diagonal"></div>
+                <style jsx>{`
+                  @keyframes slide-diagonal {
+                    0% {
+                      transform: translateX(-100%) translateY(-0%);
+                    }
+                    100% {
+                      transform: translateX(200%) translateY(0%);
+                    }
                   }
-                  100% {
-                    transform: translateX(200%) translateY(0%);
+                  .animate-slide-diagonal {
+                    animation: slide-diagonal 2s infinite;
                   }
-                }
-                .animate-slide-diagonal {
-                  animation: slide-diagonal 2s infinite;
-                }
-              `}</style>
-            </button>
+                `}</style>
+              </button>
+            </Link>
           </div>
         </div>
       </div>
-        </Link>
     );
 }
