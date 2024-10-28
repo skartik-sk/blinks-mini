@@ -1,10 +1,10 @@
 
 import React from 'react'
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+// import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+// import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
-import { Clock, Eye, Trophy } from "lucide-react";
+import { Clock, Trophy } from "lucide-react";
 import connectDB from '@/lib/dbconnect';
 import { IUser } from '@/lib/interface/user';
 import User from '@/lib/models/user';
