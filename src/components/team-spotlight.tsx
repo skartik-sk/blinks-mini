@@ -15,7 +15,7 @@ const teamMembers: TeamMember[] = [
   {
     id: "michael",
     name: "Michael",
-    image: "/placeholder.svg",
+    image: "https://img.freepik.com/premium-photo/captivating-black-white-linkedin-profile-picture-fitness-writerjournalist_983420-47941.jpg",
     description: [
       "Michael has extensive experience in digital and below-the-line (BTL) marketing, excelling both B2B B2C segments. His expertise spans developing robust marketing strategies for small businesses various sectors such as events, metalworking, retail, more.",
       "Formerly a Trade Marketing Specialist at Japan Tobacco International, Michael currently serves as Digital Strategist NinjaPromo. His focus is on assisting Web3 projects and startups in establishing effective go-to-market strategies achieving scalable growth.",
