@@ -2,7 +2,7 @@ import React from 'react'
 
   const Footer = () => {
     return (
-    <footer className="bg-black py-6">
+    <footer className=" py-6">
     <div className="container mx-auto text-center text-zinc-200">
       <p>&copy; {new Date().getFullYear()} Your Company. All rights reserved.</p>
       <div className="flex justify-center space-x-4 mt-4">
@@ -11,7 +11,7 @@ import React from 'react'
         <a href="#" className="text-zinc-200 hover:text-white">Contact Us</a>
       </div>
       <div className="flex justify-center space-x-4 mt-4">
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-zinc-200 hover:text-white">
+        <a href="https://x.com/dashh_media" target="_blank" rel="noopener noreferrer" className="text-zinc-200 hover:text-white">
           <TwitterIcon className="h-6 w-6" />
         </a>
         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-zinc-200 hover:text-white">

@@ -9,6 +9,7 @@
 
 import Footer from "@/components/footer";
 import { HeroSection } from "@/components/hero-section";
+import { TeamSpotlight } from "@/components/team-spotlight";
 
 
 
@@ -48,7 +49,11 @@ export default function FrontPage() {
               {/* <ConnectPhantomWallet /> */}
               <div className="space-y-2">
                 <h3 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 p-2">
-                  Engage and Earn with Instagram Stories
+                  Engage and Earn&nbsp;
+                  <span className="bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7] bg-clip-text text-transparent">
+                    with Instagram Stories
+                  </span>
+
                 </h3>
                 <p className="max-w-[600px] text-zinc-200 md:text-xl dark:text-zinc-100 mx-auto">
                   Perform transactions, sign up for the Reclaim Protocol, and get views on your Instagram stories. The highest engagement wins the total bid amount collected.
@@ -143,6 +148,7 @@ export default function FrontPage() {
           </div>
         </div>
       </section>
+      <TeamSpotlight />
       <Footer />
 
 

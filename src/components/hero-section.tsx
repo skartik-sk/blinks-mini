@@ -13,10 +13,10 @@ export function HeroSection() {
           <div className="flex flex-col justify-center space-y-8">
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
               <span className="bg-gradient-to-r from-[#ff9a9e] to-[#ff6b95] bg-clip-text text-transparent">
-                World-class{""}
+                World-class&nbsp;
               </span>
               <span className="bg-gradient-to-r from-[#ff6b95] to-[#a855f7] bg-clip-text text-transparent">
-                talent{""}
+                talent&nbsp;
               </span>
               <span className="text-white">for</span>
               <br />
@@ -43,7 +43,9 @@ export function HeroSection() {
             </div>
           </div>
           <div className="relative">
-            <motion.div
+
+            {/* purple gradient  */}
+            {/* <motion.div
               className="absolute right-0 top-1/2 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-gradient-to-br from-purple-600/20 to-purple-900/30 blur-2xl"
               animate={{
                 scale: [1, 1.1, 1],
@@ -54,7 +56,7 @@ export function HeroSection() {
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-            />
+            /> */}
             <div className="relative aspect-square">
               {/* Orbital elements */}
               {[...Array(5)].map((_, i) => (
