@@ -1,6 +1,8 @@
 import ConnectPhantomWallet from "@/app/connectPhantomWallet/page"
 import CustomToggle from "./custom-toggle"
 import Link from "next/link"
+import Image from "next/image"
+import logo from "../images/Tj8wOD8oQEGm2sZJolp4uA1.png"
 
 const Header = () => {
     return (
@@ -9,9 +11,11 @@ const Header = () => {
                 <div className="  flex p-4 mt-4 gap-28 md:gap-32 lg:gap-64 justify-between items-center  h-16">
                     <div className=" flex items-center justify-center sm:items-stretch sm:justify-start">
                         {/* logo thinggg */}
-                        <div className="flex-shrink-0 flex items-center">
-                            <img className="block lg:hidden h-8 w-auto" src="/logo.svg" alt="Workflow" />
-                            <img className="hidden lg:block h-8 w-auto" src="/logo.svg" alt="Workflow" />
+                        <div className="flex-shrink-0 flex items-center pl-4 lg:pl-6 ">
+                            <Link href="/">
+                                <Image className="block lg:hidden h-16 w-auto" src={logo} alt="Workflow" width={64} height={64} />
+                                <Image className="hidden lg:block h-16  w-auto" src={logo} alt="Workflow" width={64} height={64} />
+                            </Link>
                         </div>
                         {/* Toggle thingg */}
                     </div>
