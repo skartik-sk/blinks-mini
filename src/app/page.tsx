@@ -8,12 +8,14 @@
 // import  CustomToggle  from "@/components/custom-toggle";
 
 import Footer from "@/components/footer";
+import { HeroSection } from "@/components/hero-section";
 
- 
+
 
 export default function FrontPage() {
   return (
     <>
+      <HeroSection />
       <section className=" flex justify-center w-full py-12 md:py-24 lg:py-32 xl:py-48 xl:pt-40 ">
         <div className="container px-4 md:px-6">
           <div className="grid gap-6 items-center">
@@ -141,9 +143,9 @@ export default function FrontPage() {
           </div>
         </div>
       </section>
-      <Footer/>
+      <Footer />
 
-      
+
       {/* <footer className="bg-black py-6">
         <div className="container mx-auto text-center text-zinc-200">
           <p>&copy; {new Date().getFullYear()} Your Company. All rights reserved.</p>

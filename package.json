@@ -23,6 +23,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cors": "^2.8.5",
+    "framer-motion": "^11.11.11",
     "lucide-react": "^0.447.0",
     "mongoose": "^8.7.0",
     "morgan": "^1.10.0",
