@@ -22,7 +22,7 @@ export default function SolanaLoadingComponent() {
   }, [])
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black p-4">
+    <div className="flex flex-col items-center justify-center min-h-screen p-4">
       <div className="w-full max-w-md">
         <div className="mb-4 flex items-center justify-between">
           <span className="text-purple-500 text-sm font-medium">Loading</span>
