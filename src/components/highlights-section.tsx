@@ -99,7 +99,7 @@ export function HighlightsSection() {
           <div className="flex flex-1 flex-col gap-6">
             <div className="flex flex-col gap-6 sm:flex-row">
               {/* Conference Video Card */}
-              <Card className="flex-1 overflow-hidden bg-zinc-900 text-white" onClick={openVideo}>
+              <Card className="flex-1 overflow-hidden bg-zinc-900 text-white transform transition-transform duration-300 hover:scale-105" onClick={openVideo}>
                 <CardContent className="relative  p-0">
                   <Image
                     src="https://ninjapromo.io/wp-content/uploads/2024/02/slavavideo.png"
