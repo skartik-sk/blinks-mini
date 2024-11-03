@@ -42,8 +42,7 @@ export function HighlightsSection() {
             </CardContent>
             <div className="p-5">
               <p className="mb-4 max-w-[600px] text-gray-200">
-                NinjaPromo's founders shared insights with Forbes on the strategic advantages of partnering
-                over contracting with service providers.
+              Our founders have shared valuable insights on the advantages of leveraging decentralized platforms like DASHH to connect directly with influencers, emphasizing transparency, trust, and the power of on-chain engagement verification.
               </p>
               <Link
                 href="#"
@@ -68,7 +67,7 @@ export function HighlightsSection() {
                   />
                   <div className="absolute bottom-0 left-0 p-4">
                     <h3 className="text-sm font-medium">
-                      Ninja Promo CEO at the Blockchain Life Conference, Dubai 2023
+                    See DASHH in action and discover how our platform transforms influencer marketing.
                     </h3>
                   </div>
                   <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">

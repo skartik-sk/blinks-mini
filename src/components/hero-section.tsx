@@ -13,23 +13,21 @@ export function HeroSection() {
           <div className="flex flex-col justify-center space-y-8">
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
               <span className="bg-gradient-to-r from-[#ff9a9e] to-[#ff6b95] bg-clip-text text-transparent">
-                World-class&nbsp;
+              Decentralized&nbsp;
               </span>
               <span className="bg-gradient-to-r from-[#ff6b95] to-[#a855f7] bg-clip-text text-transparent">
-                talent&nbsp;
+              Marketing&nbsp;
               </span>
               <span className="text-white">for</span>
               <br />
-              <span className="text-white">a borderless market</span>
+              <span className="text-white">a Global Audience</span>
             </h1>
             <div className="space-y-4">
               <p className="text-lg text-gray-300">
-                NinjaPromo is all about opening doors to world-class opportunities. We ensure that every
-                Ninja gets a fair chance to excel and enjoy fair pay, no matter where they're based.
+              DASHH is revolutionizing advertising by connecting brands with top-tier micro-influencers around the world. Our decentralized platform ensures that every influencer is fairly rewarded for genuine engagement, regardless of their location.
               </p>
               <p className="text-lg text-gray-300">
-                And you? You get the crème de la crème, the top 1% of global marketing and design talent
-                working tirelessly for you.
+              And you? You get unmatched transparency, real-time performance tracking, and access to the best engagement-driven talent in the industry, all powered by Solana’s blockchain technology.
               </p>
             </div>
             <div>

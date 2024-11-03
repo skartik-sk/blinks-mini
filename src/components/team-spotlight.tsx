@@ -54,7 +54,7 @@ export function TeamSpotlight() {
           <h2 className="text-4xl font-bold tracking-tighter text-white lg:text-5xl">
             In the spotlight –&nbsp;
             <span className="bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7] bg-clip-text text-transparent">
-              NinjaPromo's brightest stars
+              DASHH's brightest stars
             </span>
           </h2>
           <p className="mt-4 text-lg text-gray-400">Meet the minds behind our best work.</p>
