@@ -4,8 +4,51 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
+import { useCallback, useEffect, useState } from "react"
+
+const YouTubeEmbed = ({ videoId, onClose }: { videoId: string, onClose: () => void }) => {
+  useEffect(() => {
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose()
+      }
+    }
+    window.addEventListener('keydown', handleEsc)
+
+    return () => {
+      window.removeEventListener('keydown', handleEsc)
+    }
+  }, [onClose])
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75" onClick={onClose}>
+      <div className="relative flex justify-center w-full max-w-3xl" onClick={(e) => e.stopPropagation()}>
+        <button
+          className="absolute top-2 right-2 text-white hover:text-gray-300"
+          onClick={onClose}
+          aria-label="Close video"
+        >
+          &times;
+        </button>
+        <div className="w-full h-[20rem] sm:w-[30rem] sm:h-[17rem] md:w-[40rem] md:h-[22.5rem] lg:w-[50rem] lg:h-[28rem] xl:w-[60rem] xl:h-[33.75rem]">
+          <iframe
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+            className="h-full w-full"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export function HighlightsSection() {
+  const [isVideoOpen, setIsVideoOpen] = useState(false)
+
+  const openVideo = useCallback(() => setIsVideoOpen(true), [])
+  const closeVideo = useCallback(() => setIsVideoOpen(false), [])
+
   return (
     <section className="w-full flex justify-center py-12 md:py-24">
       <div className="container px-4">
@@ -56,7 +99,7 @@ export function HighlightsSection() {
           <div className="flex flex-1 flex-col gap-6">
             <div className="flex flex-col gap-6 sm:flex-row">
               {/* Conference Video Card */}
-              <Card className="flex-1 overflow-hidden bg-zinc-900 text-white">
+              <Card className="flex-1 overflow-hidden bg-zinc-900 text-white" onClick={openVideo}>
                 <CardContent className="relative  p-0">
                   <Image
                     src="https://ninjapromo.io/wp-content/uploads/2024/02/slavavideo.png"
@@ -128,6 +171,9 @@ export function HighlightsSection() {
           </div>
         </div>
       </div>
+      {isVideoOpen && (
+        <YouTubeEmbed videoId="P_CZzw-uDp0" onClose={closeVideo} />
+      )}
     </section>
   )
 }
