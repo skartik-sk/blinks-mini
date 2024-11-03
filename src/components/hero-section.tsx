@@ -11,12 +11,12 @@ export function HeroSection() {
       <div className="container relative z-10 mx-auto px-4 py-24 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-8">
           <div className="flex flex-col justify-center space-y-8">
-            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold tracking-tighter leading-tight sm:leading-none">
               <span className="bg-gradient-to-r from-[#ff9a9e] to-[#ff6b95] bg-clip-text text-transparent">
-              Decentralized&nbsp;
+                Decentralized&nbsp;
               </span>
               <span className="bg-gradient-to-r from-[#ff6b95] to-[#a855f7] bg-clip-text text-transparent">
-              Marketing&nbsp;
+                Marketing&nbsp;
               </span>
               <span className="text-white">for</span>
               <br />
@@ -24,10 +24,10 @@ export function HeroSection() {
             </h1>
             <div className="space-y-4">
               <p className="text-lg text-gray-300">
-              DASHH is revolutionizing advertising by connecting brands with top-tier micro-influencers around the world. Our decentralized platform ensures that every influencer is fairly rewarded for genuine engagement, regardless of their location.
+                DASHH is revolutionizing advertising by connecting brands with top-tier micro-influencers around the world. Our decentralized platform ensures that every influencer is fairly rewarded for genuine engagement, regardless of their location.
               </p>
               <p className="text-lg text-gray-300">
-              And you? You get unmatched transparency, real-time performance tracking, and access to the best engagement-driven talent in the industry, all powered by Solana’s blockchain technology.
+                And you? You get unmatched transparency, real-time performance tracking, and access to the best engagement-driven talent in the industry, all powered by Solana’s blockchain technology.
               </p>
             </div>
             <div>
