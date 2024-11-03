@@ -7,9 +7,20 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import axios from 'axios';
 import { useRouter } from "next/navigation";
 import Footer from "@/components/footer";
+import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {  faShieldHalved } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 
 export default function CreatorForm() {
+  const [content, setContent] = useState({
+    title: '',
+    description: '',
+    label: '',
+    amount: '',
+    icons: '',
+  });
   const router = useRouter()
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,9 +59,62 @@ router.push(`https://dial.to/?action=solana-action:https://blinks.knowflow.study
     }
   };
 
+  function isValidImageUrl(url: string) {
+    console.log(url);
+    return (url.match(/\.(jpeg|jpg|gif|png)/) != null);
+  }
+
   return (
     <>
-      <div className="min-h-screen  flex flex-col items-center p-3 justify-center">
+      <div className="min-h-screen  flex flex-row-reverse items-center p-3 justify-center">
+         <div className='flex justify-center items-center p-2'>
+        <div className="flex flex-col w-full max-w-[25rem] min-w-80 bg-white rounded-xl shadow-lg overflow-hidden p-6 sm:w-[20rem] md:w-[25rem]">
+          <div className="relative h-48">
+            <div className='p-3'>
+              <Image
+              src={isValidImageUrl(content.icons) ? content.icons : "https://github.com/skartik-sk/blinks-mini/blob/main/src/images/Tj8wOD8oQEGm2sZJolp4uA1.png?raw=true"}
+              alt="Solana Blinks"
+              layout="fill"
+              objectFit="cover"
+              className="rounded-md transition-transform duration-300 ease-in-out transform hover:scale-105"
+              />
+            </div>
+          </div>
+          <div className="text-zinc-500 flex gap-2 items-center ">
+            <p className='text-[13px] font-semibold'>blinks.knowflow.study</p>
+            <FontAwesomeIcon icon={faShieldHalved}  size="sm" />
+          </div>
+          <div className=''>
+            <div className='flex flex-col gap-2 my-2'>
+              <h2 className="text-xl font-bold text-black">{content.title}</h2>
+            
+            </div>
+            
+            <p className="text-black mb-4">{content.description}</p>
+
+              <button
+                className="bg-black text-white hover:bg-gray-800 py-2 px-4 rounded-lg relative w-full"
+              >
+                Participate 0.1 SOL
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-50 w-2/3 h-full transform -translate-x-full -translate-y-full animate-slide-diagonal"></div>
+                <style jsx>{`
+                  @keyframes slide-diagonal {
+                    0% {
+                      transform: translateX(-100%) translateY(-0%);
+                    }
+                    100% {
+                      transform: translateX(200%) translateY(0%);
+                    }
+                  }
+                  .animate-slide-diagonal {
+                    animation: slide-diagonal 2s infinite;
+                  }
+                `}</style>
+              </button>
+
+          </div>
+        </div>
+      </div>
         {/* <h1 className='text-center my-4 text-3xl font-bold text-gray-800'>Welcome to Boastit</h1> */}
         <Card className="w-full max-w-md mx-auto my-auto text-zinc-200 bg-black shadow-lg rounded-lg border-gray-800">
           <CardHeader className="p-6 border-b border-gray-800">
@@ -68,18 +132,24 @@ router.push(`https://dial.to/?action=solana-action:https://blinks.knowflow.study
                   required 
                   className="bg-black border-gray-800 text-white placeholder-zinc-400 focus:border-white focus:ring-white"
                   placeholder="Enter product title"
+                  value={ content.title }
+                  onChange={(e) => setContent({ ...content, title: e.target.value })}
 
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="icons" className="block text-sm font-medium text-gray-700">Image URL</Label>
+                <Label htmlFor="icons" className="block text-sm font-medium text-gray-200">Image URL</Label>
                 <Input 
                   id="icons" 
                   name="icons" 
                   type="url" 
                   required 
+                  value={ content.icons }
                   className="bg-black border-gray-800 text-white placeholder-zinc-400 focus:border-white focus:ring-white"
                   placeholder="https://example.com/image.jpg"
+                  
+                  onChange={(e) => setContent({ ...content, icons: e.target.value })}
+               
                 />
               </div>
               <div className="space-y-2">
@@ -91,6 +161,8 @@ router.push(`https://dial.to/?action=solana-action:https://blinks.knowflow.study
                   className="bg-black border-gray-800 text-white placeholder-zinc-400 focus:border-white focus:ring-white"
                   placeholder="Describe your product"
                   rows={4}
+                  value={ content.description }
+                  onChange={(e) => setContent({ ...content, description: e.target.value })}
                 />
               </div>
               <div className="space-y-2">
@@ -99,23 +171,27 @@ router.push(`https://dial.to/?action=solana-action:https://blinks.knowflow.study
                   id="label" 
                   name="label" 
                   required 
+                  value={ content.label }
                   className="bg-black border-gray-800 text-white placeholder-zinc-400 focus:border-white focus:ring-white"
-                  placeholder="Product label or category"
+                  placeholder="Not visible in blinks"
+                  onChange={(e) => setContent({ ...content, label: e.target.value })}
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="amount" className="block text-sm font-medium text-zinc-200">Amount</Label>
+                <Label htmlFor="amount" className="block text-sm font-medium text-zinc-200">Amount $</Label>
                 <Input 
                   id="amount" 
                   name="amount" 
                   type="number" 
                   required 
+                  value={ content.amount }
                   className="bg-black border-gray-800 text-white placeholder-zinc-400 focus:border-white focus:ring-white"
                   placeholder="0.00"
                   step="0.01"
+                  onChange={(e) => setContent({ ...content, amount: e.target.value })}
                 />
               </div>
-              <Button type="submit" className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Submit</Button>
+              <Button type="submit" className="w-full bg-gradient-to-r from-[#ff9a9e] to-[#ff6b95] text-white ">Submit</Button>
             </form>
           </CardContent>
         </Card>
