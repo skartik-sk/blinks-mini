@@ -9,6 +9,7 @@
 
 import Footer from "@/components/footer";
 import { HeroSection } from "@/components/hero-section";
+import { HighlightsSection } from "@/components/highlights-section";
 import { TeamSpotlight } from "@/components/team-spotlight";
 
 
@@ -148,6 +149,7 @@ export default function FrontPage() {
           </div>
         </div>
       </section>
+      <HighlightsSection />
       <TeamSpotlight />
       <Footer />
 

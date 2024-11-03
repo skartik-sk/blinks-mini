@@ -67,11 +67,10 @@ export function TeamSpotlight() {
               <button
                 key={member.id}
                 onClick={() => setSelectedMember(member)}
-                className={`group relative w-full rounded-xl p-4 text-left transition-all ${
-                  selectedMember.id === member.id
-                    ? "bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7]"
-                    : "bg-zinc-900 hover:bg-zinc-800"
-                }`}
+                className={`group relative w-full rounded-xl p-4 text-left transition-all ${selectedMember.id === member.id
+                  ? "bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7]"
+                  : "bg-zinc-900 hover:bg-zinc-800"
+                  }`}
               >
                 <div className="flex items-center gap-4">
                   <div className="relative h-12 w-12 overflow-hidden rounded-full">
@@ -85,9 +84,8 @@ export function TeamSpotlight() {
                   </div>
                   <span className="text-lg font-medium text-white">{member.name}</span>
                   <ChevronRight
-                    className={`ml-auto h-5 w-5 transform text-white transition-transform ${
-                      selectedMember.id === member.id ? "rotate-90" : "group-hover:translate-x-1"
-                    }`}
+                    className={`ml-auto h-5 w-5 transform text-white transition-transform ${selectedMember.id === member.id ? "rotate-90" : "group-hover:translate-x-1"
+                      }`}
                   />
                 </div>
               </button>
