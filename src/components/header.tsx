@@ -2,7 +2,7 @@ import ConnectPhantomWallet from "@/app/connectPhantomWallet/page"
 import CustomToggle from "./custom-toggle"
 import Link from "next/link"
 import Image from "next/image"
-import logo from "../images/Tj8wOD8oQEGm2sZJolp4uA1.png"
+import logo from "../images/whiteDASHH.png"
 
 const Header = () => {
     return (
