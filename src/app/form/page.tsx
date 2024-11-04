@@ -59,20 +59,25 @@ router.push(`https://dial.to/?action=solana-action:https://blinks.knowflow.study
     }
   };
 
-  function isValidImageUrl(url: string) {
-    console.log(url);
-    return (url.match(/\.(jpeg|jpg|gif|png)/) != null);
+   function isValidURL(url: string): boolean {
+    try {
+      new URL(url);
+      return true;
+    } catch (e) {
+      return false;
+    }
+    
   }
 
   return (
     <>
       <div className="min-h-screen  flex flex-row-reverse items-center p-3 justify-center">
          <div className='flex justify-center items-center p-2'>
-        <div className="flex flex-col w-full max-w-[25rem] min-w-80 bg-white rounded-xl shadow-lg overflow-hidden p-6 sm:w-[20rem] md:w-[25rem]">
+        <div className="flex flex-col w-full max-w-[25rem] min-w-80 bg-white rounded-xl shadow-lg overflow-hidden p-4 sm:w-[20rem] md:w-[25rem]">
           <div className="relative h-48">
             <div className='p-3'>
               <Image
-              src={isValidImageUrl(content.icons) ? content.icons : "https://github.com/skartik-sk/blinks-mini/blob/main/src/images/Tj8wOD8oQEGm2sZJolp4uA1.png?raw=true"}
+              src={isValidURL(content.icons) ? content.icons : "https://cdn.pixabay.com/photo/2017/11/10/05/24/add-2935429_1280.png"}
               alt="Solana Blinks"
               layout="fill"
               objectFit="cover"
@@ -80,7 +85,7 @@ router.push(`https://dial.to/?action=solana-action:https://blinks.knowflow.study
               />
             </div>
           </div>
-          <div className="text-zinc-500 flex gap-2 items-center ">
+          <div className="text-zinc-500 flex gap-2 items-center mt-3 ">
             <p className='text-[13px] font-semibold'>blinks.knowflow.study</p>
             <FontAwesomeIcon icon={faShieldHalved}  size="sm" />
           </div>
@@ -125,7 +130,7 @@ router.push(`https://dial.to/?action=solana-action:https://blinks.knowflow.study
             <form onSubmit={handleSubmit} className="space-y-6">
             
               <div className="space-y-2">
-                <Label htmlFor="title" className="block text-sm font-medium text-zinc-200">Title</Label>
+                <Label htmlFor="title" className="block text-sm font-medium text-zinc-200">Title *</Label>
                 <Input 
                   id="title" 
                   name="title" 
@@ -138,7 +143,7 @@ router.push(`https://dial.to/?action=solana-action:https://blinks.knowflow.study
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="icons" className="block text-sm font-medium text-gray-200">Image URL</Label>
+                <Label htmlFor="icons" className="block text-sm font-medium text-gray-200">Image URL *</Label>
                 <Input 
                   id="icons" 
                   name="icons" 
@@ -153,7 +158,7 @@ router.push(`https://dial.to/?action=solana-action:https://blinks.knowflow.study
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="description" className="block text-sm font-medium text-zinc-200">Description</Label>
+                <Label htmlFor="description" className="block text-sm font-medium text-zinc-200">Description *</Label>
                 <Textarea 
                   id="description" 
                   name="description" 
@@ -166,7 +171,7 @@ router.push(`https://dial.to/?action=solana-action:https://blinks.knowflow.study
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="label" className="block text-sm font-medium text-zinc-200">Label</Label>
+                <Label htmlFor="label" className="block text-sm font-medium text-zinc-200">Label *</Label>
                 <Input 
                   id="label" 
                   name="label" 
@@ -178,7 +183,7 @@ router.push(`https://dial.to/?action=solana-action:https://blinks.knowflow.study
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="amount" className="block text-sm font-medium text-zinc-200">Amount $</Label>
+                <Label htmlFor="amount" className="block text-sm font-medium text-zinc-200">Amount $ *</Label>
                 <Input 
                   id="amount" 
                   name="amount" 
