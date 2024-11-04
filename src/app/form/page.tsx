@@ -64,6 +64,7 @@ router.push(`https://dial.to/?action=solana-action:https://blinks.knowflow.study
       new URL(url);
       return true;
     } catch (e) {
+      console.log(e);
       return false;
     }
     
