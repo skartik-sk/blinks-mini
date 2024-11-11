@@ -20,6 +20,7 @@ const nextConfig =
               protocol: "https",
               hostname: "**",
             },
+            
           ],
     },
 
