@@ -1,4 +1,3 @@
-import { Heart } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import logo from "../images/whiteDASHH.png"
