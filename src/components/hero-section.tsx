@@ -4,6 +4,34 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
+import blockchainlogo from "@/images/blockchain.png"
+import solanalogo from "@/images/solana.png"
+import gamelogo from "@/images/game.png"
+import weblogo from "@/images/web.png"
+import reclaimlogo from "@/images/reclaim.png"
+
+const demoImages = [
+  {
+    src: blockchainlogo,
+    alt: "Blockchain",
+  },
+  {
+    src: solanalogo,
+    alt: "Solana",
+  },
+  {
+    src: gamelogo,
+    alt: "Game",
+  },
+  {
+    src: weblogo,
+    alt: "Web",
+  },
+  {
+    src: reclaimlogo,
+    alt: "Reclaim",
+  },
+]
 
 export function HeroSection() {
   return (
@@ -77,9 +105,9 @@ export function HeroSection() {
                       transform: `rotate(${i * 72}deg) translateX(${120 + i * 30}px)`,
                     }}
                   >
-                    <div className="h-10 w-10 overflow-hidden rounded-full border-2 border-purple-300/20 bg-white/10 backdrop-blur-sm">
+                    <div className="h-16 w-16 overflow-hidden rounded-full border-2 border-transparent bg-white/10 backdrop-blur-sm">
                       <Image
-                        src="/placeholder.svg"
+                        src={demoImages[i].src}
                         alt="Team member"
                         width={40}
                         height={40}
