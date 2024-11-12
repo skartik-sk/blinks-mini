@@ -10,12 +10,13 @@ interface TeamMember {
   image: string
   description: string[]
 }
+// https://img.freepik.com/premium-photo/captivating-black-white-linkedin-profile-picture-fitness-writerjournalist_983420-47941.jpg
 
 const teamMembers: TeamMember[] = [
   {
     id: "michael",
     name: "Michael",
-    image: "https://img.freepik.com/premium-photo/captivating-black-white-linkedin-profile-picture-fitness-writerjournalist_983420-47941.jpg",
+    image: "https://img.notionusercontent.com/s3/prod-files-secure%2Ff3a1d5c4-f94d-46cd-87ce-93542ce1bb11%2F1dc39d38-be30-4ddc-8a49-cef19dd62f0c%2FWhatsApp_Image_2024-11-04_at_22.21.50_3b14030a_-_Akshat_Maurya.jpg/size/w=2000?exp=1731222034&sig=038ncAwDsRvwAs18edBfHENMDvwwehFBzcVYgKgs90Q",
     description: [
       "Michael has extensive experience in digital and below-the-line (BTL) marketing, excelling both B2B B2C segments. His expertise spans developing robust marketing strategies for small businesses various sectors such as events, metalworking, retail, more.",
       "Formerly a Trade Marketing Specialist at Japan Tobacco International, Michael currently serves as Digital Strategist NinjaPromo. His focus is on assisting Web3 projects and startups in establishing effective go-to-market strategies achieving scalable growth.",
@@ -25,7 +26,7 @@ const teamMembers: TeamMember[] = [
   {
     id: "olga",
     name: "Olga",
-    image: "/placeholder.svg",
+    image: "https://img.notionusercontent.com/s3/prod-files-secure%2Ff3a1d5c4-f94d-46cd-87ce-93542ce1bb11%2F66469d48-ce25-44be-9f64-8a75c73199a5%2Fpixelcut-export_-_Singupalli_Kartik.jpeg/size/w=2000?exp=1731221707&sig=SBnKOtAuKHUtxtmBIuAi3tMXtKwdV_mjsHAbDhKIYAE",
     description: [
       "Olga brings valuable insights and expertise to digital marketing strategies.",
       "With a background in international marketing, she excels creating comprehensive campaigns.",
@@ -35,7 +36,7 @@ const teamMembers: TeamMember[] = [
   {
     id: "george",
     name: "George",
-    image: "/placeholder.svg",
+    image: "https://img.notionusercontent.com/s3/prod-files-secure%2Ff3a1d5c4-f94d-46cd-87ce-93542ce1bb11%2F5534aee4-8f8c-461a-8b9e-fd86be90126d%2FIMG_4096_crop_-_Pranesh_Joshi.jpg/size/w=2000?exp=1731221979&sig=fERAkSSJ2S0_w8zOd8XCFd1Tjqa74s2teEVQba1eArM",
     description: [
       "George specializes in technical marketing and data analysis.",
       "His analytical mindset helps drive data-informed marketing decisions.",
