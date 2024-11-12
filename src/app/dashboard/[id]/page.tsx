@@ -16,7 +16,7 @@ import Image from 'next/image';
 
 
 const Page = async ({ params }: { params: { id: string } }) => {
-
+let posi =[2,1,3];
   let leaderboard: IUser[] = [];
   let creater: ICreator = {} as ICreator;
   try {
@@ -39,7 +39,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
               <div key={player.id} className="flex-1 text-center">
                 <div className={`w-${index === 1 ? "20" : "16"} h-${index === 1 ? "20" : "16"} mx-auto mb-2 flex justify-center relative`}>
                   <Image
-                    src={player.igProfile || "https://scontent-bom2-3.cdninstagram.com/v/t51.2885-19/344094165_1428989347924242_319794666472247536_n.jpg?_nc_ht=scontent-bom2-3.cdninstagram.com&_nc_cat=106&_nc_ohc=69fdG7tIAZUQ7kNvgFe1wjz&_nc_gid=1d23acb1c8ec474d8bcd80a74461f45f&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_AYAbqi1jdiJKtiH2giMo4qa_DGQ12G1sKdz7g8OUhTGFkg&oe=672540CF&_nc_sid=7a9f4b"} // fallback for missing image
+                    src={player.igProfile || "https://avatars.githubusercontent.com/u/113655672?v=4"} // fallback for missing image
                     alt={player.solAdd}
                     width={index === 1 ? 90 : 64}
                     height={index === 1 ? 90 : 64}
@@ -47,8 +47,8 @@ const Page = async ({ params }: { params: { id: string } }) => {
                   />
                 </div>
                 <h3 className="font-bold">{ }</h3>
-                <div className="text-gray-400 text-sm">Earn {player.views} SOL</div>
-                <div className="text-blue-400 font-bold">{creater.amount.toLocaleString()}</div>
+                <div className="text-gray-400 text-sm">Earn {player.winning_amount?player.winning_amount:0 } SOL</div>
+                <div className="text-blue-400 font-bold">{posi[index]}</div>
                 <div className="text-gray-400 text-sm">Prize</div>
               </div>
             ))}
