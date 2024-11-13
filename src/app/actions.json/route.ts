@@ -5,15 +5,16 @@ export const GET = async () => {
 
   const payload: ActionsJson = {
     rules: [
+      
       // map all root level routes to an action
       {
         pathPattern: "/",
         apiPath: "/api/donate/",
       },
-      //  {
-      //   pathPattern: "/redirect/",
-      //   apiPath: `/api/redirect/`,
-      // },
+       {
+        pathPattern: "/",
+        apiPath: `/api/redirect/`,
+      },
     ],
   };
 
@@ -30,11 +31,16 @@ export const OPTIONS = GET;
 export const POST = async () => {
 
   const payload: ActionsJson = {
+    
     rules: [
       // map all root level routes to an action
       {
         pathPattern: "/",
-        apiPath: "/api/donate?amount=0.1",
+        apiPath: "/api/donate",
+      },
+       {
+        pathPattern: "/",
+        apiPath: `/api/redirect`,
       },
       
     ],

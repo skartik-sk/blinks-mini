@@ -21,15 +21,10 @@ const Header = () => {
                     </div>
                     <div className="hidden sm:flex pl-28 justify-center items-center">
                         <div className=" flex justify-center items-center">
-                            <CustomToggle />
+                            <CustomToggle options={["User", "Creator"]} />
                         </div>
                     </div>
                     <div className="flex flex-col-reverse justify-center items-center sm:flex sm:flex-row gap-2 right-0">
-                        <Link href="/dashboard">
-                            <button className="bg-slate-500 py-2 px-4 text-center rounded-md text-white hover:bg-slate-600 hover:text-gray-300 transition duration-300 ease-in-out flex items-center justify-center">
-                                Login
-                            </button>
-                        </Link>
                         <ConnectPhantomWallet />
                     </div>
                     {/* <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">

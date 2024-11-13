@@ -13,10 +13,15 @@ import {SolanaBlinksCard} from '../blinkcard/SolanaBlinksCard';
 // import Creator from "@/lib/models/creater";
 import Link from "next/link";
 import { ICreator } from '@/lib/interface/creater';
+import CustomToggle from '@/components/custom-toggle';
 
 const Creatorpage = ({creator}:{creator: ICreator[]}) => {
     const [walletAddress, setWalletAddress] = useState("");
- 
+    const [selectedOption, setSelectedOption] = useState('Live');
+
+    const handleToggle = (selected: string) => {
+      setSelectedOption(selected);
+    };
     const isPhantomInstalled = () => {
         return typeof window !== 'undefined' && window.solana && (window.solana.isPhantom || window.solana.isMobile);
       };
@@ -39,12 +44,23 @@ const Creatorpage = ({creator}:{creator: ICreator[]}) => {
     , [])
     
     creator = creator.filter((creator) => creator.solAdd == walletAddress);
+if(selectedOption === 'Closed'){
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  creator = creator.filter((creator) => new Date(creator.end) < yesterday);
+}
+
     return (
-        <div className='flex flex-col gap-5'>
-            <div className='flex justify-end  text-white'>
+        <div className='flex flex-col gap-5 w-screen'>
+            <div className='flex justify-between  items-center text-white'>
+              <div>
+
+            <CustomToggle options={["Live", "Closed"]} onChange={handleToggle} />
+              </div>
+            <div className='font-semibold text-xl text-white'>Creater's Event</div>
                 <Link href='/form'>
-                    <button className="mt-4 mr-2 sm:mr-15 px-4 py-2 bg-blue-600 text-white text-xl font-medium rounded hover:bg-blue-700">
-                        Add Event
+                    <button className="mt-4 mr-2 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 sm:mr-15 px-4 py-2 text-white text-xl font-medium rounded hover:from-purple-400 hover:via-pink-400 hover:to-orange-400">
+                      Add Event
                     </button>
                 </Link>
             </div>

@@ -10,7 +10,7 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   const randomId = uuidv4(); // Generate a random ID
   const url = new URL(request.url);
-  const amount = url.searchParams.get('amount') || '0.1';
+  const amount = url.searchParams.get('amount') || '0.2';
   const redirectUrl = `/api/donate/${randomId}?amount=${amount}`;
 
   return Response.redirect(redirectUrl, 302);

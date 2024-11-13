@@ -55,10 +55,31 @@ if (!creator) {
     label:creator.label,
     links: {
         actions :[
-            {
+           
+        //{
+        //         type:"transaction",
+        //         label:"Participate",
+        //         href:`${url.href}?amount={amount}`,
+        //         "parameters": [
+        //   // {amount} input field
+        //   {
+        //     "name": "amount", // input field name
+        //     "label": "SOL amount" // text input placeholder
+        //   }
+        // ],
+        //     },
+            { type:'external-link',
+            label:'See Leaderboard',
+            href:`${url.origin}/api/redirect/${id}`,
+            },{
+                type:"external-link",
+                label:"Verify With Reclaim",
+                href:`${url.origin}/api/reclaim/${id}`,
+                
+            }, {
                 type:"transaction",
-                label:"Participate 0.1 Sol",
-                href:`${url.href}?amount=0.1`,
+                label:"Participate",
+                href:`${url.href}?amount=0`,
             },
             
         ]
@@ -77,12 +98,15 @@ export const OPTIONS = GET;
 export  async function POST(request:Request){
     const body: ActionPostRequest = await request.json();
     const url = new URL(request.url);
-const amount  =  Number(url.searchParams.get("amount")) || 0.2;
+const amount  =  Number(url.searchParams.get("amount")) || 0;
 
     let sender ;
+    let imgurl ;
     try{
         sender = new PublicKey(body.account);
-        console.log("sender add" +sender);
+
+        const Post = await Creator.findById(url.pathname.split("/")[3])
+imgurl=Post?.icons
 
     }catch(e){
         return Response.json({error:e},{status:400,headers:ACTIONS_CORS_HEADERS});
@@ -108,14 +132,14 @@ const amount  =  Number(url.searchParams.get("amount")) || 0.2;
     const payload: ActionPostResponse = {
         type: "transaction",
         transaction: transaction.serialize({ verifySignatures: false }).toString("base64"),
-        message: "Transaction completed",
+        message: `Image url ${imgurl}`,
 
-        links: {
-            next: {
-                type:"post",
-                href: "https://blinks.knowflow.study/api/donate",
-            },
-        }
+        // links: {
+        //     next: {
+        //         type:"post",
+        //         href: `${url.origin}/api/redirect/${url.pathname.split("/")[3]}`,
+        //     },
+        // }
     };
     try {
 
@@ -129,7 +153,7 @@ const amount  =  Number(url.searchParams.get("amount")) || 0.2;
       });
 
       await newUser.save();
-      console.log(newUser);
+
     //   redirect("https://blinks.knowflow.study");
       return Response.json(payload,{
         headers : ACTIONS_CORS_HEADERS,

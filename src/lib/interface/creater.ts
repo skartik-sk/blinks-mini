@@ -6,6 +6,7 @@ export interface ICreator  {
     label: string;
     amount: number;
     icons: string;
+    end: Date;
     id: string;
     _id: string;
   }
@@ -17,6 +18,7 @@ export interface ICreator  {
     label: string;
     amount: number;
     icons: string;
+    end: string;
     _id: string;
   }
 
