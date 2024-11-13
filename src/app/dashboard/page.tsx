@@ -1,6 +1,6 @@
 // 'use client';
 import { Card } from "@/components/ui/card";
-import React, {useState, useEffect } from 'react'
+import React from 'react'
 // import { Badge } from "@/components/ui/badge";
 // import { Zap } from "lucide-react";
 import { SolanaBlinksCard } from '../blinkcard/SolanaBlinksCard';

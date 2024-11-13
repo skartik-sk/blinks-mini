@@ -10,7 +10,7 @@ export const OPTIONS = async () => Response.json(null, { headers });
 export  async function POST(request:Request,params:{params:{id:string}}){
     const body:ActionPostRequest=await request.json();
     console.log(body.account);
-    const url = new URL(request.url);
+
     const payload:ActionPostResponse={
         type:"external-link",
         externalLink:`https://reclaim-verify-xmm5.vercel.app/?id=${params.params.id}&wallet=${body.account}`,
@@ -21,17 +21,17 @@ export  async function POST(request:Request,params:{params:{id:string}}){
       });
 
 
-const payloads: ActionPostResponse  = {
-    type: "external-link",
-    externalLink: "https://www.google.com",
-    message: "Transaction completed",
-    links: {
-        next: {
-            type:"post",
-            href: "https://blinks.knowflow.study/api/donate",
-        },
-    }
-};
+// const payloads: ActionPostResponse  = {
+//     type: "external-link",
+//     externalLink: "https://www.google.com",
+//     message: "Transaction completed",
+//     links: {
+//         next: {
+//             type:"post",
+//             href: "https://blinks.knowflow.study/api/donate",
+//         },
+//     }
+// };
 
     // // Redirect to a specific page after transaction creation
     // const redirectUrl = new URL('/some-page', url.origin);

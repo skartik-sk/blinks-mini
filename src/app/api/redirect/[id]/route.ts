@@ -1,4 +1,4 @@
-import { ActionPostRequest, ActionPostResponse, ACTIONS_CORS_HEADERS, createActionHeaders } from "@solana/actions";
+import {  ActionPostResponse, ACTIONS_CORS_HEADERS, createActionHeaders } from "@solana/actions";
 
 const headers = createActionHeaders();
 export async function GET(request: Request) {
@@ -19,17 +19,17 @@ export  async function POST(request:Request,params:{params:{id:string}}){
       });
 
 
-const payloads: ActionPostResponse  = {
-    type: "external-link",
-    externalLink: "https://www.google.com",
-    message: "Transaction completed",
-    links: {
-        next: {
-            type:"post",
-            href: "https://blinks.knowflow.study/api/donate",
-        },
-    }
-};
+// const payloads: ActionPostResponse  = {
+//     type: "external-link",
+//     externalLink: "https://www.google.com",
+//     message: "Transaction completed",
+//     links: {
+//         next: {
+//             type:"post",
+//             href: "https://blinks.knowflow.study/api/donate",
+//         },
+//     }
+// };
 
     // // Redirect to a specific page after transaction creation
     // const redirectUrl = new URL('/some-page', url.origin);
