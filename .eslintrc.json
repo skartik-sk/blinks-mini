@@ -4,7 +4,7 @@
     "no-console": "warn",
     "no-unused-vars": "warn",
     "react-hooks/rules-of-hooks":"off",
-
+    "@next/next/no-assign-module-variable": "off", // Disable the specific warning
     "react/no-unescaped-entities": "off",
     "@next/next/no-page-custom-font": "off",
     "@typescript-eslint/no-explicit-any": "off",
