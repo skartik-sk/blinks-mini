@@ -16,7 +16,7 @@ import Image from 'next/image';
 
 
 const Page = async ({ params }: { params: { id: string } }) => {
-
+let posi =[2,1,3];
   let leaderboard: IUser[] = [];
   let creater: ICreator = {} as ICreator;
   try {
