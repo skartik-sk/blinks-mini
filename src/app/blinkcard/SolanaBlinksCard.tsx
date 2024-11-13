@@ -63,7 +63,7 @@ objectFit='cover'
     <div className='h-3'></div>
     <Link passHref={true} href={`https:blinks.knowflow.study/dashboard/${id}`}>
       <button
-        className="relative bg-gradient-to-r from-blue-500 to-blue-600 text-white py-2 px-4 rounded-xl shadow-lg hover:from-blue-600 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full transition-all duration-300 ease-in-out transform hover:scale-105 overflow-hidden"
+        className="relative bg-gradient-to-r from-blue-200 to-blue-300 text-black py-2 px-4 rounded-xl shadow-lg hover:from-blue-200 hover:to-blue-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full transition-all duration-300 ease-in-out transform hover:scale-105 overflow-hidden"
         >
         Leaderboard
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-50 w-2/3 h-full transform -translate-x-full -translate-y-full animate-slide-diagonal"></div>
