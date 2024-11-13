@@ -7,7 +7,7 @@ import { SolanaBlinksCard } from '../blinkcard/SolanaBlinksCard';
 import connectDB from "@/lib/dbconnect";
 import { ICreator } from "@/lib/interface/creater";
 import Creator from "@/lib/models/creater";
-import Link from "next/link";
+// import Link from "next/link";
 import Footer from "@/components/footer";
 import CustomToggle from "@/components/custom-toggle";
 export const dynamic = 'force-dynamic'
@@ -47,7 +47,7 @@ export default async function Component() {
             creators.map((creator) => {
               return (
                 <>
-                  <Link href={`/dashboard/${creator.id}`}>
+
                     <Card className="bg-black text-white h-fit border-gray-800">
                       {/* <CardHeader>
                         <CardTitle className="text-xl sm:text-2xl font-bold flex items-center gap-2">
@@ -70,7 +70,7 @@ export default async function Component() {
                       </CardContent> */}
                       <SolanaBlinksCard content={creator} id={creator.id} />
                     </Card>
-                  </Link></>
+</>
               )
             })
           }

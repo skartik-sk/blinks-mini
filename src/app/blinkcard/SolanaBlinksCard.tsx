@@ -18,7 +18,7 @@ relative flex flex-col w-full max-w-[22rem] min-w-80 rounded-xl shadow-lg overfl
       layout="fill"
 objectFit='cover'
   />
-  <div className="relative min-h-72">
+  <div className="relative min-h-80">
    
     <div className="absolute inset-0 bg-black opacity-60"></div>
     <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
@@ -43,7 +43,29 @@ objectFit='cover'
       <button
         className="relative bg-gradient-to-r from-gray-500 to-grey-600 text-white py-2 px-4 rounded-xl shadow-lg hover:from-gray-600 hover:to-grey-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full transition-all duration-300 ease-in-out transform hover:scale-105 overflow-hidden"
         >
-        Discover
+        Blink
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-50 w-2/3 h-full transform -translate-x-full -translate-y-full animate-slide-diagonal"></div>
+        <style jsx>{`
+          @keyframes slide-diagonal {
+            0% {
+              transform: translateX(-100%) translateY(-0%);
+              }
+              100% {
+                transform: translateX(200%) translateY(0%);
+                }
+                }
+                .animate-slide-diagonal {
+                  animation: slide-diagonal 2s infinite;
+                  }
+                  `}</style>
+      </button>
+    </Link>
+    <div className='h-3'></div>
+    <Link passHref={true} href={`https:blinks.knowflow.study/dashboard/${id}`}>
+      <button
+        className="relative bg-gradient-to-r from-blue-500 to-blue-600 text-white py-2 px-4 rounded-xl shadow-lg hover:from-blue-600 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full transition-all duration-300 ease-in-out transform hover:scale-105 overflow-hidden"
+        >
+        Leaderboard
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-50 w-2/3 h-full transform -translate-x-full -translate-y-full animate-slide-diagonal"></div>
         <style jsx>{`
           @keyframes slide-diagonal {

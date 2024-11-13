@@ -71,7 +71,7 @@ if(selectedOption === 'Closed'){
 
                 return (
                 <>
-                    <Link href={`/dashboard/${cat._id}`}>
+
                     <Card className="bg-black text-white h-fit border-gray-800">
                       {/* <CardHeader>
                         <CardTitle className="text-xl sm:text-2xl font-bold flex items-center gap-2">
@@ -94,7 +94,7 @@ if(selectedOption === 'Closed'){
                       </CardContent> */}
                       <SolanaBlinksCard content={cat} id={cat._id} />
                     </Card>
-                    </Link>
+                  
                     </>
                 )
                 })
