@@ -39,7 +39,15 @@ const Creatorpage = ({creator}:{creator: ICreator[]}) => {
           } 
     }
     useEffect(() => {
-        getSolanaAddress();
+      const searchParams = new URLSearchParams(window.location.search);
+
+        const id = searchParams.get('id');
+        if (!id) {
+          getSolanaAddress();
+        } else {
+          setWalletAddress(id);
+        }
+        // getSolanaAddress();
     }
     , [])
     
