@@ -25,7 +25,7 @@ export default function ConnectPhantomWallet({ walletAddress, setWalletAddress }
         const { solana }:any = window;
         // Request connection to Phantom
         const response = await solana.connect();
-        console.log('Connected to wallet:', response.publicKey.toString());
+
         setWalletAddress(response.publicKey.toString());
       } catch (error) {
         console.error('Error connecting to Phantom wallet:', error);

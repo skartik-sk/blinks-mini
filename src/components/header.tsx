@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from "react"
-import ConnectPhantomWallet from "@/app/connectPhantomWallet/page"
+import ConnectPhantomWallet from "@/app/connectPhantomWallet/connectbtn"
 import CustomToggle from "./custom-toggle"
 import Link from "next/link"
 import Image from "next/image"
@@ -11,7 +11,7 @@ const Header = () => {
     const [walletAddress, setWalletAddress] = useState<string | null>(null);
     return (
         <div>
-            <nav className=" fixed top-0 left-0 w-full bg-black bg-opacity-5 z-10">
+            <nav className=" fixed top-0 left-0 w-full bg-black bg-opacity-5">
                 <div className="flex p-4 my-2 gap-28 md:gap-32 lg:gap-64 justify-between items-center  h-16">
                     <div className=" flex items-center justify-center sm:items-stretch sm:justify-start">
                         {/* logo thinggg */}
