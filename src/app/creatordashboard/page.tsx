@@ -8,7 +8,7 @@ import Creatorpage from "./creatorpage";
 export const dynamic = 'force-dynamic'
 export default async function Component() {
   
-
+ 
   let creators: ICreator[] = [];
   try {
       await connectDB();

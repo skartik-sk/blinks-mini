@@ -6,12 +6,25 @@ import CustomToggle from "./custom-toggle"
 import Link from "next/link"
 import Image from "next/image"
 import logo from "../images/whiteDASHH.png"
+import { useRouter } from "next/navigation"
+
 
 const Header = () => {
+    const [selectedOption, setSelectedOption] = useState('');
+    const router = useRouter()
+    const handleToggle = (selected: string) => {
+        setSelectedOption(selected);
+      };
+      if(selectedOption === 'User'){
+        router.push('/dashboard')
+      }
+      else if(selectedOption === 'Creator'){
+        router.push('/creatordashboard')
+      }
     const [walletAddress, setWalletAddress] = useState<string | null>(null);
     return (
-        <div>
-            <nav className=" fixed top-0 left-0 w-full bg-black bg-opacity-5">
+      
+            <nav className="fixed top-0 left-0 w-full z-10 bg-black bg-opacity-5">
                 <div className="flex p-4 my-2 gap-28 md:gap-32 lg:gap-64 justify-between items-center  h-16">
                     <div className=" flex items-center justify-center sm:items-stretch sm:justify-start">
                         {/* logo thinggg */}
@@ -25,7 +38,7 @@ const Header = () => {
                     </div>
                     <div className={`hidden sm:${walletAddress ? "flex" : "hidden" } pl-28 justify-center items-center`}>
                         <div className=" flex justify-center items-center">
-                            <CustomToggle options={["User", "Creator"]} />
+                            <CustomToggle options={["User", "Creator"]}onChange={handleToggle}/>
                         </div>
                     </div>
                     <div className="flex flex-col-reverse justify-center items-center sm:flex sm:flex-row gap-2 right-0">
@@ -44,7 +57,7 @@ const Header = () => {
                         </div> */}
                 </div>
             </nav>
-        </div>
+       
     )
 }
 
