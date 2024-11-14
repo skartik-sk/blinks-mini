@@ -9,7 +9,7 @@ import solanalogo from "@/images/solana.png"
 import gamelogo from "@/images/game.png"
 import weblogo from "@/images/web.png"
 import reclaimlogo from "@/images/reclaim.png"
-
+import logo from "../images/whiteDASHH.png"
 const demoImages = [
   {
     src: blockchainlogo,
@@ -35,7 +35,7 @@ const demoImages = [
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen overflow-hidden ">
+    <section className="relative  overflow-hidden ">
       <div className="container relative z-10 mx-auto px-4 py-24 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-8">
           <div className="flex flex-col justify-center space-y-8">
@@ -102,7 +102,7 @@ export function HeroSection() {
                   <div
                     className="relative h-4 w-4 -translate-x-1/2 -translate-y-1/2"
                     style={{
-                      transform: `rotate(${i * 72}deg) translateX(${120 + i * 30}px)`,
+                      transform: `rotate(${ 72}deg) translateX(${150 + i }px)`,
                     }}
                   >
                     <div className="h-16 w-16 overflow-hidden rounded-full border-2 border-transparent bg-white/10 backdrop-blur-sm">
@@ -121,17 +121,22 @@ export function HeroSection() {
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                 <motion.div
                   className="h-16 w-16 text-white"
-                  animate={{
-                    rotate: [0, 360],
-                  }}
+               
                   transition={{
                     duration: 20,
                     repeat: Infinity,
                     ease: "linear",
                   }}
-                >
+                > 
+                <Image
+                src={logo}
+                alt="Team member"
+                width={40}
+                height={40}
+                className="h-full w-full object-cover"
+              />
                   {/* Placeholder for logo/star */}
-                  <div className="h-full w-full rounded-full bg-gradient-to-br from-white/20 to-purple-500/20 backdrop-blur-sm" />
+                  {/* <div className="h-full w-full rounded-full bg-gradient-to-br from-white/20 to-purple-500/20 backdrop-blur-sm" /> */}
                 </motion.div>
               </div>
             </div>

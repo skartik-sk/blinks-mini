@@ -96,7 +96,7 @@ export async function POST(request: Request) {
   const amount = Number(url.searchParams.get("amount"));
   console.log(amount);
   let sender;
-  let camurl;
+  // let camurl;
   let payload: ActionPostResponse;
   try {
     sender = new PublicKey(body.account);
