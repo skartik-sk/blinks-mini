@@ -4,10 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 
-export default function ConnectPhantomWallet() {
-  const [walletAddress, setWalletAddress] = useState(null);
-  const [copySuccess, setCopySuccess] = useState(false);
+interface ConnectPhantomWalletProps {
+  walletAddress: string | null;
+  setWalletAddress: (address: string | null) => void;
+}
 
+export default function ConnectPhantomWallet({ walletAddress, setWalletAddress }: ConnectPhantomWalletProps) {
+  const [copySuccess, setCopySuccess] = useState(false);
 
 
   // Check if Phantom Wallet is installed

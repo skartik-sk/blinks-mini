@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from "react"
 import ConnectPhantomWallet from "@/app/connectPhantomWallet/page"
 import CustomToggle from "./custom-toggle"
 import Link from "next/link"
@@ -5,6 +8,7 @@ import Image from "next/image"
 import logo from "../images/whiteDASHH.png"
 
 const Header = () => {
+    const [walletAddress, setWalletAddress] = useState<string | null>(null);
     return (
         <div>
             <nav className="">
@@ -19,13 +23,13 @@ const Header = () => {
                         </div>
                         {/* Toggle thingg */}
                     </div>
-                    <div className="hidden sm:flex pl-28 justify-center items-center">
+                    <div className={`hidden sm:${walletAddress ? "flex" : "hidden" } pl-28 justify-center items-center`}>
                         <div className=" flex justify-center items-center">
                             <CustomToggle options={["User", "Creator"]} />
                         </div>
                     </div>
                     <div className="flex flex-col-reverse justify-center items-center sm:flex sm:flex-row gap-2 right-0">
-                        <ConnectPhantomWallet />
+                    <ConnectPhantomWallet walletAddress={walletAddress} setWalletAddress={setWalletAddress} />
                     </div>
                     {/* <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
                             <button type="button" className="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
