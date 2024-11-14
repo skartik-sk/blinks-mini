@@ -1,15 +1,17 @@
-"use client"
+'use client'
 
 // import { ArrowRightIcon } from "lucide-react"
 import React, { useState } from "react"
+import { useRouter } from 'next/navigation';
 
 interface ToggleProps {
   options?: [string, string]
   onChange?: (selectedOption: string) => void
 }
 
-export default function CustomToggle({ options = ["Creator", "User"], onChange }: ToggleProps) {
-  const [activeOption, setActiveOption] = useState(options[0])
+export default function CustomToggle({ options = ["User", "Creator"], onChange }: ToggleProps) {
+  const [activeOption, setActiveOption] = useState(options[0]);
+  const router = useRouter();
 
   const handleToggle = (option: string) => {
     setActiveOption(option)
@@ -18,7 +20,13 @@ export default function CustomToggle({ options = ["Creator", "User"], onChange }
     if (onChange) {
       onChange(option)
     }
-    console.log(activeOption)
+    
+    console.log(activeOption);
+
+    // Navigate to the dashboard
+    {
+      option === "User" ? router.push('/dashboard') : router.push('/creatordashboard');
+    }
   }
   
 
