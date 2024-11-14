@@ -7,7 +7,7 @@ import {
 } from "@solana/actions";
 import connectDB from "@/lib/dbconnect";
 import Creator from "@/lib/models/creater";
-import User from "@/lib/models/user";
+// import User from "@/lib/models/user";
 
 import {
   clusterApiUrl,
@@ -127,7 +127,7 @@ export async function POST(request: Request) {
     });
 
     const data = await campaign.save();
-    camurl = campaign._id;
+    // camurl = campaign._id;
     if (data) {
       payload = {
         type: "transaction",
