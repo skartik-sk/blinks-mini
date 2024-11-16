@@ -1,12 +1,13 @@
-
+"use client";
 import { Card } from "@/components/ui/card";
 import React, { useEffect, useState } from "react";
-
+// import { Badge } from "@/components/ui/badge";
+// import { Zap } from "lucide-react";
 import { SolanaBlinksCard } from "../blinkcard/SolanaBlinksCard";
 import connectDB from "@/lib/dbconnect";
 import { ICreator } from "@/lib/interface/creater";
 import Creator from "@/lib/models/creater";
-
+// import Link from "next/link";
 import Footer from "@/components/footer";
 import CustomToggle from "@/components/custom-toggle";
 import User from "@/lib/models/user";
