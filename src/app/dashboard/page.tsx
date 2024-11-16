@@ -16,7 +16,7 @@ export const dynamic = "force-dynamic";
 export default function Component() {
   const [selectedOption, setSelectedOption] = useState("All");
   const [creators, setCreators] = useState<ICreator[]>([]);
-
+//
   useEffect(() => {
     async function fetchData() {
       try {

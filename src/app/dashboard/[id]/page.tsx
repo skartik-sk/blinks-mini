@@ -35,6 +35,8 @@ const Page = async ({ params }: { params: { id: string } }) => {
         <div className="flex-grow flex flex-col max-w-6xl mx-auto w-full">
           <div className="flex sm:flex-row justify-between mb-8">
             {/* Top 3 Players */}
+
+            
             {leaderboard.slice(0, 3).map((player, index) => (
               <>
                 <div key={player.id} className="flex-1 text-center">
