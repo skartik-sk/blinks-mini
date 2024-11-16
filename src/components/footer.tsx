@@ -43,7 +43,7 @@ export default function Footer() {
           <div className="space-y-4">
             <p className="text-sm text-zinc-400">Copyright © 2024, All rights reserved.</p>
             <p className="text-xs text-zinc-500 max-w-4xl">
-              Information provided is general and educational in nature. It is not intended to be, and should not be construed as, legal or tax advice. Crypto for Charity does not provide legal or tax advice. Availability of certain federal income tax deductions may depend on whether an individual itemizes deductions. Rules and regulations regarding tax deductions for charitable giving vary at the state level, and laws of a specific state or laws relevant to a particular situation may affect the applicability, accuracy, or completeness of the information provided. Charitable contributions of capital gain property held for more than one year are usually deductible at fair market value. Deductions for capital gain property held for one year or less are usually limited to cost basis. Consult an attorney or tax advisor regarding specific legal or tax situations.
+              Information provided is general and educational in nature. It is not intended to be, and should not be construed as, legal or tax advice. Crypto for Charity does not provide legal or tax advice. Availability of certain federal income tax deductions may depend on whether an individual itemizes deductions.
             </p>
           </div>
           <div className="flex gap-4">
