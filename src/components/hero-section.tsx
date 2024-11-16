@@ -36,7 +36,7 @@ const demoImages = [
 export function HeroSection() {
   return (
     <section className="  ">
-      <div className="container relative  mx-auto px-4 py-24 lg:px-8">
+      <div className="container relative  justify-center mx-auto px-4 py-24 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-8">
           <div className="flex flex-col justify-center space-y-8">
             <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold tracking-tighter leading-tight sm:leading-none">
