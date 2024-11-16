@@ -19,7 +19,7 @@ export default function FrontPage() {
     <>
       <HeroSection />
       <section className=" flex justify-center w-full  md:py-24 lg:py-12 xl:py-12 ">
-        <div className="container px-4 md:px-6">
+        <div className="container flex justify-center items-center px-4 md:px-6">
           <div className="grid gap-6 items-center">
             <div className="flex flex-col justify-center items-center space-y-8 text-center gap-7">
               {/* <CustomToggle /> */}
