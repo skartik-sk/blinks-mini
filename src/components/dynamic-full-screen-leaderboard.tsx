@@ -16,7 +16,7 @@ const topPlayers: Player[] = [
   { id: 1, name: "Klaxxon", avatar: "/placeholder.svg?height=80&width=80", pointsToEarn: 1500, prize: 10000 },
   { id: 3, name: "Ultralex", avatar: "/placeholder.svg?height=64&width=64", pointsToEarn: 250, prize: 2500 },
 ]
-
+// worked on the leader board functionality
 export function DynamicFullScreenLeaderboard() {
   return (
     <div className="bg-gray-900 text-white min-h-screen flex flex-col p-4 sm:p-6">
