@@ -24,8 +24,10 @@ export default function CustomToggle({ options = ["User", "Creator"], onChange }
     console.log(activeOption);
 
     // Navigate to the dashboard
-    {
-      option === "User" ? router.push('/dashboard') : router.push('/creatordashboard');
+    if (option === "User") {
+      router.push('/dashboard');
+    } else {
+      router.push('/creatordashboard');
     }
   }
   
