@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { Clock, Crown, Trophy } from 'lucide-react'
+import { Clock, Trophy } from 'lucide-react'
 import connectDB from '@/lib/dbconnect'
 import { IUser } from '@/lib/interface/user'
 import User from '@/lib/models/user'
