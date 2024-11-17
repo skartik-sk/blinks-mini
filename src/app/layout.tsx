@@ -28,7 +28,7 @@ export default function RootLayout({
             </div>
             <div className="absolute right-[-25%] top-[-40%] h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle_400px_at_50%_300px,#fbfbfb36,#000)]">
             </div>
-            <div className="absolute left-[-25%] bottom-[-95%] h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle_400px_at_50%_300px,#fbfbfb36,#000)]">
+            <div className="absolute left-[-25%] bottom-[-95%] h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle_400px_at_50%_400px,#fbfbfb36,#000)]">
             </div>
           </div>
         </div>
