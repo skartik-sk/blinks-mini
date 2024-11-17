@@ -21,7 +21,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white p-4 sm:p-8 font-mono">
+    <div className="min-h-screen text-white p-4 sm:p-8 font-mono">
       <div className="max-w-4xl mx-auto space-y-8">
         <Getsoladd leaderboard={leaderboard} id={params.id} creator={creater} />
         
