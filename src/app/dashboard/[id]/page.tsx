@@ -66,7 +66,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         </div>
 
         {/* Countdown Timer */}
-        <div className="text-center mb-6">
+        <div className="text-center pt-6 mb-6">
           <div className="flex items-center justify-center text-gray-400">
             <Clock className="w-4 h-4 mr-2" />
             <span>Ends in</span>
