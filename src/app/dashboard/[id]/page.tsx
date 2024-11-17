@@ -42,7 +42,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               <div className="relative mb-2">
                 <div className={`w-16 h-16 sm:w-20 sm:h-20 ${index === 1 ? 'sm:w-24 sm:h-24' : ''} rounded-lg overflow-hidden`}>
                   <Image
-                    src={player.igProfile || "https://scontent-bom2-3.cdninstagram.com/v/t51.2885-19/344094165_1428989347924242_319794666472247536_n.jpg?_nc_ht=scontent-bom2-3.cdninstagram.com&_nc_cat=106&_nc_ohc=69fdG7tIAZUQ7kNvgFe1wjz&_nc_gid=1d23acb1c8ec474d8bcd80a74461f45f&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_AYAbqi1jdiJKtiH2giMo4qa_DGQ12G1sKdz7g8OUhTGFkg&oe=672540CF&_nc_sid=7a9f4b"}
+                    src={player.igProfile || (index === 1) ? "https://img.freepik.com/free-vector/hand-drawn-nft-style-ape-illustration_23-2149622021.jpg" : index === 2 ? "https://i.pinimg.com/474x/aa/f8/59/aaf859dde8eb62bd0c382bb047a53ce7.jpg" : "https://assets.promptbase.com/DALLE_IMAGES%2F3X1SXaf7riVzZ4fmeD70dlwbQvD3%2Fresized%2F1679336685019_800x800.webp?alt=media&token=d2d7f2fa-d397-43c8-8f52-8282e5728752"} 
                     alt={player.solAdd}
                     width={96}
                     height={96}
