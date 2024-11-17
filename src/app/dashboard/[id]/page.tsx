@@ -36,13 +36,13 @@ export default async function Page({ params }: { params: { id: string } }) {
         </div>
 
         {/* Podium */}
-        <div className="relative h-[250px] sm:h-[300px]">
+        <div className="relative h-[200px] sm:h-[250px]">
           {leaderboard.slice(0, 3).map((player, index) => (
             <div key={player.id} className={`absolute ${index === 1 ? 'left-1/2 bottom-8 transform -translate-x-1/2' : index === 0 ? 'left-0 sm:left-1/4 bottom-0 transform sm:-translate-x-1/2' : 'right-0 sm:left-3/4 bottom-0 transform sm:-translate-x-1/2'} flex flex-col items-center`}>
               <div className="relative mb-2">
                 <div className={`w-16 h-16 sm:w-20 sm:h-20 ${index === 1 ? 'sm:w-24 sm:h-24' : ''} rounded-lg overflow-hidden`}>
                   <Image
-                    src={player.igProfile || (index === 1) ? "https://img.freepik.com/free-vector/hand-drawn-nft-style-ape-illustration_23-2149622021.jpg" : index === 2 ? "https://i.pinimg.com/474x/aa/f8/59/aaf859dde8eb62bd0c382bb047a53ce7.jpg" : "https://assets.promptbase.com/DALLE_IMAGES%2F3X1SXaf7riVzZ4fmeD70dlwbQvD3%2Fresized%2F1679336685019_800x800.webp?alt=media&token=d2d7f2fa-d397-43c8-8f52-8282e5728752"} 
+                  src={player.igProfile || (index === 0) ? "https://assets.promptbase.com/DALLE_IMAGES%2F3X1SXaf7riVzZ4fmeD70dlwbQvD3%2Fresized%2F1679336685019_800x800.webp?alt=media&token=d2d7f2fa-d397-43c8-8f52-8282e5728752" : index === 1 ? "https://img.freepik.com/free-vector/hand-drawn-nft-style-ape-illustration_23-2149622021.jpg" : "https://i.pinimg.com/474x/aa/f8/59/aaf859dde8eb62bd0c382bb047a53ce7.jpg"} 
                     alt={player.solAdd}
                     width={96}
                     height={96}
@@ -66,7 +66,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         </div>
 
         {/* Countdown Timer */}
-        <div className="text-center pt-6 mb-6">
+        <div className="text-center pt-10 sm:pt-16 mb-6">
           <div className="flex items-center justify-center text-gray-400">
             <Clock className="w-4 h-4 mr-2" />
             <span>Ends in</span>
