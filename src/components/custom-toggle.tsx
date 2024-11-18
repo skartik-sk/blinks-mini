@@ -26,7 +26,7 @@ export default function CustomToggle({ options = ["User", "Creator"], onChange }
     // Navigate to the dashboard
     if (option === "User") {
       router.push('/dashboard');
-    } else {
+    } else if(option === "Creator") {
       router.push('/creatordashboard');
     }
   }
