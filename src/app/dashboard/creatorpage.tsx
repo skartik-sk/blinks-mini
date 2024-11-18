@@ -90,12 +90,13 @@ const [walletAddress, setWalletAddress] = useState("");
 
     return (
         <div className='flex flex-col gap-5 w-screen'>
-            <div className='flex justify-between  items-center text-white'>
+            <div className='flex justify-start  items-center text-white'>
               <div>
 
             <CustomToggle options={["All", "Participated"]} onChange={handleToggle} />
               </div>
-            <div className='font-semibold text-xl text-white'>Explore Events</div>
+            <div className='font-semibold text-xl text-white w-full items-center'><p className='w-fit'>
+            Explore Events  </p></div>
                 
             </div>
             <div className="flex flex-wrap gap-5 justify-center md:col-span-2 lg:col-span-1">

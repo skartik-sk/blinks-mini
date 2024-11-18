@@ -1,8 +1,8 @@
 'use client'
 import {  useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy } from '@fortawesome/free-solid-svg-icons';
-import Link from 'next/link';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faCopy } from '@fortawesome/free-solid-svg-icons';
+// import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 interface ConnectPhantomWalletProps {
@@ -11,7 +11,7 @@ interface ConnectPhantomWalletProps {
 }
 
 export default function ConnectPhantomWallet({ walletAddress, setWalletAddress }: ConnectPhantomWalletProps) {
-  const [copySuccess, setCopySuccess] = useState(false);
+  // const [copySuccess, setCopySuccess] = useState(false);
 
   const router = useRouter();
 
@@ -21,6 +21,20 @@ export default function ConnectPhantomWallet({ walletAddress, setWalletAddress }
   };
 
   // Connect Phantom Wallet
+  const disconnect = async () => {
+    if (isPhantomInstalled()) {
+      try { 
+        const { solana }:any = window;
+        // Request connection to Phantom
+        await solana.disconnect();
+        setWalletAddress(null);
+      } catch (error) {
+        console.error('Error connecting to Phantom wallet:', error);
+      }
+    } else {
+      alert('Phantom Wallet not installed. Please install it.');
+    }
+  }
   const connectPhantomWallet = async () => {
     if (isPhantomInstalled()) {
       try { 
@@ -38,18 +52,18 @@ export default function ConnectPhantomWallet({ walletAddress, setWalletAddress }
   };
 
 
-  const handleCopy = () => {
-    if (walletAddress) {
-      navigator.clipboard.writeText(walletAddress)
-        .then(() => {
-          setCopySuccess(true);
-          setTimeout(() => setCopySuccess(false), 4000); // Reset after 4 seconds
-        })
-        .catch(err => {
-          console.error('Failed to copy: ', err);
-        });
-    }
-  };
+  // const handleCopy = () => {
+  //   if (walletAddress) {
+  //     navigator.clipboard.writeText(walletAddress)
+  //       .then(() => {
+  //         setCopySuccess(true);
+  //         setTimeout(() => setCopySuccess(false), 4000); // Reset after 4 seconds
+  //       })
+  //       .catch(err => {
+  //         console.error('Failed to copy: ', err);
+  //       });
+  //   }
+  // };
 
   return (
     <main className=" shadow-lg rounded-lg p-0 sm:p-6 max-w-[20rem] sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl text-center ">
@@ -57,7 +71,7 @@ export default function ConnectPhantomWallet({ walletAddress, setWalletAddress }
         Phantom Wallet Connection
       </h1> */}
     
-      {!walletAddress ? (
+      {!window.solana?.isConnected ? (
         <button 
           onClick={connectPhantomWallet} 
           className="relative bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-2 px-4 rounded-lg shadow-lg hover:from-indigo-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full transition-all duration-300 ease-in-out transform hover:scale-105 overflow-hidden"
@@ -81,7 +95,7 @@ export default function ConnectPhantomWallet({ walletAddress, setWalletAddress }
       ) : (
         <button 
           onClick={() => {
-            setWalletAddress(null);
+            disconnect();
             router.push('/');
           }} 
           className="relative bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-2 px-4 rounded-lg shadow-lg hover:from-indigo-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full transition-all duration-300 ease-in-out transform hover:scale-105 overflow-hidden"
