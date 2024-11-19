@@ -63,7 +63,7 @@ export function SolanaBlinksCard({ content, id }: { content: ICreator; id: strin
 
         <div className="space-y-2">
           <Link
-            href={`https://dial.to/?action=solana-action:http://blinks.knowflow.study/api/donate/${id}&cluster=devnet`}
+            href={`https://dial.to/?action=solana-action:https://blinks.knowflow.study/api/donate/${id}&cluster=devnet`}
             className="block w-full py-2 text-center font-bold text-white rounded-lg bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7] hover:opacity-90 transition-all duration-300"
           >
             BLINK NOW
