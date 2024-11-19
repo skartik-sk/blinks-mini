@@ -24,7 +24,7 @@ const Header = () => {
     const [walletAddress, setWalletAddress] = useState<string | null>(null);
     return (
       
-            <nav className="fixed top-0 left-0 w-full z-10 bg-black bg-opacity-5">
+            <nav className="fixed top-0 left-0 w-full z-10 bg-[#62626235] backdrop-blur-xl">
                 <div className="flex p-4 my-2 md:gap-32 lg:gap-64 justify-between items-center  h-16">
                     <div className=" flex items-center justify-center sm:items-stretch sm:justify-start">
                         {/* logo thinggg */}
