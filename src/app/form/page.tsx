@@ -6,10 +6,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import axios from "axios";
 
+
+import { Connection, PublicKey, Transaction, SystemProgram, clusterApiUrl, LAMPORTS_PER_SOL } from '@solana/web3.js';
+
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShieldHalved } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {
@@ -24,25 +27,60 @@ import Link from "next/link";
 
 export default function CreatorForm() {
   const [url_data, seturl_data] = useState("");
-  const [end, setEndDate] = useState<Date | null>(null);
-  useEffect(() => {
-    setEndDate(new Date());
-  }, []);
+  const [endDate, setEndDate] = useState<Date | null>(new Date());
+
   const [content, setContent] = useState({
     title: "",
     description: "",
     label: "",
     amount: "",
     icons: "",
+    end: "",
   });
+const [formamount , setFormAmount] = useState(0);
+const [walletAddress, setWalletAddress] = useState<string | null>(null);
+  async function sendTransaction() {
+    // if (!walletAddress) {
+    //   console.log('Wallet not connected');
+    //   return;
+    // }
+
+    const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+    const recipientAddress = new PublicKey("8vbaCLhg1SZmiGNZfFzV2DEJHenFtdgg7G2JtY5v74i1"); // Public address of the recipient
+    const senderPublicKey = new PublicKey(walletAddress?walletAddress:"" ); // Sender's public key (your wallet)
+
+    const transaction = new Transaction().add(
+      SystemProgram.transfer({
+        fromPubkey: senderPublicKey,
+        toPubkey: recipientAddress,
+        lamports: formamount * LAMPORTS_PER_SOL // Amount to send (in lamports, 1 SOL = 1e9 lamports)
+      })
+    );
+
+    try {
+      const { blockhash } = await connection.getLatestBlockhash(); // Fetch recent blockhash
+      transaction.recentBlockhash = blockhash;
+      transaction.feePayer = senderPublicKey; // Set fee payer to sender's public key
+
+      const { solana }: any = window;
+      const signedTransaction = await solana.signTransaction(transaction); // Sign transaction with Phantom
+      const signature = await connection.sendRawTransaction(signedTransaction.serialize()); // Send signed transaction
+      await connection.confirmTransaction(signature); // Confirm the transaction
+
+      console.log('Transaction successful, signature:', signature);
+    } catch (error) {
+      console.error('Error sending transaction:', error);
+    }
+  }
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const { solana }: any = window;
     // Request connection to Phantom
     const response = await solana.connect();
     console.log("wallet:", response.publicKey.toString());
-
+    setWalletAddress(response.publicKey.toString());
     const formData = new FormData(e.target as HTMLFormElement);
+    console.log(endDate?.toISOString());
     const data = {
       solAdd: response.publicKey.toString(),
       title: formData.get("title"),
@@ -50,9 +88,9 @@ export default function CreatorForm() {
       label: formData.get("label"),
       amount: formData.get("amount"),
       icons: formData.get("icons"),
-      end: end ? new Date(end) : new Date(),
+      end: endDate ? endDate.toISOString() : new Date().toISOString(),
     };
-
+ 
     try {
       const response = await axios.post("/api/posts", data, {
         headers: {
@@ -62,6 +100,9 @@ export default function CreatorForm() {
       console.log("Data successfully sent to the server:", response.data);
 
       if (response.data.data._id != undefined) {
+        setFormAmount(Number(formData.get("amount")));
+       
+        sendTransaction();
         seturl_data(response.data.data._id);
         setOpen(true);
       }
@@ -313,7 +354,7 @@ export default function CreatorForm() {
                     End Date
                   </Label>
                   <DatePicker
-                    selected={end}
+                    selected={endDate}
                     onChange={(date: Date | null) => setEndDate(date)}
                     className="w-full bg-black border-gray-800 text-white placeholder-zinc-400 focus:border-white focus:ring-white"
                   />

@@ -38,6 +38,8 @@ await connectDB();
         label: data.label,
         amount: data.amount,
         icons: data.icons,
+        end: data.end,
+        users: [],
       });
 
       await newPost.save();

@@ -123,6 +123,7 @@ export async function POST(request: Request) {
       label: url.searchParams.get("label"),
       end: url.searchParams.get("end"),
       amount: amount,
+      users: [],
       solAdd: sender.toString(),
     });
 

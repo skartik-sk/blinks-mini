@@ -1,5 +1,5 @@
 'use client'
-import {  useState } from 'react';
+
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faCopy } from '@fortawesome/free-solid-svg-icons';
 // import Link from 'next/link';
@@ -12,7 +12,7 @@ interface ConnectPhantomWalletProps {
 
 export default function ConnectPhantomWallet({ walletAddress, setWalletAddress }: ConnectPhantomWalletProps) {
   // const [copySuccess, setCopySuccess] = useState(false);
-
+console.log(walletAddress);
   const router = useRouter();
 
   // Check if Phantom Wallet is installed

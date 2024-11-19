@@ -81,11 +81,11 @@ const [walletAddress, setWalletAddress] = useState("");
 
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
-// if(selectedOption === 'Participated'){
-//   fetchData();
-// creator = creators
-
-// }
+  if(selectedOption === 'Participated'){
+ 
+    creator = creator.filter((creator) => creator.users.includes(walletAddress));
+  }
+  
 
 
     return (

@@ -101,12 +101,12 @@ export  async function POST(request:Request){
 const amount  =  Number(url.searchParams.get("amount")) || 0;
 
     let sender ;
-    let imgurl ;
+
     try{
         sender = new PublicKey(body.account);
 
-        const Post = await Creator.findById(url.pathname.split("/")[3])
-imgurl=Post?.icons
+//         const Post = await Creator.findById(url.pathname.split("/")[3])
+// imgurl=Post?.icons
 
     }catch(e){
         return Response.json({error:e},{status:400,headers:ACTIONS_CORS_HEADERS});
@@ -132,7 +132,7 @@ imgurl=Post?.icons
     const payload: ActionPostResponse = {
         type: "transaction",
         transaction: transaction.serialize({ verifySignatures: false }).toString("base64"),
-        message: `Image url ${imgurl}`,
+        message: `Participation done successfully`,
 
         // links: {
         //     next: {
@@ -142,14 +142,15 @@ imgurl=Post?.icons
         // }
     };
     try {
-
+        const creater = await Creator.findById(url.pathname.split("/")[3]);
+        if (creater) {
+            creater.users.push(sender.toString());
+            await creater.save();
+        }
       const newUser = new User({
         solAdd: sender.toString(),
   post:  url.href.toString(), 
   isAwarded: false,
-
-
-        
       });
 
       await newUser.save();

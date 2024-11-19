@@ -57,13 +57,13 @@ export function SolanaBlinksCard({ content, id }: { content: ICreator; id: strin
 
         <div className="text-center py-2 px-4 bg-[#1a1a1a]/40 rounded-lg backdrop-blur-sm">
           <span className="text-xs text-gray-400">
-            Current participants: <span className="text-white font-medium">13868</span> users
+            Current participants: <span className="text-white font-medium">{content.users.length?content.users.length: 0 }</span> users
           </span>
         </div>
 
         <div className="space-y-2">
           <Link
-            href={`https://dial.to/?action=solana-action:https://blinks.knowflow.study/api/donate/${id}&cluster=devnet`}
+            href={`https://dial.to/?action=solana-action:http://blinks.knowflow.study/api/donate/${id}&cluster=devnet`}
             className="block w-full py-2 text-center font-bold text-white rounded-lg bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7] hover:opacity-90 transition-all duration-300"
           >
             BLINK NOW

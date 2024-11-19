@@ -7,6 +7,7 @@ export interface ICreator  {
     amount: number;
     icons: string;
     end: Date;
+    users: string[];
     id: string;
     _id: string;
   }

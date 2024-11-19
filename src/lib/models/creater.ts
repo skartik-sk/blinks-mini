@@ -9,7 +9,8 @@ const CreatorSchema: Schema = new Schema({
   label: { type: String, required: true },
   amount: { type: Number, required: true },
   icons: { type: String, required: true },
-  end: { type: Date, required: true },
+  users: { type: [String] },
+end: { type: Date, required: true },
 });
 
 const Creator: Model<ICreator> = mongoose.models.Creator || mongoose.model<ICreator>('Creator', CreatorSchema);
