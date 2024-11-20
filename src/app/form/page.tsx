@@ -25,6 +25,10 @@ import {
 import { toast } from "react-toastify";
 import Link from "next/link";
 
+ 
+
+export const dynamic = 'force-dynamic'
+
 export default function CreatorForm() {
   const [url_data, seturl_data] = useState("");
   const [endDate, setEndDate] = useState<Date | null>(new Date());
@@ -67,7 +71,7 @@ const [walletAddress, setWalletAddress] = useState<string | null>(null);
       const signature = await connection.sendRawTransaction(signedTransaction.serialize()); // Send signed transaction
       await connection.confirmTransaction(signature); // Confirm the transaction
 
-      console.log('Transaction successful, signature:', signature);
+      // console.log('Transaction successful, signature:', signature);
     } catch (error) {
       console.error('Error sending transaction:', error);
     }
@@ -121,8 +125,9 @@ const [walletAddress, setWalletAddress] = useState<string | null>(null);
     }
   }
   const [open, setOpen] = useState(false);
+
   return (
-    <>
+    <>    
       {open ? (
         <Dialog open={open} onOpenChange={setOpen} >
           <DialogContent >
