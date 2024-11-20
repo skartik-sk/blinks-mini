@@ -55,7 +55,7 @@ export function HeroSection() {
                 DASHH is revolutionizing advertising by connecting brands with top-tier micro-influencers around the world. Our decentralized platform ensures that every influencer is fairly rewarded for genuine engagement, regardless of their location.
               </p>
               <p className="text-lg text-gray-300">
-                And you? You get unmatched transparency, real-time performance tracking, and access to the best engagement-driven talent in the industry, all powered by Solana’s blockchain technology.
+                {/* And you? You get unmatched transparency, real-time performance tracking, and access to the best engagement-driven talent in the industry, all powered by Solana’s blockchain technology. */}
               </p>
             </div>
             <div>
@@ -64,7 +64,7 @@ export function HeroSection() {
                 size="lg"
                 asChild
               >
-                <Link href="#">Meet your Ninjas</Link>
+                <Link href="#">Connect Us</Link>
               </Button>
             </div>
           </div>
