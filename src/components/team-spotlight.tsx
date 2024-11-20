@@ -17,8 +17,8 @@ interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   {
-    id: "michael",
-    name: "Michael",
+    id: "akshat",
+    name: "Akshat",
     image: Akshat,
     description: [
       "Michael has extensive experience in digital and below-the-line (BTL) marketing, excelling both B2B B2C segments. His expertise spans developing robust marketing strategies for small businesses various sectors such as events, metalworking, retail, more.",
@@ -27,8 +27,8 @@ const teamMembers: TeamMember[] = [
     ],
   },
   {
-    id: "olga",
-    name: "Olga",
+    id: "kartik",
+    name: "Singupalli Kartik",
     image: Kartik,
     description: [
       "Olga brings valuable insights and expertise to digital marketing strategies.",
@@ -37,8 +37,8 @@ const teamMembers: TeamMember[] = [
     ],
   },
   {
-    id: "george",
-    name: "George",
+    id: "pranesh",
+    name: "Pranesh",
     image: Pranesh,
     description: [
       "George specializes in technical marketing and data analysis.",
