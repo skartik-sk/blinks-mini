@@ -1,8 +1,6 @@
-'use client'
+'use client';
 
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faCopy } from '@fortawesome/free-solid-svg-icons';
-// import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface ConnectPhantomWalletProps {
@@ -11,9 +9,18 @@ interface ConnectPhantomWalletProps {
 }
 
 export default function ConnectPhantomWallet({ walletAddress, setWalletAddress }: ConnectPhantomWalletProps) {
-  // const [copySuccess, setCopySuccess] = useState(false);
-console.log(walletAddress);
+  const [isClient, setIsClient] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    // This code will run only on the client side
+    setIsClient(true);
+    if (typeof window !== 'undefined' && window.solana?.isConnected) {
+      setIsConnected(true);
+    }
+  }, []);
+  console.log(walletAddress);
 
   // Check if Phantom Wallet is installed
   const isPhantomInstalled = () => {
@@ -21,28 +28,14 @@ console.log(walletAddress);
   };
 
   // Connect Phantom Wallet
-  const disconnect = async () => {
-    if (isPhantomInstalled()) {
-      try { 
-        const { solana }:any = window;
-        // Request connection to Phantom
-        await solana.disconnect();
-        setWalletAddress(null);
-      } catch (error) {
-        console.error('Error connecting to Phantom wallet:', error);
-      }
-    } else {
-      alert('Phantom Wallet not installed. Please install it.');
-    }
-  }
   const connectPhantomWallet = async () => {
     if (isPhantomInstalled()) {
-      try { 
-        const { solana }:any = window;
+      try {
+        const { solana }: any = window;
         // Request connection to Phantom
         const response = await solana.connect();
-
         setWalletAddress(response.publicKey.toString());
+        setIsConnected(true);
       } catch (error) {
         console.error('Error connecting to Phantom wallet:', error);
       }
@@ -51,29 +44,27 @@ console.log(walletAddress);
     }
   };
 
-
-  // const handleCopy = () => {
-  //   if (walletAddress) {
-  //     navigator.clipboard.writeText(walletAddress)
-  //       .then(() => {
-  //         setCopySuccess(true);
-  //         setTimeout(() => setCopySuccess(false), 4000); // Reset after 4 seconds
-  //       })
-  //       .catch(err => {
-  //         console.error('Failed to copy: ', err);
-  //       });
-  //   }
-  // };
+  const disconnect = async () => {
+    if (isPhantomInstalled()) {
+      try {
+        const { solana }: any = window;
+        // Request disconnection from Phantom
+        await solana.disconnect();
+        setWalletAddress(null);
+        setIsConnected(false);
+      } catch (error) {
+        console.error('Error disconnecting from Phantom wallet:', error);
+      }
+    } else {
+      alert('Phantom Wallet not installed. Please install it.');
+    }
+  };
 
   return (
-    <main className="font-mono ">
-      {/* <h1 className="text-2xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 mb-4">
-        Phantom Wallet Connection
-      </h1> */}
-    
-      {!window.solana?.isConnected ? (
-        <button 
-          onClick={connectPhantomWallet} 
+    <main className="font-mono">
+      {isClient && !isConnected ? (
+        <button
+          onClick={connectPhantomWallet}
           className="relative bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-2 px-4 rounded-lg shadow-lg hover:from-indigo-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full transition-all duration-300 ease-in-out transform hover:scale-105 overflow-hidden"
         >
           Connect Wallet
@@ -93,11 +84,11 @@ console.log(walletAddress);
           `}</style>
         </button>
       ) : (
-        <button 
+        <button
           onClick={() => {
             disconnect();
             router.push('/');
-          }} 
+          }}
           className="relative bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-2 px-4 rounded-lg shadow-lg hover:from-indigo-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full transition-all duration-300 ease-in-out transform hover:scale-105 overflow-hidden"
         >
           Logout
@@ -116,43 +107,6 @@ console.log(walletAddress);
             }
           `}</style>
         </button>
-        // <div className=" p-1 sm:p-6 rounded-lg shadow-md w-full max-w-md mx-auto">
-        //   <p className="text-gray-300 font-semibold mb-2">Connected:</p>
-        //   <div className='sm:flex sm:justify-center'>
-        //     <p 
-        //       className="text-green-600 font-semibold break-words cursor-pointer" 
-        //       onClick={handleCopy}
-        //     >
-        //       {copySuccess ? 'Copied!' : walletAddress}
-        //     </p>
-        //     <div className="relative flex items-center">
-        //       <FontAwesomeIcon 
-        //         icon={faCopy} 
-        //         className="ml-2 text-gray-400 cursor-pointer hover:text-gray-200 transition-colors duration-300" 
-        //         onClick={handleCopy} 
-        //       />
-        //       <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 text-xs text-black bg-gray-300 rounded opacity-0 hover:opacity-100 transition-opacity duration-300">
-        //         Copy
-        //       </span>
-        //     </div>
-        //   </div>
-        //   <div className="flex flex-col sm:flex-row justify-between gap-2 mt-6">
-        //   <Link  href="/creatordashboard">
-        //     <button 
-           
-        //       className="bg-indigo-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full"
-        //     >
-        //       Login As Creator
-        //     </button> </Link>
-        //     <Link  href="/dashboard">
-        //     <button 
-        //       className="bg-gray-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 w-full"
-        //       >
-        //       Login As User
-        //     </button>
-        //       </Link>
-        //   </div>
-        // </div>
       )}
     </main>
   );
