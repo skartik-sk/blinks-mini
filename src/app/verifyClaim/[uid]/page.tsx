@@ -47,7 +47,7 @@ const Page = () => {
   // const { uid, title } = router.query;
   const uid = "aa";
   const title = "hello";
-  const [res, setRes] = "";
+  const [res, setRes] = useState("");
   const [qrState, setQrState] = useState<
     "none" | "loading" | "waiting" | "success"
   >("none");

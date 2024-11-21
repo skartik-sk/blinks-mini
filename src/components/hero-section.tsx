@@ -1,15 +1,15 @@
-'use client'
+"use client";
 
-import { Button } from "@/components/ui/button"
-import Image from "next/image"
-import Link from "next/link"
-import { motion } from "framer-motion"
-import blockchainlogo from "@/images/blockchain.png"
-import solanalogo from "@/images/solana.png"
-import gamelogo from "@/images/game.png"
-import weblogo from "@/images/web.png"
-import reclaimlogo from "@/images/reclaim.png"
-import logo from "../images/whiteDASHH.png"
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import blockchainlogo from "@/images/blockchain.png";
+import solanalogo from "@/images/solana.png";
+import gamelogo from "@/images/game.png";
+import weblogo from "@/images/web.png";
+import reclaimlogo from "@/images/reclaim.png";
+import logo from "../images/whiteDASHH.png";
 const demoImages = [
   {
     src: blockchainlogo,
@@ -31,7 +31,7 @@ const demoImages = [
     src: reclaimlogo,
     alt: "Reclaim",
   },
-]
+];
 
 export function HeroSection() {
   return (
@@ -52,7 +52,10 @@ export function HeroSection() {
             </h1>
             <div className="space-y-4">
               <p className="text-lg text-gray-300">
-                DASHH is revolutionizing advertising by connecting brands with top-tier micro-influencers around the world. Our decentralized platform ensures that every influencer is fairly rewarded for genuine engagement, regardless of their location.
+                DASHH is revolutionizing advertising by connecting brands with
+                top-tier micro-influencers around the world. Our decentralized
+                platform ensures that every influencer is fairly rewarded for
+                genuine engagement, regardless of their location.
               </p>
               <p className="text-lg text-gray-300">
                 {/* And you? You get unmatched transparency, real-time performance tracking, and access to the best engagement-driven talent in the industry, all powered by Solana’s blockchain technology. */}
@@ -69,7 +72,6 @@ export function HeroSection() {
             </div>
           </div>
           <div className="relative">
-
             {/* purple gradient  */}
             {/* <motion.div
               className="absolute right-0 top-1/2 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-gradient-to-br from-purple-600/20 to-purple-900/30 blur-2xl"
@@ -102,7 +104,7 @@ export function HeroSection() {
                   <div
                     className="relative h-4 w-4 -translate-x-1/2 -translate-y-1/2"
                     style={{
-                      transform: `rotate(${ 72}deg) translateX(${150 + i }px)`,
+                      transform: `rotate(${72}deg) translateX(${150 + i}px)`,
                     }}
                   >
                     <div className="h-16 w-16 overflow-hidden rounded-full border-2 border-transparent bg-white/10 backdrop-blur-sm">
@@ -121,20 +123,19 @@ export function HeroSection() {
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                 <motion.div
                   className="h-16 w-16 text-white"
-               
                   transition={{
                     duration: 20,
                     repeat: Infinity,
                     ease: "linear",
                   }}
-                > 
-                <Image
-                src={logo}
-                alt="Team member"
-                width={40}
-                height={40}
-                className="h-full w-full object-cover"
-              />
+                >
+                  <Image
+                    src={logo}
+                    alt="Team member"
+                    width={40}
+                    height={40}
+                    className="h-full w-full object-cover"
+                  />
                   {/* Placeholder for logo/star */}
                   {/* <div className="h-full w-full rounded-full bg-gradient-to-br from-white/20 to-purple-500/20 backdrop-blur-sm" /> */}
                 </motion.div>
@@ -144,5 +145,5 @@ export function HeroSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
