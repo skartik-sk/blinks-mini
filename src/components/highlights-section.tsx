@@ -50,10 +50,10 @@ export function HighlightsSection() {
   const closeVideo = useCallback(() => setIsVideoOpen(false), [])
 
   return (
-    <section className="w-full flex justify-center py-12 md:py-24">
+    <section className="w-full flex justify-center py-12 md:py-12">
       <div className="container px-4">
         <h1 className="mb-12 text-4xl font-bold tracking-tight text-white md:text-5xl">
-          Ninja Promo&nbsp;
+          Dashh&nbsp;
           <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-violet-500 bg-clip-text text-transparent">
             Highlights
           </span>
@@ -163,7 +163,7 @@ export function HighlightsSection() {
                     How to build a powerful marketing department in 2024
                   </h3>
                   <Button className="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white hover:from-pink-600 hover:to-purple-600">
-                    Get the step-by-step Blueprint
+                    Get the Blueprint
                   </Button>
                 </div>
               </CardContent>

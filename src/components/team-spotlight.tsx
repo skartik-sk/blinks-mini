@@ -21,30 +21,27 @@ const teamMembers: TeamMember[] = [
     name: "Akshat",
     image: Akshat,
     description: [
-      "Michael has extensive experience in digital and below-the-line (BTL) marketing, excelling both B2B B2C segments. His expertise spans developing robust marketing strategies for small businesses various sectors such as events, metalworking, retail, more.",
-      "Formerly a Trade Marketing Specialist at Japan Tobacco International, Michael currently serves as Digital Strategist NinjaPromo. His focus is on assisting Web3 projects and startups in establishing effective go-to-market strategies achieving scalable growth.",
-      "Additionally, Michael has played a pivotal role in executing marketing projects for McDonald's, showcasing his ability to handle high-profile campaigns and drive impactful results. is committed delivering tailored solutions that foster growth success clients rapidly evolving market landscape.",
-    ],
+      "An accomplished innovator, this individual achieved 4th Prize in Solana Radar Hackathon’s Reclaim Side Track. They are the visionary behind WIZZ, a cutting-edge SocialFi platform that empowers users to build, share, and earn in a decentralized digital economy. Additionally, they contributed to Titan Technologies, which focuses on advanced security solutions, and Sleek, an e-commerce brand revolutionizing access to quality products.",
+      "Their work reflects a deep understanding of technology and innovation. Explore their contributions through platforms like WIZZ (https://wizz-new.vercel.app), Titan Technologies (https://www.titantechnologies.in/), and Sleek (https://just-sleek.vercel.app).",
+  ],
   },
   {
     id: "kartik",
     name: "Singupalli Kartik",
     image: Kartik,
     description: [
-      "Olga brings valuable insights and expertise to digital marketing strategies.",
-      "With a background in international marketing, she excels creating comprehensive campaigns.",
-      "Her innovative approach has helped numerous clients achieve their marketing objectives.",
-    ],
+      "With a strong technical background, this individual also earned 4th Prize in Solana Radar Hackathon’s Reclaim Side Track. Their diverse projects include WIZZ, redefining digital finance, and DASHH, a decentralized advertising platform enhancing secure engagement. Other contributions include Blogbit, a blogging platform fostering user interaction, and UpskillMafia, a sports enthusiast networking site.",
+      "Their dedication to solving modern challenges is evident in every project. Explore their work on platforms like DASHH (https://blinks.knowflow.study), Blogbit (https://acehack.vercel.app), and QuikPic (https://main--quikpikweb.netlify.app).",
+     ],
   },
   {
     id: "pranesh",
     name: "Pranesh",
     image: Pranesh,
     description: [
-      "George specializes in technical marketing and data analysis.",
-      "His analytical mindset helps drive data-informed marketing decisions.",
-      "He has successfully led numerous digital transformation projects.",
-    ],
+      "A tech enthusiast with expertise in decentralized solutions, this individual spearheaded projects like DASHH, a secure and transparent advertising platform. They also contributed to Bloggies, a CRM-based blogging website fostering community engagement, and UpskillMafia, a platform connecting sports enthusiasts.",
+      "Their ability to create impactful solutions stands out in every project they undertake. Check out their work on DASHH (https://blinks.knowflow.study), Bloggies (https://acehack.vercel.app), and UpskillMafia (https://virtualhackathon.vercel.app).",
+   ],
   },
 ]
 
