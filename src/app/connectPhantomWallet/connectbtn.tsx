@@ -66,7 +66,7 @@ console.log(walletAddress);
   // };
 
   return (
-    <main className=" shadow-lg rounded-lg p-0 sm:p-6 max-w-[20rem] sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl text-center ">
+    <main className="font-mono ">
       {/* <h1 className="text-2xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 mb-4">
         Phantom Wallet Connection
       </h1> */}
