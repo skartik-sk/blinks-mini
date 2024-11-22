@@ -42,6 +42,58 @@ const sampledata = {
   publicData: {},
 };
 
+// const Page = () => {
+//   // const router = useRouter();
+//   // const { uid, title } = router.query;
+//   const uid = "aa";
+//   const title = "hello";
+//   const [res, setRes] = useState("");
+//   const [qrState, setQrState] = useState<
+//     "none" | "loading" | "waiting" | "success"
+//   >("none");
+//   const [qrUrl, setQrUrl] = useState("");
+
+//   const verifyOnReclaim = async () => {
+//     setQrState("loading");
+//     const reclaimProofRequest = await ReclaimProofRequest.init(
+//       APP_ID,
+//       APP_SECRET,
+//       PROVIDER_ID
+//     );
+//     const requestUrl = await reclaimProofRequest.getRequestUrl();
+//     if (requestUrl) {
+//       setQrUrl(requestUrl);
+//       setQrState("waiting");
+//     }
+//     await reclaimProofRequest.startSession({
+//       onSuccess: (proofs) => {
+//         console.log("Verification success", proofs);
+//         setQrState("success");
+//         setRes(proofs.claimData.context);
+//       },
+//       // Called if there's an error during verification
+//       onError: (error) => {
+//         console.error("Verification failed", error);
+//       },
+//     });
+//   };
+
+//   const handleGenerateQr = () => {
+//     setQrState("loading");
+//     setTimeout(() => {
+//       setQrUrl("https://example.com/qr-code"); // Replace with dynamic QR URL
+//       setQrState("success");
+//     }, 2000); // Simulate loading time
+//   };
+
+// const page = () => {
+//   return (
+//     <div>page</div>
+//   )
+// }
+
+// export default page
+
 const Page = () => {
   // const router = useRouter();
   // const { uid, title } = router.query;

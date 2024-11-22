@@ -35,7 +35,7 @@ const demoImages = [
 
 export function HeroSection() {
   return (
-    <section className="  ">
+    <section className="mt-20  ">
       <div className="container relative  justify-center mx-auto px-4 py-24 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-8">
           <div className="flex flex-col justify-center space-y-8">

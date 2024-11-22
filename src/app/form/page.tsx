@@ -25,6 +25,10 @@ import {
 import { toast } from "react-toastify";
 import Link from "next/link";
 
+ 
+
+export const dynamic = 'force-dynamic'
+
 export default function CreatorForm() {
   const [url_data, seturl_data] = useState("");
   const [endDate, setEndDate] = useState<Date | null>(new Date());
@@ -67,13 +71,16 @@ const [walletAddress, setWalletAddress] = useState<string | null>(null);
       const signature = await connection.sendRawTransaction(signedTransaction.serialize()); // Send signed transaction
       await connection.confirmTransaction(signature); // Confirm the transaction
 
-      console.log('Transaction successful, signature:', signature);
+      // console.log('Transaction successful, signature:', signature);
     } catch (error) {
       console.error('Error sending transaction:', error);
     }
   }
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (typeof window !== "undefined") {
+      // Client-side-only code
+  
     const { solana }: any = window;
     // Request connection to Phantom
     const response = await solana.connect();
@@ -90,7 +97,7 @@ const [walletAddress, setWalletAddress] = useState<string | null>(null);
       icons: formData.get("icons"),
       end: endDate ? endDate.toISOString() : new Date().toISOString(),
     };
- 
+   
     try {
       const response = await axios.post("/api/posts", data, {
         headers: {
@@ -110,7 +117,7 @@ const [walletAddress, setWalletAddress] = useState<string | null>(null);
       console.error("There was an error sending the data:", error);
     }
   };
-
+  }
   function isValidURL(url: string): boolean {
     try {
       new URL(url);
@@ -121,8 +128,9 @@ const [walletAddress, setWalletAddress] = useState<string | null>(null);
     }
   }
   const [open, setOpen] = useState(false);
+
   return (
-    <>
+    <>    
       {open ? (
         <Dialog open={open} onOpenChange={setOpen} >
           <DialogContent >

@@ -7,16 +7,19 @@
 // import ConnectPhantomWallet from "./connectPhantomWallet/page";
 // import  CustomToggle  from "@/components/custom-toggle";
 
+
 import Footer from "@/components/footer";
 import { HeroSection } from "@/components/hero-section";
 import { HighlightsSection } from "@/components/highlights-section";
 import { TeamSpotlight } from "@/components/team-spotlight";
 
+export const dynamic = 'force-dynamic'
 
 
 export default function FrontPage() {
   return (
     <>
+
       <HeroSection />
       <section className=" flex justify-center w-full  md:py-24 lg:py-12 xl:py-12 ">
         <div className="container flex justify-center items-center px-4 md:px-6">
@@ -49,7 +52,7 @@ export default function FrontPage() {
               {/* toggle element ends here */}
               {/* <ConnectPhantomWallet /> */}
               <div className="space-y-2">
-                <h3 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 p-2">
+                <h3 className="text-3xl font-bold  sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 p-2">
                   Engage and Earn&nbsp;
                   <span className="bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7] bg-clip-text text-transparent">
                     with Instagram Stories
