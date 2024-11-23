@@ -1,5 +1,5 @@
 "use client";
-import { useRouter } from "next/router";
+import { useSearchParams } from "next/navigation";
 import { title } from "process";
 import React, { useState } from "react";
 import QRCode from "react-qr-code";
@@ -9,6 +9,8 @@ import CircularProgress, {
   CircularProgressProps,
 } from "@mui/material/CircularProgress";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Instagram, Twitter } from "lucide-react";
 
 const APP_ID = "0x896b97E0915ae00C61D8bb88b9f6A76d273cfE76";
 const APP_SECRET =
@@ -42,63 +44,13 @@ const sampledata = {
   publicData: {},
 };
 
-// const Page = () => {
-//   // const router = useRouter();
-//   // const { uid, title } = router.query;
-//   const uid = "aa";
-//   const title = "hello";
-//   const [res, setRes] = useState("");
-//   const [qrState, setQrState] = useState<
-//     "none" | "loading" | "waiting" | "success"
-//   >("none");
-//   const [qrUrl, setQrUrl] = useState("");
-
-//   const verifyOnReclaim = async () => {
-//     setQrState("loading");
-//     const reclaimProofRequest = await ReclaimProofRequest.init(
-//       APP_ID,
-//       APP_SECRET,
-//       PROVIDER_ID
-//     );
-//     const requestUrl = await reclaimProofRequest.getRequestUrl();
-//     if (requestUrl) {
-//       setQrUrl(requestUrl);
-//       setQrState("waiting");
-//     }
-//     await reclaimProofRequest.startSession({
-//       onSuccess: (proofs) => {
-//         console.log("Verification success", proofs);
-//         setQrState("success");
-//         setRes(proofs.claimData.context);
-//       },
-//       // Called if there's an error during verification
-//       onError: (error) => {
-//         console.error("Verification failed", error);
-//       },
-//     });
-//   };
-
-//   const handleGenerateQr = () => {
-//     setQrState("loading");
-//     setTimeout(() => {
-//       setQrUrl("https://example.com/qr-code"); // Replace with dynamic QR URL
-//       setQrState("success");
-//     }, 2000); // Simulate loading time
-//   };
-
-// const page = () => {
-//   return (
-//     <div>page</div>
-//   )
-// }
-
-// export default page
-
 const Page = () => {
-  // const router = useRouter();
-  // const { uid, title } = router.query;
-  const uid = "aa";
-  const title = "hello";
+  const searchParams = useSearchParams();
+  const uid = searchParams?.get("uid");
+  const title = searchParams?.get("title");
+
+  // const uid = "aa";
+  // const title = "hello";
   const [res, setRes] = useState("");
   const [qrState, setQrState] = useState<
     "none" | "loading" | "waiting" | "success"
@@ -153,7 +105,7 @@ const Page = () => {
       >
         <button
           onClick={verifyOnReclaim}
-          className="w-80 mb-4 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"
+          className="w-80 mb-4 flex items-center justify-center bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"
           style={{
             color: "#fff",
             border: "none",
@@ -163,12 +115,12 @@ const Page = () => {
             cursor: "pointer",
           }}
         >
-          Verify Instagram Story Views
+          <Instagram className="mr-2 h-4 w-4" /> Verify using Instagram Story
         </button>
 
-        <button
+        <Button
           onClick={verifyOnReclaim}
-          className="mb-4 w-80 "
+          className="mb-4 w-80 flex items-center justify-center "
           style={{
             backgroundColor: "#1DA1F2", // Twitter brand color
             color: "#fff",
@@ -179,8 +131,10 @@ const Page = () => {
             cursor: "pointer",
           }}
         >
-          Verify Tweets Insights
-        </button>
+          {" "}
+          <Twitter className="mr-2 relative bottom-[2px] h-4 w-4" /> Verify
+          using Twitter Insights
+        </Button>
       </div>
 
       <div
