@@ -7,19 +7,16 @@
 // import ConnectPhantomWallet from "./connectPhantomWallet/page";
 // import  CustomToggle  from "@/components/custom-toggle";
 
-
 import Footer from "@/components/footer";
 import { HeroSection } from "@/components/hero-section";
 import { HighlightsSection } from "@/components/highlights-section";
 import { TeamSpotlight } from "@/components/team-spotlight";
 
-export const dynamic = 'force-dynamic'
-
+export const dynamic = "force-dynamic";
 
 export default function FrontPage() {
   return (
     <>
-
       <HeroSection />
       <section className=" flex justify-center w-full  md:py-24 lg:py-12 xl:py-12 ">
         <div className="container flex justify-center items-center px-4 md:px-6">
@@ -52,71 +49,87 @@ export default function FrontPage() {
               {/* toggle element ends here */}
               {/* <ConnectPhantomWallet /> */}
               <div className="space-y-2">
-                <h3 className="text-3xl font-bold  sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 p-2">
+                <h3 className=" h-main text-mono p-2">
                   Engage and Earn&nbsp;
-                  <span className="bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7] bg-clip-text text-transparent">
-                    with Instagram Stories
-                  </span>
-
+                  <span className="text-gd">with Instagram Stories</span>
                 </h3>
-                <p className="max-w-[600px] text-zinc-200 md:text-xl dark:text-zinc-100 mx-auto">
-                  Perform transactions, sign up for the Reclaim Protocol, and get views on your Instagram stories. The highest engagement wins the total bid amount collected.
+                <p className="max-w-[600px] text-normal mx-auto">
+                  Perform transactions, sign up for the Reclaim Protocol, and
+                  get views on your Instagram stories. The highest engagement
+                  wins the total bid amount collected.
                 </p>
               </div>
               <div className="w-full max-w-full space-y-4 mx-auto">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                  <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg">
+                  <div className="flex flex-col cursor-pointer items-center space-y-2 border-gray-800 p-4 rounded-lg">
                     <div className="p-2 bg-black bg-opacity-50 rounded-full">
-                      <InboxIcon className="text-white h-6 w-6 mb-2 opacity-75" />
+                      <InboxIcon className="text-white h-14 w-14 mb-2 opacity-75" />
                     </div>
-                    <h2 className="text-xl font-bold text-white">Transaction Tracking</h2>
+                    <h2 className="text-xl font-bold text-white">
+                      Transaction Tracking
+                    </h2>
                     <p className="text-zinc-200 dark:text-zinc-100">
-                      Keep track of your transactions and ensure you meet the required amount to participate.
+                      Keep track of your transactions and ensure you meet the
+                      required amount to participate.
                     </p>
                   </div>
-                  <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg">
+                  <div className="flex flex-col cursor-pointer items-center space-y-2 border-gray-800 p-4 rounded-lg">
                     <div className="p-2 bg-black bg-opacity-50 rounded-full">
-                      <MergeIcon className="text-white h-6 w-6 mb-2 opacity-75" />
+                      <MergeIcon className="text-white h-14 w-14 mb-2 opacity-75" />
                     </div>
-                    <h2 className="text-xl font-bold text-white">Reclaim Protocol Signup</h2>
+                    <h2 className="text-xl font-bold text-white">
+                      Reclaim Protocol Signup
+                    </h2>
                     <p className="text-zinc-200 dark:text-zinc-100">
-                      Sign up for the Reclaim Protocol to start getting views on your Instagram stories.
+                      Sign up for the Reclaim Protocol to start getting views on
+                      your Instagram stories.
                     </p>
                   </div>
-                  <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg">
+                  <div className="flex flex-col cursor-pointer items-center space-y-2 border-gray-800 p-4 rounded-lg">
                     <div className="p-2 bg-black bg-opacity-50 rounded-full">
-                      <SettingsIcon className="text-white h-6 w-6 mb-2 opacity-75" />
+                      <SettingsIcon className="text-white h-14 w-14 mb-2 opacity-75" />
                     </div>
-                    <h2 className="text-xl font-bold text-white">Engagement Tracking</h2>
+                    <h2 className="text-xl font-bold text-white">
+                      Engagement Tracking
+                    </h2>
                     <p className="text-zinc-200 dark:text-zinc-100">
-                      Track the engagement on your Instagram stories and see how you rank.
+                      Track the engagement on your Instagram stories and see how
+                      you rank.
                     </p>
                   </div>
-                  <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg">
+                  <div className="flex flex-col cursor-pointer items-center space-y-2 border-gray-800 p-4 rounded-lg">
                     <div className="p-2 bg-black bg-opacity-50 rounded-full">
-                      <SearchIcon className="text-white h-6 w-6 mb-2 opacity-75" />
+                      <SearchIcon className="text-white h-14 w-14 mb-2 opacity-75" />
                     </div>
-                    <h2 className="text-xl font-bold text-white">Find Top Stories</h2>
+                    <h2 className="text-xl font-bold text-white">
+                      Find Top Stories
+                    </h2>
                     <p className="text-zinc-200 dark:text-zinc-100">
-                      Discover the top-performing Instagram stories and learn from the best.
+                      Discover the top-performing Instagram stories and learn
+                      from the best.
                     </p>
                   </div>
-                  <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg">
+                  <div className="flex flex-col cursor-pointer items-center space-y-2 border-gray-800 p-4 rounded-lg">
                     <div className="p-2 bg-black bg-opacity-50 rounded-full">
-                      <LockIcon className="text-white h-6 w-6 mb-2 opacity-75" />
+                      <LockIcon className="text-white h-14 w-14 mb-2 opacity-75" />
                     </div>
-                    <h2 className="text-xl font-bold text-white">Secure Transactions</h2>
+                    <h2 className="text-xl font-bold text-white">
+                      Secure Transactions
+                    </h2>
                     <p className="text-zinc-200 dark:text-zinc-100">
                       Your transactions are secure and protected at all times.
                     </p>
                   </div>
-                  <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg">
+                  <div className="flex flex-col cursor-pointer items-center space-y-2 border-gray-800 p-4 rounded-lg">
                     <div className="p-2 bg-black bg-opacity-50 rounded-full">
-                      <CombineIcon className="text-white h-6 w-6 mb-2 opacity-75" />
+                      <CombineIcon className="text-white h-14 w-14 mb-2 opacity-75" />
                     </div>
-                    <h2 className="text-xl font-bold text-white">Collaborative Engagement</h2>
+                    <h2 className="text-xl font-bold text-white">
+                      Collaborative Engagement
+                    </h2>
                     <p className="text-zinc-200 dark:text-zinc-100">
-                      Collaborate with others to boost your story views and engagement.
+                      Collaborate with others to boost your story views and
+                      engagement.
                     </p>
                   </div>
                   {/* <div className="flex flex-col items-center space-y-2 border-gray-800 p-4 rounded-lg">
@@ -156,7 +169,6 @@ export default function FrontPage() {
       <TeamSpotlight />
       <Footer />
 
-
       {/* <footer className="bg-black py-6">
         <div className="container mx-auto text-center text-zinc-200">
           <p>&copy; {new Date().getFullYear()} Your Company. All rights reserved.</p>
@@ -178,9 +190,6 @@ export default function FrontPage() {
           </div>
         </div>
       </footer> */}
-
-
-
     </>
   );
 }
