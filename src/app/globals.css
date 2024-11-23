@@ -20,17 +20,20 @@ body {
   }
 }
 
-.text-gd{
-  @apply bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7] bg-clip-text text-transparent
+.bg-gd {
+  @apply bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7];
 }
 
-.h-main{
- @apply text-3xl font-bold  sm:text-3xl xl:text-[2.35rem]/none 
-}
-.text-mono{
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 
-}
-.text-normal{
-  @apply text-zinc-200 text-sm md:text-lg dark:text-zinc-100
+.text-gd {
+  @apply bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7] bg-clip-text text-transparent;
 }
 
+.h-main {
+  @apply text-3xl font-bold  sm:text-3xl xl:text-[2.35rem]/none;
+}
+.text-mono {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500;
+}
+.text-normal {
+  @apply text-zinc-200 text-sm md:text-lg dark:text-zinc-100;
+}
