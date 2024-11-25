@@ -1,7 +1,18 @@
 "use client"; // Ensure this component runs on the client side
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import Query from "@irys/query";
 const UploadText = () => {
+  useEffect(() => {
+    const Fetch = async () => {
+      const myQuery = new Query();
+      const results = await myQuery
+        .search("irys:transactions")
+        .ids(["3CZvMXVGv4CvNDWeKfMTEpyRpWEeoYgYpfE4yw61y62d"]);
+      console.log(results);
+    };
+    Fetch();
+  }, []);
+
   const [text, setText] = useState("");
   const [transactionId, setTransactionId] = useState("");
 
