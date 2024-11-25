@@ -19,10 +19,10 @@ export default function RootLayout({
   connectDB();
   return (
     <html lang="en">
-      <body>
+      <body className="bg-black">
         {/* the div below is the grid background and can be used in any other projetc too */}
 
-        <div className="fixed left-0 top-0 -z-10 h-full w-full">
+        {/* <div className="fixed left-0 top-0 -z-10 h-full w-full">
           <div className="relative h-full w-full bg-black">
             <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]">
             </div>
@@ -31,9 +31,25 @@ export default function RootLayout({
             <div className="absolute left-[-25%] bottom-[-95%] h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle_400px_at_50%_400px,#fbfbfb36,#000)]">
             </div>
           </div>
+        </div> */}
+
+
+
+
+
+
+        <div className="relative w-full bg-black">
+          {/* Grid Pattern Background */}
+          <div
+            className="absolute inset-0 opacity-45"
+            style={{
+              backgroundImage: `linear-gradient(#444 1px, transparent 1px), linear-gradient(to right, #444 1px, transparent 1px)`,
+              backgroundSize: '25px 25px'
+            }}
+          />
+          <Header /><ToastContainer />
+          {children}
         </div>
-        <Header /><ToastContainer />
-        {children}
       </body>
     </html>
   );
