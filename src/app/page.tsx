@@ -2,8 +2,6 @@
 import React from 'react';
 import Footer from "@/components/footer";
 import Hero from "@/components/hero2";
-import { HighlightsSection } from "@/components/highlights-section";
-import { TeamSpotlight } from "@/components/team-spotlight";
 import Demo from "@/components/demo2";
 import APISection from "@/components/APISection2";
 import { cn } from "@/lib/utils";
@@ -56,8 +54,9 @@ export default function FrontPage() {
 
   return (
     <>
-
-      <HeroSection />
+      <Hero />
+      <Demo />
+      <APISection />
       <section className=" flex justify-center w-full  md:py-24 lg:py-12 xl:py-12 ">
         <div className="container flex justify-center items-center px-4 md:px-6">
           <div className="grid gap-6 items-center">
@@ -84,8 +83,6 @@ export default function FrontPage() {
           </div>
         </div>
       </section>
-      {/* <HighlightsSection />
-      <TeamSpotlight /> */}
       <Footer />
     </>
   );
@@ -115,7 +112,7 @@ const Feature = ({
       )}
       {index >= 3 && (
         <div className="opacity-0 group-hover/feature:opacity-10 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-[#ff9a9e] via-[#ff6b95] dark:from-neutral-800 to-transparent pointer-events-none" />
-        
+
       )}
       <div className="mb-4 relative z-5 px-10 text-white dark:text-neutral-400">
         {icon}
