@@ -1,46 +1,91 @@
-"use client"
+"use client";
+import React from "react";
+import styled from "styled-components";
 
-import { useState, useEffect } from "react"
-
-export default function SolanaLoadingComponent() {
-  const [progress, setProgress] = useState(0)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((oldProgress) => {
-        if (oldProgress === 100) {
-          return 0
-        }
-        const diff = Math.random() * 10
-        return Math.min(oldProgress + diff, 100)
-      })
-    }, 200)
-
-    return () => {
-      clearInterval(timer)
-    }
-  }, [])
-
+const SolanaLoadingComponent = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7] bg-clip-text text-transparent">
-      <div className="w-full max-w-md">
-        <div className="mb-4 flex items-center justify-between">
-          <span className="text-[#ff9a9e] text-sm font-medium">Loading</span>
-          <span className="text-[#ff9a9e] text-sm font-medium">{Math.round(progress)}%</span>
-        </div>
-        <div className="h-1 w-full bg-gray-900 rounded-full overflow-hidden">
-          <div 
-            className="h-full bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7] transition-all duration-200 ease-out"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
-        <div className="mt-8 flex justify-center">
-          <svg className="animate-spin h-8 w-8 text-[#ff9a9e]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 24">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 5.373 12h4zm2 5.291A7.962 7.962 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-          </svg>
+    <StyledWrapper>
+      <div className="h-screen w-screen justify-center flex items-center">
+        <div className="loader">
+          <div className="face">
+            <div className="circle" />
+          </div>
+          <div className="face">
+            <div className="circle" />
+          </div>
         </div>
       </div>
-    </div>
-  )
-}
+    </StyledWrapper>
+  );
+};
+
+const StyledWrapper = styled.div`
+  .loader {
+    width: 6em;
+    height: 6em;
+    font-size: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .loader .face {
+    position: absolute;
+    border-radius: 50%;
+    border-style: solid;
+    animation: animate023845 3s linear infinite;
+  }
+
+  .loader .face:nth-child(1) {
+    width: 100%;
+    height: 100%;
+    color: #ff9a9e;
+    border-color: currentColor transparent transparent currentColor;
+    border-width: 0.2em 0.2em 0em 0em;
+    --deg: -45deg;
+    animation-direction: normal;
+  }
+
+  .loader .face:nth-child(2) {
+    width: 70%;
+    height: 70%;
+    color: #a855f7;
+    border-color: currentColor currentColor transparent transparent;
+    border-width: 0.2em 0em 0em 0.2em;
+    --deg: -135deg;
+    animation-direction: reverse;
+  }
+
+  .loader .face .circle {
+    position: absolute;
+    width: 50%;
+    height: 0.1em;
+    top: 50%;
+    left: 50%;
+    background-color: transparent;
+    transform: rotate(var(--deg));
+    transform-origin: left;
+  }
+
+  .loader .face .circle::before {
+    position: absolute;
+    top: -0.5em;
+    right: -0.5em;
+    content: "";
+    width: 1em;
+    height: 1em;
+    background-color: currentColor;
+    border-radius: 50%;
+    box-shadow: 0 0 2em, 0 0 4em, 0 0 6em, 0 0 8em, 0 0 10em,
+      0 0 0 0.5em rgba(255, 255, 0, 0.1);
+  }
+
+  @keyframes animate023845 {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+`;
+
+export default SolanaLoadingComponent;

@@ -56,10 +56,9 @@ export default function FrontPage() {
 
   return (
     <>
-      <Hero />
-      <Demo />
-      <APISection />
-      <section className="flex justify-center w-full md:py-24 lg:py-12 xl:py-12">
+
+      <HeroSection />
+      <section className=" flex justify-center w-full  md:py-24 lg:py-12 xl:py-12 ">
         <div className="container flex justify-center items-center px-4 md:px-6">
           <div className="grid gap-6 items-center">
             <div className="flex flex-col justify-center items-center space-y-8 text-center gap-7">
@@ -70,8 +69,10 @@ export default function FrontPage() {
                     with Instagram Stories
                   </span>
                 </h3>
-                <p className="max-w-[600px] text-zinc-200 md:text-xl dark:text-zinc-100 mx-auto">
-                  Perform transactions, sign up for the Reclaim Protocol, and get views on your Instagram stories. The highest engagement wins the total bid amount collected.
+                <p className="max-w-[600px] text-normal mx-auto">
+                  Perform transactions, sign up for the Reclaim Protocol, and
+                  get views on your Instagram stories. The highest engagement
+                  wins the total bid amount collected.
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-5 py-10 max-w-7xl mx-auto">
