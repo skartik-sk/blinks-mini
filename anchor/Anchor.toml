@@ -6,7 +6,7 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-dashh = "AsjZ3kWAUSQRNt2pZVeJkywhZ6gpLpHZmJjduPmKZDZZ"
+dashh = "2cdoyYdYcU25bCXoLViEoKkSN3g18nHztXrf98AfsQUi"
 
 [registry]
 url = "https://api.apr.dev"
@@ -26,4 +26,4 @@ upgradeable = false
 [test.validator]
 bind_address = "127.0.0.1"
 ledger = ".anchor/test-ledger"
-rpc_port = 8899
+rpc_port = 8898

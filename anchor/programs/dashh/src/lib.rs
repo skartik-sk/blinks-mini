@@ -2,7 +2,7 @@
 
 use anchor_lang::prelude::*;
 
-declare_id!("AsjZ3kWAUSQRNt2pZVeJkywhZ6gpLpHZmJjduPmKZDZZ");
+declare_id!("2cdoyYdYcU25bCXoLViEoKkSN3g18nHztXrf98AfsQUi");
 // creater caimpaign
 // user participate in campaign
 // user can claim reward

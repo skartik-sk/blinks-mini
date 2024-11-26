@@ -21,7 +21,7 @@ export function getDashhProgramId(cluster: Cluster) {
     case 'devnet':
     case 'testnet':
       // This is the program ID for the Dashh program on devnet and testnet.
-      return new PublicKey('CounNZdmsQmWh7uVngV9FXW2dZ6zAgbJyYsvBpqbykg')
+      return new PublicKey('2cdoyYdYcU25bCXoLViEoKkSN3g18nHztXrf98AfsQUi')
     case 'mainnet-beta':
     default:
       return DASHH_PROGRAM_ID
