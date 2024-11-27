@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import connectDB from "@/lib/dbconnect";
 import Header from "@/components/header";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata: Metadata = {
   title: "Dashh",
@@ -33,21 +32,18 @@ export default function RootLayout({
           </div>
         </div> */}
 
-
-
-
-
-
         <div className="relative w-full bg-black">
           {/* Grid Pattern Background */}
-          <div
-            className="absolute inset-0 opacity-45"
+          {/* <div
+            className="absolute inset-0  opacity-45"
             style={{
               backgroundImage: `linear-gradient(#444 1px, transparent 1px), linear-gradient(to right, #444 1px, transparent 1px)`,
-              backgroundSize: '25px 25px'
+              backgroundSize: "25px 25px",
             }}
-          />
-          <Header /><ToastContainer />
+          /> */}
+
+          <Header />
+          <ToastContainer />
           {children}
         </div>
       </body>
