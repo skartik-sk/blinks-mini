@@ -10,7 +10,6 @@ interface ConnectPhantomWalletProps {
 }
 
 export default function ConnectPhantomWallet({
-  walletAddress,
   setWalletAddress,
 }: ConnectPhantomWalletProps) {
   const [isClient, setIsClient] = useState(false);
@@ -24,7 +23,7 @@ export default function ConnectPhantomWallet({
       setIsConnected(true);
     }
   }, []);
-  console.log(walletAddress);
+
 
   // Check if Phantom Wallet is installed
   const isPhantomInstalled = () => {

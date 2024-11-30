@@ -9,11 +9,11 @@ export async function GET(request: Request) {
 export const OPTIONS = async () => Response.json(null, { headers });
 export  async function POST(request:Request,params:{params:{id:string}}){
     const body:ActionPostRequest=await request.json();
-    console.log(body.account);
+
 
     const payload:ActionPostResponse={
         type:"external-link",
-        externalLink:`https://reclaim-verify-xmm5.vercel.app/?id=${params.params.id}&wallet=${body.account}`,
+        externalLink:`https://blinks.knowflow.study/verifyClaim/?id=${params.params.id}&wallet=${body.account}`,
         message:"Redirected to reaclaim verify",
     }
      return Response.json(payload,{

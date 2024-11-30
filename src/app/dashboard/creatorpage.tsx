@@ -27,33 +27,15 @@ const Creatorpage = ({ creator }: { creator: ICreator[] }) => {
   const isPhantomInstalled = () => {
     return typeof window !== 'undefined' && window.solana && (window.solana.isPhantom || window.solana.isMobile);
   };
-  // const [creators, setCreators] = useState<ICreator[]>([]);
+
   const [walletAddress, setWalletAddress] = useState("");
 
-  // async function fetchData() {
-  //   await connectDB();
-
-  //             const participated: IUser[] = await User.find({
-  //               "solAdd": walletAddress
-  //             });
-  //             const creatorIds = participated.map((user) => {
-  //               const url = new URL(user.post);
-  //               return url.pathname.split("/")[3];
-  //             });
-
-  //             setCreators(
-  //               await Creator.find({ _id: { $in: creatorIds } }).sort({ _id: -1 })
-  //             );
-
-
-  //       // }
   async function getSolanaAddress() {
     if (isPhantomInstalled()) {
       try {
         const { solana }: any = window;
         // Request connection to Phantom
         const response = await solana.connect();
-        console.log('Connected to wallet:', response.publicKey.toString());
         setWalletAddress(response.publicKey.toString());
       } catch (error) {
         console.error('Error connecting to Phantom wallet:', error);

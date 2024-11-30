@@ -6,11 +6,11 @@ import Demo from "@/components/demo2";
 import APISection from "@/components/APISection2";
 import { cn } from "@/lib/utils";
 import {
-  IconAdjustmentsBolt,
+
   IconCloud,
   IconCurrencyDollar,
   IconEaseInOut,
-  IconHeart,
+
   IconHelp,
   IconRouteAltLeft,
   IconTerminal2,

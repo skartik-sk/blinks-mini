@@ -10,8 +10,6 @@ import gamelogo from "@/images/game.png";
 import weblogo from "@/images/web.png";
 import reclaimlogo from "@/images/reclaim.png";
 import logo from "../images/whiteDASHH.png";
-import { AnimatedShinyText } from "./magicui/ShiningText";
-import { cn } from "@/lib/utils";
 const demoImages = [
   {
     src: blockchainlogo,
