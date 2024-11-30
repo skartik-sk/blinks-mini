@@ -1,67 +1,56 @@
 "use client";
-
-import React, { useState, useEffect } from "react";
-
-import { Card } from "@/components/ui/card";
-
-// import { Badge } from "@/components/ui/badge";
-// import { Zap } from "lucide-react";
-import { SolanaBlinksCard } from "../blinkcard/SolanaBlinksCard";
-// import connectDB from "@/lib/dbconnect";
-// import { ICreator } from "@/lib/interface/creater";
-// import Creator from "@/lib/models/creater";
+import React, { useState } from "react";
 import Link from "next/link";
-import { ICreator } from "@/lib/interface/creater";
 import CustomToggle from "@/components/custom-toggle";
+import { useDashhProgram } from "@/components/dashh/dashh-data-access";
+import Preblink from "../blinkcard/Preblink";
+import { useAnchorProvider } from "@/components/solana/solana-provider";
+import { BN } from "@coral-xyz/anchor";
 
-const Creatorpage = ({ creator }: { creator: ICreator[] }) => {
-  const [walletAddress, setWalletAddress] = useState("");
+const Creatorpage = () => {
+  const provider = useAnchorProvider()
+  const { accounts, getProgramAccount } = useDashhProgram();
   const [selectedOption, setSelectedOption] = useState("Live");
-
-  const handleToggle = (selected: string) => {
-    setSelectedOption(selected);
-  };
-  const isPhantomInstalled = () => {
-    return (
-      typeof window !== "undefined" &&
-      window.solana &&
-      (window.solana.isPhantom || window.solana.isMobile)
-    );
-  };
-  async function getSolanaAddress() {
-    if (isPhantomInstalled()) {
-      try {
-        const { solana }: any = window;
-        // Request connection to Phantom
-        const response = await solana.connect();
-        console.log("Connected to wallet:", response.publicKey.toString());
-        setWalletAddress(response.publicKey.toString());
-      } catch (error) {
-        console.error("Error connecting to Phantom wallet:", error);
-      }
-    }
+  if (getProgramAccount.isLoading) {
+    return <span className="loading loading-spinner loading-lg"></span>;
   }
-  useEffect(() => {
-    const searchParams = new URLSearchParams(window.location.search);
-
-    const id = searchParams.get("id");
-    if (!id) {
-      getSolanaAddress();
-    } else {
-      setWalletAddress(id);
-    }
-    // getSolanaAddress();
-  }, []);
-
-  creator = creator.filter((creator) => creator.solAdd == walletAddress);
-
+  if(! provider.wallet.publicKey){
+    return (
+      <div className="flex justify-center alert alert-info">
+        <span>
+          Please connect your wallet to view the events.
+        </span>
+      </div>
+    );
+  }
+  if (!getProgramAccount.data?.value) {
+    return (
+      <div className="flex justify-center alert alert-info">
+        <span>
+          Program account not found. Make sure you have deployed the program and
+          are on the correct cluster.
+        </span>
+      </div>
+    );
+  }
+  let creator  = accounts.data?.filter((account) => account.account.owner.toString == provider.wallet.publicKey.toString);
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
   if (selectedOption === "Closed") {
-    creator = creator.filter((creator) => new Date(creator.end) < yesterday);
+    creator = creator?.filter((creato) => new Date(new BN(creato.account.endtime).toNumber()) < yesterday);
   } else {
-    creator = creator.filter((creator) => new Date(creator.end) > yesterday);
+    creator = creator?.filter((creato) => new Date(new BN(creato.account.endtime).toNumber()) > yesterday);
   }
+  if(accounts.data){
+    creator = creator?.sort((a, b) => {
+      const aDaysLeft = (new Date(new BN(a.account.endtime).toNumber()).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24);
+      const bDaysLeft = (new Date(new BN(b.account.endtime).toNumber()).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24);
+      return   bDaysLeft-aDaysLeft;
+    });
+  }
+  const handleToggle = (option:any) => {
+    setSelectedOption(option);
+  };
 
   return (
     <div className="flex flex-col gap-5 w-screen">
@@ -70,7 +59,7 @@ const Creatorpage = ({ creator }: { creator: ICreator[] }) => {
           <CustomToggle options={["Live", "Closed"]} onChange={handleToggle} />
         </div>
 
-        <Link className="flex justify-center items-center" href="/form">
+        <Link className="flex justify-center items-center z-10" href="/form">
           <button className="bg-gd sm:mr-15 px-4 py-2 text-white text-lg font-medium rounded-lg ">
             Add Event
           </button>
@@ -80,31 +69,10 @@ const Creatorpage = ({ creator }: { creator: ICreator[] }) => {
         Creater's Event
       </div>
       <div className="flex flex-wrap gap-5 justify-center md:col-span-2 lg:col-span-1">
-        {creator.map((cat) => {
+        {creator?.map((cat) => {
           return (
             <>
-              <Card className="bg-black text-white h-fit border-gray-800">
-                {/* <CardHeader>
-                        <CardTitle className="text-xl sm:text-2xl font-bold flex items-center gap-2">
-                          <Zap className="w-5 h-5 sm:w-6 sm:h-6" />
-                          {creator.title}
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        <div>
-                          <h3 className="text-lg font-semibold mb-1 text-gray-400">Total Prize</h3>
-                          <p className="text-2xl sm:text-3xl font-bold text-white">{creator.amount}</p>
-                        </div>
-
-                        <div>
-                          <h3 className="text-lg font-semibold mb-1 text-gray-400">Network Status</h3>
-                          <Badge variant="secondary" className="bg-green-900 text-green-100 hover:bg-green-800">
-                            Active
-                          </Badge>
-                        </div>
-                      </CardContent> */}
-                <SolanaBlinksCard content={cat} id={cat._id} />
-              </Card>
+              <Preblink key={cat.publicKey.toString()}  account={cat.publicKey} />
             </>
           );
         })}

@@ -4,6 +4,8 @@ import connectDB from "@/lib/dbconnect";
 import Header from "@/components/header";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {SolanaProvider} from '@/components/solana/solana-provider'
+import {ReactQueryProvider} from './react-query-provider'
 
 
 export const metadata: Metadata = {
@@ -20,6 +22,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-black">
+      <ReactQueryProvider>
+          {/* <ClusterProvider> */}
+            <SolanaProvider>
+
+         
         {/* the div below is the grid background and can be used in any other projetc too */}
 
         {/* <div className="fixed left-0 top-0 -z-10 h-full w-full">
@@ -38,18 +45,22 @@ export default function RootLayout({
 
 
 
-        <div className="relative w-full bg-black">
+        <div className="relative w-full bg-black z-0">
           {/* Grid Pattern Background */}
           <div
-            className="absolute inset-0 opacity-45"
+            className="absolute inset-0 opacity-45 -z-10"
             style={{
+
               backgroundImage: `linear-gradient(#444 1px, transparent 1px), linear-gradient(to right, #444 1px, transparent 1px)`,
               backgroundSize: '25px 25px'
             }}
           />
           <Header /><ToastContainer />
           {children}
-        </div>
+        </div>   
+        </SolanaProvider>
+          {/* </ClusterProvider> */}
+        </ReactQueryProvider>
       </body>
     </html>
   );

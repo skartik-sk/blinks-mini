@@ -9,7 +9,6 @@ export async function GET(request: Request) {
 export const OPTIONS = async () => Response.json(null, { headers });
 export  async function POST(request:Request){
     const body:ActionPostRequest=await request.json();
-    console.log(body.account);
 
     const payload:ActionPostResponse={
         type:"external-link",

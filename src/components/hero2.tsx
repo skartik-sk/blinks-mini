@@ -27,7 +27,7 @@ export default function Hero() {
             </h1>
             
             <p className="mb-12 max-w-3xl text-lg text-gray-400 sm:text-xl">
-              The all-in-one platform for delivering AI agents powered by the latest LLMs.
+              The all-in-one web-3 platform for delivering AI agents powered by the latest LLMs.
             </p>
 
             {/* CTA Buttons */}

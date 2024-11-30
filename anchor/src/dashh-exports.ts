@@ -16,12 +16,12 @@ export function getDashhProgram(provider: AnchorProvider) {
 }
 
 // This is a helper function to get the program ID for the Dashh program depending on the cluster.
-export function getDashhProgramId(cluster: Cluster) {
+export function getDashhProgramId(cluster: Cluster = 'devnet') {
   switch (cluster) {
     case 'devnet':
     case 'testnet':
       // This is the program ID for the Dashh program on devnet and testnet.
-      return new PublicKey('2cdoyYdYcU25bCXoLViEoKkSN3g18nHztXrf98AfsQUi')
+      return new PublicKey('5PrtiiJ1m6NmepQ7XD2ZmPKSw8o8RGVnFUuMUXLPcjfP')
     case 'mainnet-beta':
     default:
       return DASHH_PROGRAM_ID

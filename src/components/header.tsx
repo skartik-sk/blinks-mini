@@ -1,27 +1,31 @@
 'use client'
 
-import { useState } from "react"
-import ConnectPhantomWallet from "@/app/connectPhantomWallet/connectbtn"
+import { useEffect, useState } from "react"
+
 import CustomToggle from "./custom-toggle"
 import Link from "next/link"
 import Image from "next/image"
 import logo from "../images/whiteDASHH.png"
 import { useRouter } from "next/navigation"
+import { useAnchorProvider, WalletButton } from "./solana/solana-provider"
 
 
 const Header = () => {
     const [selectedOption, setSelectedOption] = useState('');
     const router = useRouter()
+    const provider = useAnchorProvider()
+    useEffect(() => {
+        if (!provider.wallet.publicKey) {
+            router.push('/')
+        }
+      },[])
     const handleToggle = (selected: string) => {
         setSelectedOption(selected);
       };
-      if(selectedOption === 'User'){
-        router.push('/dashboard')
-      }
-      else if(selectedOption === 'Creator'){
-        router.push('/creatordashboard')
-      }
-    const [walletAddress, setWalletAddress] = useState<string | null>(null);
+      console.log(selectedOption);
+     
+      
+
     return (
       
             <nav className="fixed top-0 left-0 w-full z-10 bg-[#62626235] backdrop-blur-xl">
@@ -36,13 +40,13 @@ const Header = () => {
                         </div>
                         {/* Toggle thingg */}
                     </div>
-                    <div className={`hidden sm:${walletAddress ? "flex" : "hidden" } pl-28 justify-center items-center`}>
+                    <div className={`hidden sm:${provider.wallet.publicKey ? "flex" : "hidden" } pl-28 justify-center items-center`}>
                         <div className=" flex justify-center items-center">
                             <CustomToggle options={["User", "Creator"]}onChange={handleToggle}/>
                         </div>
                     </div>
                     <div className="flex flex-col-reverse justify-center items-center sm:flex sm:flex-row gap-2 right-0">
-                    <ConnectPhantomWallet walletAddress={walletAddress} setWalletAddress={setWalletAddress} />
+                    <WalletButton />
                     </div>
                     {/* <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
                             <button type="button" className="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
