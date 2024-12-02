@@ -14,25 +14,20 @@ import {
 } from "framer-motion";
 
 const codeString = `
-import { Integration } from "@botpress/sdk";
-import protonMailChannel from "./protonMailChannel";
+"use client";
+import { signIn, useSession } from "next-auth/react";
+import { useEffect } from "react";
+import axios from "axios";
+import Image from "next/image";
 
-export default new Integration({
-  channels: {
-    protonMailChannel: protonMailChannel,
-  },
-  actions: {
-    sendEmail: ({ ctx }) => {
-      console.info(\`sending email for bot\${ctx.botId}\`);
-    },
-  },
-  register: async ({ ctx }) => {
-    console.info(\`integration installed in bot \${ctx.botId}\`);
-  },
-  handler: async ({ req }) => {
-    console.info("received request from protonMail", req);
-  },
-});
+const  { authenticate } = useOkto() as OktoContextType;
+const getWallet = async (auth_token: string) => {
+  console.log(auth_token);
+  const url = "https://sandbox-api.okto.tech/api/v1/wallet";
+  const options = {
+    method: "GET",
+    headers: { Authorization: "Bearer YOUR_SECRET_TOKEN" },
+  };
 `;
 
 export default function APISection() {
@@ -44,7 +39,7 @@ export default function APISection() {
           <h1 className="text-white text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
             An{" "}
             <span className="bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7] bg-clip-text text-transparent">
-              API
+              docs
             </span>{" "}
             for everything
           </h1>
