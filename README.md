@@ -1,4 +1,4 @@
-[# DASHH - Decentralized Engagement Platform
+# DASHH - Decentralized Engagement Platform
 
 DASHH is the new ad platform focused on helping brands reach the masses through micro-influencers.
 
