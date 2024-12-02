@@ -10,10 +10,8 @@ import Preblink from "../blinkcard/Preblink";
 export const dynamic = 'force-dynamic'
 export default  function Component() {
   
-  const { accounts, getProgramAccount } = useDashhProgram();
-console.log("accounts",accounts);
-console.log("object",getProgramAccount);
-  if (getProgramAccount.isLoading) {
+  const { accounts, getProgramAccount,paccounts } = useDashhProgram();
+  if (getProgramAccount.isLoading) { 
     return <span className="loading loading-spinner loading-lg"></span>;
   }
   if (!getProgramAccount.data?.value) {
@@ -52,12 +50,14 @@ console.log("object",getProgramAccount);
 
         {
           accounts.data?.map((account) => {
-console.log(account.publicKey);
+            const val = paccounts.data?.filter((paccount) =>{
+              return new BN(paccount.account.id || 0).toNumber() ==new BN(account.account.id|| 0).toNumber()});
             return (
               <>
 
               <Preblink  key={account.publicKey.toString()}
-              account={account.publicKey}/>
+              account={account.publicKey}
+              size = {val?.length?val?.length:0 }/>
 
               </>
             )

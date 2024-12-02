@@ -4,30 +4,15 @@ import User from "@/lib/models/user";
 
 import {  ActionGetResponse, ActionPostRequest, ActionPostResponse, ACTIONS_CORS_HEADERS } from "@solana/actions";
 import { clusterApiUrl, Connection, LAMPORTS_PER_SOL, PublicKey, SystemProgram, Transaction } from "@solana/web3.js";
-import IDL  from "../../../../../anchor/target/idl/dashh.json";
-import { Program } from "@coral-xyz/anchor";
-import { Dashh, getDashhProgram } from "../../../../../anchor/src";
-import { useAnchorProvider } from "@/components/solana/solana-provider";
-import { useQuery } from "@tanstack/react-query";
 
 export  async function GET(request:Request ,params:{params:{id:string}  }){ 
     const url = new URL(request.url);
     const id = await params.params.id;
  console.log(id);
- const provider = useAnchorProvider()
- const programId = "5PrtiiJ1m6NmepQ7XD2ZmPKSw8o8RGVnFUuMUXLPcjfP"
- const program = getDashhProgram(provider)
-
-  const accountQuery = useQuery({
-    queryKey: ['dashh', 'fetch', { cluster:'devnet', account: programId }],
-    queryFn: () => program.account.campaign.fetch(id),
-  })
-
-//   const getProgramAccount = useQuery({
-//     queryKey: ['get-program-account', 'devnet'],
-//     queryFn: () => connection.getParsedAccountInfo(new PublicKey(programId)),
-//   })
-
+ 
+    const { accountQuery } = useDashhProgramAccount({
+        account:new PublicKey(id as string),
+       });  
        console.log("account query ",accountQuery);
 
 const creator = {

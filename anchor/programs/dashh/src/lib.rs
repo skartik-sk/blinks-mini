@@ -2,7 +2,7 @@
 
 use anchor_lang::prelude::*;
 
-declare_id!("5PrtiiJ1m6NmepQ7XD2ZmPKSw8o8RGVnFUuMUXLPcjfP");
+declare_id!("Gdh4Jq1DY5t47vVVVGeK2Zx3EyeDm9L923bRfSWQ2aDJ");
 // creater caimpaign
 // user participate in campaign
 // user can claim reward
@@ -14,6 +14,7 @@ pub mod dashh {
 
     pub fn create_campaign(ctx: Context<CreateCampaign>,campaignid:u64, title: String,image:String, description: String, lable:String,endtime:u64, reward: u64) -> Result<()> {
         let campaign = &mut ctx.accounts.campaign;
+        campaign.owner = ctx.accounts.signer.key();
         campaign.id = campaignid;
         campaign.title = title;
         campaign.image = image;
@@ -23,9 +24,10 @@ pub mod dashh {
         campaign.reward = reward;
         Ok(())
     }
-    pub fn create_participent(ctx: Context<CreateParticipent>,_campaignid:u64,_useraccount:Pubkey ) -> Result<()> {
+    pub fn create_participent(ctx: Context<CreateParticipent>,campaignid:u64,_useraccount:Pubkey ) -> Result<()> {
         let participent = &mut ctx.accounts.participent;
-        participent.user = *ctx.accounts.signer.key;
+        participent.id= campaignid;
+        participent.user = ctx.accounts.signer.key();
         participent.points = 0;
         Ok(())
     }
@@ -51,6 +53,7 @@ pub struct Campaign {
     pub lable: String,
     pub endtime: u64,
     pub reward: u64,
+    pub owner: Pubkey,
 
 }
 
@@ -74,6 +77,7 @@ pub struct CreateCampaign<'info> {
 #[account]
 #[derive(InitSpace)]
 pub struct Participent{
+  pub id: u64,
   pub user: Pubkey,
   pub points: u64,
 }

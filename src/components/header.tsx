@@ -14,11 +14,11 @@ const Header = () => {
     const [selectedOption, setSelectedOption] = useState('');
     const router = useRouter()
     const provider = useAnchorProvider()
-    useEffect(() => {
-        if (!provider.wallet.publicKey) {
-            router.push('/')
-        }
-      },[])
+    // useEffect(() => {
+    //     if (!provider.wallet.publicKey) {
+    //         router.push('/')
+    //     }
+    //   },[])
     const handleToggle = (selected: string) => {
         setSelectedOption(selected);
       };

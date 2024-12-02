@@ -34,12 +34,16 @@ export function useDashhProgram() {
   const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
   const transactionToast = useTransactionToast()
   const provider = useAnchorProvider()
-  const programId = "5PrtiiJ1m6NmepQ7XD2ZmPKSw8o8RGVnFUuMUXLPcjfP"
+  const programId = "Gdh4Jq1DY5t47vVVVGeK2Zx3EyeDm9L923bRfSWQ2aDJ"
   const program = getDashhProgram(provider)
-
-  const accounts = useQuery({
+  
+  const accounts = useQuery({ 
     queryKey: ['dashh', 'all', 'devnet'],
     queryFn: () => program.account.campaign.all(),
+  })
+  const paccounts = useQuery({
+    queryKey: ['dashh-p', 'all', 'devnet'],
+    queryFn: () => program.account.participent.all(),
   })
 
   const getProgramAccount = useQuery({
@@ -55,16 +59,7 @@ export function useDashhProgram() {
       const rewardAsU64 = new anchor.BN(reward);
   
       try {
-        // Connect to Phantom wallet
-        // const { solana }: any = window;
-        // if (!solana || !solana.isPhantom) {
-        //   console.log("Phantom wallet not found");
-
-        // }
-  
-        // const response = await solana.connect();
-        // const signer = new PublicKey(response.publicKey.toString());
-  
+     
         return program.methods
           .createCampaign(id, title, description, image, lable, endtimeAsU64, rewardAsU64)
           
@@ -89,7 +84,7 @@ export function useDashhProgram() {
     mutationKey:['create-Participant',`create`,'devnet'],
     mutationFn: async ({id,user}) => {
      return program.methods.createParticipent(
-     new anchor.BN( id),
+     new anchor.BN( id,16),
       user
     ).rpc();
     },
@@ -102,7 +97,25 @@ export function useDashhProgram() {
       toast.error(`Error creating campaign: ${error}`)
     }
   })
-  
+  const updateParticipant = useMutation<string,Error,participantargs>({
+    mutationKey:['update-Participant',`update`,'devnet'],
+    mutationFn: async ({id,user,points}) => {
+     return program.methods.updatedParticipent(
+   new anchor.BN( id),
+      user,
+new anchor.BN (points)
+    ).rpc();
+    },
+    onSuccess: (Signature) => {
+      transactionToast(Signature);
+      toast.success('points update successfully')
+      accounts.refetch()
+    },
+    onError: (error) => {
+      toast.error(`Error creating campaign: ${error}`)
+    }
+
+  })
 
   return {
     program,
@@ -111,9 +124,23 @@ export function useDashhProgram() {
     getProgramAccount,
     createCampaign,
     createParticipant,
-
+    updateParticipant,
+    paccounts
   }
 }
+
+// export function getParicipatedData({id}:{id:number}){
+//   const { program } = useDashhProgram()
+//   const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
+//   const provider = useAnchorProvider()
+//   const account = useQuery({
+//     queryKey: ['dashh', 'fetch', { cluster:'devnet', account: id }],
+//     queryFn: () => program.account.participent.all(),
+//   })
+//   return {
+//     account
+//   }
+// }
 
 export function  useDashhProgramAccount({ account }: { account: PublicKey }) {
   // const { cluster } = useCluster()
@@ -124,6 +151,7 @@ export function  useDashhProgramAccount({ account }: { account: PublicKey }) {
     queryKey: ['dashh', 'fetch', { cluster:'devnet', account: account.toBase58() }],
     queryFn: () => program.account.campaign.fetch(account),
   })
+  
 
 
   const updateParticipant = useMutation<string,Error,participantargs>({
@@ -148,7 +176,7 @@ new anchor.BN (points)
 
   return {
     accountQuery,
-    updateParticipant
-
+    updateParticipant,
+    
   }
 }

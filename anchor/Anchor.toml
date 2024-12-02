@@ -5,14 +5,17 @@ anchor_version = "0.30.1"
 resolution = true
 skip-lint = false
 
+[programs.devnet]
+dashh = "Gdh4Jq1DY5t47vVVVGeK2Zx3EyeDm9L923bRfSWQ2aDJ"
+
 [programs.localnet]
-dashh = "5PrtiiJ1m6NmepQ7XD2ZmPKSw8o8RGVnFUuMUXLPcjfP"
+dashh = "7qpRXNFY5PJQfwptK4BosJ5jCnVeEYRWATFu8BBDTVcr"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Localnet"
+cluster = "Devnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
@@ -26,4 +29,4 @@ upgradeable = false
 [test.validator]
 bind_address = "127.0.0.1"
 ledger = ".anchor/test-ledger"
-rpc_port = 8898
+rpc_port = 8899

@@ -5,7 +5,7 @@ import { useDashhProgramAccount } from '@/components/dashh/dashh-data-access';
 import { PublicKey } from '@solana/web3.js';
 import { ICreator } from '@/lib/interface/creater';
 import BN from 'bn.js';
-const Preblink = ({ account }: { account: PublicKey }) => {
+const Preblink = ({ account,size }: { account: PublicKey,size:number }) => {
     const { accountQuery } = useDashhProgramAccount({
         account,
       });
@@ -49,11 +49,11 @@ const id = accountQuery.data?.id;
     _id: idAsNumber.toString(), // Ensure _id is a string if that's the type in ICreator
   };
 
-    
+    console.log("id",accountQuery);
   return (
 <>
 <Card className="bg-black text-white h-fit border-gray-800">
-                  <SolanaBlinksCard content={cat} id={cat.id} />
+                  <SolanaBlinksCard content={cat} id={cat.id} size= {size} />
                 </Card>
 </>
   )

@@ -5,7 +5,7 @@ import {Dashh} from '../target/types/dashh'
 import { BankrunProvider, startAnchor } from 'anchor-bankrun'
 import { randomUUID } from 'crypto'
 const IDL = require('../target/idl/dashh.json')
-const campaign_address = new PublicKey("AsjZ3kWAUSQRNt2pZVeJkywhZ6gpLpHZmJjduPmKZDZZ")
+const campaign_address = new PublicKey("7qpRXNFY5PJQfwptK4BosJ5jCnVeEYRWATFu8BBDTVcr")
 
 describe('dashh', () => {
   // Configure the client to use the local cluster.

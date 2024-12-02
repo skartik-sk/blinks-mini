@@ -5,7 +5,7 @@
  * IDL can be found at `target/idl/dashh.json`.
  */
 export type Dashh = {
-  "address": "5PrtiiJ1m6NmepQ7XD2ZmPKSw8o8RGVnFUuMUXLPcjfP",
+  "address": "7qpRXNFY5PJQfwptK4BosJ5jCnVeEYRWATFu8BBDTVcr",
   "metadata": {
     "name": "dashh",
     "version": "0.1.0",
@@ -258,6 +258,10 @@ export type Dashh = {
       "type": {
         "kind": "struct",
         "fields": [
+          {
+            "name": "id",
+            "type": "u64"
+          },
           {
             "name": "user",
             "type": "pubkey"

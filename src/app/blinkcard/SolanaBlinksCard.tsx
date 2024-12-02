@@ -4,13 +4,34 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ICreator } from '@/lib/interface/creater'
 import { Clock, Trophy } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { useDashhProgram } from '@/components/dashh/dashh-data-access'
+// import { BN } from 'bn.js'
+import { useAnchorProvider } from '@/components/solana/solana-provider'
+// import { PublicKey } from '@solana/web3.js'
 
-export function SolanaBlinksCard({ content, id }: { content: ICreator; id: string }) {
+export function SolanaBlinksCard({ content, id,size }: { content: ICreator; id: string,size:number }) {
+  const provider = useAnchorProvider();
   const daysLeft = content.end
     ? Math.max(0, Math.floor((new Date(content.end).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)))
     : 'N/A'
 
+    const { createParticipant } = useDashhProgram();
+const handleparticipate =async (e:any) => {
+  e.preventDefault();
+  await createParticipant.mutateAsync({
+    id:  Number(id),
+    user: provider.wallet.publicKey,
+    points: 0,
+  }).then
+  (function(){
+    console.log("done");
+  })
+  .catch(function(){
+    console.log("error");
+  });
 
+}
     const getDashboardLink = () => {
       if (typeof window !== 'undefined') {
         const hostname = window.location.hostname;
@@ -57,17 +78,18 @@ export function SolanaBlinksCard({ content, id }: { content: ICreator; id: strin
 
         <div className="text-center py-2 px-4 bg-[#1a1a1a]/40 rounded-lg backdrop-blur-sm">
           <span className="text-xs text-gray-400">
-            Current participants: <span className="text-white font-medium">{content.users.length?content.users.length: 0 }</span> users
+            Current participants: <span className="text-white font-medium">{size}</span> users
           </span>
         </div>
 
         <div className="space-y-2">
-          <Link
-            href={`https://dial.to/?action=solana-action:http://localhost:3000/api/donate/${content.solAdd}&cluster=devnet`}
-            className="block w-full py-2 text-center font-bold text-white rounded-lg bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7] hover:opacity-90 transition-all duration-300"
-          >
-            BLINK NOW
-          </Link>
+          <Button className='block w-full py-2 text-center font-bold text-white rounded-lg bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7] hover:opacity-90 transition-all duration-300' onClick={handleparticipate}>
+
+
+          
+            Participate
+          </Button>
+
           <Link
             href={getDashboardLink()}
             className="block w-full py-2 text-center font-medium text-gray-400 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300"
