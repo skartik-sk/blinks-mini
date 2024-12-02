@@ -6,7 +6,8 @@ import CustomToggle from "./custom-toggle";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../images/whiteDASHH.png";
-import { useAnchorProvider, WalletButton } from "./solana/solana-provider";
+import { useAnchorProvider } from "./solana/solana-provider";
+import SignInButton from "@/components/okto/utls";
 
 const Header = () => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -57,7 +58,7 @@ const Header = () => {
           </div>
         </div>
         <div className="flex flex-col-reverse justify-center items-center sm:flex sm:flex-row gap-2 right-0">
-          <WalletButton />
+        <SignInButton/>
         </div>
         {/* <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
                             <button type="button" className="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">

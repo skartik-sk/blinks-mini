@@ -107,9 +107,10 @@ export default function CreatorForm() {
               : (new Date().getTime() as number),
             reward: Number(formData.get("amount")) as number,
             owner: response.publicKey as PublicKey,
-          });
+          });  
+       
           if (res) {
-            seturl_data(res);
+            seturl_data("done");
           } else {
             return <div>Error Loading</div>;
           }

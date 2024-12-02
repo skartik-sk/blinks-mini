@@ -1,5 +1,5 @@
 "use client";
-import { useSearchParams } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import QRCode from "react-qr-code";
 import { ReclaimProofRequest } from "@reclaimprotocol/js-sdk";
@@ -63,13 +63,13 @@ function containsKeyword(input: string, ...keywords: string[]): boolean {
   });
 }
 
-export default function Page() {
+export default function Verify({uid}: {uid: string}) {
   // const { uid } = router;
   // const uid = "AAAA";
   // console.log(uid);
-  const searchParams = useSearchParams();
-  const uid = searchParams?.get("id") || "";
-  const title = searchParams?.get("title") || "";
+  // const searchParams = useSearchParams();
+
+  // const title = searchParams?.get("title") || "";
   console.log(uid);
   // const uid = "aa";
   // const title = "hello";
@@ -91,9 +91,9 @@ export default function Page() {
   const verifyOnReclaim = async () => {
     setQrState("loading");
     const reclaimProofRequest = await ReclaimProofRequest.init(
-        process.env.APP_ID || "",
-        process.env.APP_SECRET || "",
-        process.env.PROVIDER_ID || "",
+        process.env.NEXT_PUBLIC_APP_ID || "",
+        process.env.NEXT_PUBLIC_APP_SECRET || "",
+        process.env.NEXT_PUBLIC_PROVIDER_ID || "",
     );
     const requestUrl = await reclaimProofRequest.getRequestUrl();
     if (requestUrl) {
@@ -153,7 +153,7 @@ export default function Page() {
       {/* Header */}
       <div className="mb-12">
         <h1 className="text-4xl text-center font-bold uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">
-          {title || "Verification Page"}
+          {"Verification Page"}
         </h1>
         <p className="text-gray-400 mt-2 text-sm">
           Secure your identity with futuristic verification.

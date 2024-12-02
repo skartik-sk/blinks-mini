@@ -65,7 +65,9 @@ export function useDashhProgram() {
       const rewardAsU64 = new anchor.BN(reward);
 
       try {
-        return program.methods
+        // return 
+        
+     return await  program.methods
           .createCampaign(
             id,
             title,
@@ -74,15 +76,20 @@ export function useDashhProgram() {
             lable,
             endtimeAsU64,
             rewardAsU64,
-          )
+          ).rpc()
+          // {instructions = [a],
+          // signer= "abcd"}
 
-          .rpc();
+          
+
+          // .rpc();
       } catch (error) {
         console.error("Error creating campaign:", error);
         throw error;
       }
     },
     onSuccess: (signature) => {
+
       transactionToast(signature);
       toast.success("Campaign created successfully");
       accounts.refetch();

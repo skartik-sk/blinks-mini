@@ -5,8 +5,9 @@ import { Clock, Trophy } from "lucide-react";
 import { BN } from "bn.js";
 import { useDashhProgram } from "@/components/dashh/dashh-data-access";
 import { useAnchorProvider } from "@/components/solana/solana-provider";
-import Link from "next/link";
+// import Link from "next/link";
 import { useEffect, useState } from "react";
+import Verify from "@/components/verifyClaim/verify";
 
 export default function Page({ params }: { params: { id: string } }) {
   const { accounts, paccounts } = useDashhProgram();
@@ -67,16 +68,19 @@ export default function Page({ params }: { params: { id: string } }) {
     (account) =>
       account.account.owner.toString() == provider.wallet.publicKey.toString(),
   );
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="min-h-screen text-white mt-8 sm:p-8 font-mono">
+    <>
+    {isOpen ? (
+      <div className="min-h-screen text-white mt-8 sm:p-8 font-mono">
       <div className="max-w-4xl mx-auto mt-16  space-y-8">
         <div className="text-white flex justify-center m-5 gap-3">
           {myData ? (
-            <Link href={`http://localhost:3000/verifyClaim?id=${params.id}`}>
-              <button className="mt-4 px-4 py-2 bg-blue-600 text-white text-xl font-medium rounded hover:bg-blue-700">
+
+              <button onClick={()=>setIsOpen(true)} className="mt-4 px-4 py-2 bg-blue-600 text-white text-xl font-medium rounded hover:bg-blue-700">
                 Verify with Reclaim
               </button>
-            </Link>
+            
           ) : (
             <></>
           )}
@@ -206,5 +210,8 @@ export default function Page({ params }: { params: { id: string } }) {
         </div>
       </div>
     </div>
+    ):(<Verify uid={params.id}/>)}
+    </>
+    
   );
 }
