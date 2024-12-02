@@ -1,4 +1,4 @@
-# DASHH - Decentralized Engagement Platform
+[# DASHH - Decentralized Engagement Platform
 
 DASHH is the new ad platform focused on helping brands reach the masses through micro-influencers.
 
@@ -113,3 +113,4 @@ Once engagement is verified, payments are processed through a secure escrow prog
 - **Scalable**: Supports large-scale campaigns effortlessly.
 
 DASHH is the future of advertising, offering transparency, trust, and efficiency through Solana’s powerful blockchain technology.
+](https://github.com/skartik-sk/blinks-mini.git)
