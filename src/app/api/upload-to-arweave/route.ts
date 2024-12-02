@@ -4,26 +4,27 @@ import { Solana } from "@irys/upload-solana";
 
 const getIrysUploader = async () => {
   const irysUploader = await Uploader(Solana).withWallet(
-    process.env.PRIVATE_KEY
+    process.env.PRIVATE_KEY,
   );
   return irysUploader;
 };
 
 export async function POST(req: NextRequest) {
   const irysUploader = await getIrysUploader();
-  
+
   try {
-    const { data } = await req.json(); 
+    const { data } = await req.json();
 
-    const bufferData = Buffer.from(data, 'utf-8'); 
+    const bufferData = Buffer.from(data, "utf-8");
 
-    const receipt = await irysUploader.upload(bufferData); 
-    
+    const receipt = await irysUploader.upload(bufferData);
+
     console.log(`Data uploaded ==> https://gateway.irys.xyz/${receipt.id}`);
-    
- 
-    return NextResponse.json({ txid: `https://gateway.irys.xyz/${receipt.id}`,
-    receipt:receipt });
+
+    return NextResponse.json({
+      txid: `https://gateway.irys.xyz/${receipt.id}`,
+      receipt: receipt,
+    });
   } catch (e) {
     console.error("Error when uploading ", e);
 

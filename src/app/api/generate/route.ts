@@ -107,7 +107,7 @@ export async function POST(request: Request) {
         fromPubkey: sender,
         toPubkey: new PublicKey("8vbaCLhg1SZmiGNZfFzV2DEJHenFtdgg7G2JtY5v74i1"),
         lamports: amount * LAMPORTS_PER_SOL,
-      })
+      }),
     );
 
     const blockheight = await connection.getLatestBlockhash();
@@ -157,7 +157,7 @@ export async function POST(request: Request) {
   } catch (e) {
     return Response.json(
       { error: e },
-      { status: 400, headers: ACTIONS_CORS_HEADERS }
+      { status: 400, headers: ACTIONS_CORS_HEADERS },
     );
   }
 

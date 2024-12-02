@@ -24,7 +24,6 @@ export default function ConnectPhantomWallet({
     }
   }, []);
 
-
   // Check if Phantom Wallet is installed
   const isPhantomInstalled = () => {
     return (

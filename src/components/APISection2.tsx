@@ -1,11 +1,17 @@
-'use client';
-import React from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { useRef } from 'react';
+"use client";
+import React from "react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from 'lucide-react';
-import { motion, useAnimationFrame, useMotionTemplate, useMotionValue, useTransform } from 'framer-motion';
+import { ArrowRight } from "lucide-react";
+import {
+  motion,
+  useAnimationFrame,
+  useMotionTemplate,
+  useMotionValue,
+  useTransform,
+} from "framer-motion";
 
 const codeString = `
 import { Integration } from "@botpress/sdk";
@@ -36,7 +42,11 @@ export default function APISection() {
         {/* Left content */}
         <div className="flex flex-col justify-center space-y-4">
           <h1 className="text-white text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
-            An <span className='bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7] bg-clip-text text-transparent'>API</span> for everything
+            An{" "}
+            <span className="bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7] bg-clip-text text-transparent">
+              API
+            </span>{" "}
+            for everything
           </h1>
           <p className="text-base sm:text-lg text-gray-300">
             Extend your agents' functionality with our easy-to-use API and SDK.
@@ -70,7 +80,7 @@ export default function APISection() {
                 <SyntaxHighlighter
                   language="javascript"
                   style={solarizedlight}
-                  customStyle={{ backgroundColor: '#000' }} // Set background color to black
+                  customStyle={{ backgroundColor: "#000" }} // Set background color to black
                   className="text-xs sm:text-sm"
                 >
                   {codeString}
@@ -110,11 +120,11 @@ const MovingBorder = ({
 
   const x = useTransform(
     progress,
-    (val) => pathRef.current?.getPointAtLength(val).x
+    (val) => pathRef.current?.getPointAtLength(val).x,
   );
   const y = useTransform(
     progress,
-    (val) => pathRef.current?.getPointAtLength(val).y
+    (val) => pathRef.current?.getPointAtLength(val).y,
   );
 
   const transform = useMotionTemplate`translateX(${x}px) translateY(${y}px) translateX(-50%) translateY(-50%)`;
@@ -145,10 +155,11 @@ const MovingBorder = ({
           left: 0,
           display: "inline-block",
           transform,
-          background: 'linear-gradient(90deg, rgba(255,154,158,0) 0%, rgba(255,154,158,1) 50%, rgba(255,154,158,0) 100%)',
-          width: '150px', // Increase the width for a smoother effect
-          height: '150px', // Increase the height for a smoother effect
-          borderRadius: '50%',
+          background:
+            "linear-gradient(90deg, rgba(255,154,158,0) 0%, rgba(255,154,158,1) 50%, rgba(255,154,158,0) 100%)",
+          width: "150px", // Increase the width for a smoother effect
+          height: "150px", // Increase the height for a smoother effect
+          borderRadius: "50%",
         }}
       >
         {children}

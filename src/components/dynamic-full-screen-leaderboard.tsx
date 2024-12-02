@@ -1,21 +1,39 @@
-'use client'
+"use client";
 
-import Image from "next/image"
-import { Clock, Trophy } from "lucide-react"
+import Image from "next/image";
+import { Clock, Trophy } from "lucide-react";
 
 interface Player {
-  id: number
-  name: string
-  avatar: string
-  pointsToEarn: number
-  prize: number
+  id: number;
+  name: string;
+  avatar: string;
+  pointsToEarn: number;
+  prize: number;
 }
 
 const topPlayers: Player[] = [
-  { id: 2, name: "Skulldugger", avatar: "/placeholder.svg?height=64&width=64", pointsToEarn: 500, prize: 5000 },
-  { id: 1, name: "Klaxxon", avatar: "/placeholder.svg?height=80&width=80", pointsToEarn: 1500, prize: 10000 },
-  { id: 3, name: "Ultralex", avatar: "/placeholder.svg?height=64&width=64", pointsToEarn: 250, prize: 2500 },
-]
+  {
+    id: 2,
+    name: "Skulldugger",
+    avatar: "/placeholder.svg?height=64&width=64",
+    pointsToEarn: 500,
+    prize: 5000,
+  },
+  {
+    id: 1,
+    name: "Klaxxon",
+    avatar: "/placeholder.svg?height=80&width=80",
+    pointsToEarn: 1500,
+    prize: 10000,
+  },
+  {
+    id: 3,
+    name: "Ultralex",
+    avatar: "/placeholder.svg?height=64&width=64",
+    pointsToEarn: 250,
+    prize: 2500,
+  },
+];
 // worked on the leader board functionality
 export function DynamicFullScreenLeaderboard() {
   return (
@@ -23,23 +41,31 @@ export function DynamicFullScreenLeaderboard() {
       <div className="flex-grow flex flex-col max-w-6xl mx-auto w-full">
         <div className="flex flex-col sm:flex-row justify-between mb-8 space-y-6 sm:space-y-0">
           {/* Top 3 Players */}
-          {topPlayers.sort((a, b) => b.prize - a.prize).map((player, index) => (
-            <div key={player.id} className="flex-1 text-center">
-              <div className={`w-${index === 1 ? "'20'" : "'16'"} h-${index === 1 ? "'20'" : "'16'"} mx-auto mb-2 relative`}>
-                <Image
-                  src={player.avatar}
-                  alt={player.name}
-                  width={index === 1 ? 80 : 64}
-                  height={index === 1 ? 80 : 64}
-                  className="rounded-lg"
-                />
+          {topPlayers
+            .sort((a, b) => b.prize - a.prize)
+            .map((player, index) => (
+              <div key={player.id} className="flex-1 text-center">
+                <div
+                  className={`w-${index === 1 ? "'20'" : "'16'"} h-${index === 1 ? "'20'" : "'16'"} mx-auto mb-2 relative`}
+                >
+                  <Image
+                    src={player.avatar}
+                    alt={player.name}
+                    width={index === 1 ? 80 : 64}
+                    height={index === 1 ? 80 : 64}
+                    className="rounded-lg"
+                  />
+                </div>
+                <h3 className="font-bold">{player.name}</h3>
+                <div className="text-gray-400 text-sm">
+                  Earn {player.pointsToEarn} points
+                </div>
+                <div className="text-blue-400 font-bold">
+                  {player.prize.toLocaleString()}
+                </div>
+                <div className="text-gray-400 text-sm">Prize</div>
               </div>
-              <h3 className="font-bold">{player.name}</h3>
-              <div className="text-gray-400 text-sm">Earn {player.pointsToEarn} points</div>
-              <div className="text-blue-400 font-bold">{player.prize.toLocaleString()}</div>
-              <div className="text-gray-400 text-sm">Prize</div>
-            </div>
-          ))}
+            ))}
         </div>
 
         {/* Countdown Timer */}
@@ -55,7 +81,10 @@ export function DynamicFullScreenLeaderboard() {
         <div className="bg-gray-800 rounded-lg p-4 mb-6 text-center">
           <span className="text-gray-400">You earned </span>
           <span className="text-blue-400 font-bold">50</span>
-          <span className="text-gray-400"> today and are ranked - out of 13868 users</span>
+          <span className="text-gray-400">
+            {" "}
+            today and are ranked - out of 13868 users
+          </span>
         </div>
 
         {/* Leaderboard Table */}
@@ -86,5 +115,5 @@ export function DynamicFullScreenLeaderboard() {
         </div>
       </div>
     </div>
-  )
+  );
 }

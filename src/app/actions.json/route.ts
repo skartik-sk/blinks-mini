@@ -1,17 +1,14 @@
 import { ACTIONS_CORS_HEADERS, ActionsJson } from "@solana/actions";
 
-
 export const GET = async () => {
-
   const payload: ActionsJson = {
     rules: [
-      
       // map all root level routes to an action
       {
         pathPattern: "/",
         apiPath: "/api/donate/",
       },
-       {
+      {
         pathPattern: "/",
         apiPath: `/api/redirect/`,
       },
@@ -27,22 +24,18 @@ export const GET = async () => {
 // THIS WILL ENSURE CORS WORKS FOR BLINKS
 export const OPTIONS = GET;
 
-
 export const POST = async () => {
-
   const payload: ActionsJson = {
-    
     rules: [
       // map all root level routes to an action
       {
         pathPattern: "/",
         apiPath: "/api/donate",
       },
-       {
+      {
         pathPattern: "/",
         apiPath: `/api/redirect`,
       },
-      
     ],
   };
 

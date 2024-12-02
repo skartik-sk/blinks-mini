@@ -1,48 +1,62 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { ICreator } from '@/lib/interface/creater'
-import { Clock, Trophy } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { useDashhProgram } from '@/components/dashh/dashh-data-access'
+import Link from "next/link";
+import Image from "next/image";
+import { ICreator } from "@/lib/interface/creater";
+import { Clock, Trophy } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useDashhProgram } from "@/components/dashh/dashh-data-access";
 // import { BN } from 'bn.js'
-import { useAnchorProvider } from '@/components/solana/solana-provider'
+import { useAnchorProvider } from "@/components/solana/solana-provider";
 // import { PublicKey } from '@solana/web3.js'
 
-export function SolanaBlinksCard({ content, id,size }: { content: ICreator; id: string,size:number }) {
+export function SolanaBlinksCard({
+  content,
+  id,
+  size,
+}: {
+  content: ICreator;
+  id: string;
+  size: number;
+}) {
   const provider = useAnchorProvider();
   const daysLeft = content.end
-    ? Math.max(0, Math.floor((new Date(content.end).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)))
-    : 'N/A'
+    ? Math.max(
+        0,
+        Math.floor(
+          (new Date(content.end).getTime() - new Date().getTime()) /
+            (1000 * 60 * 60 * 24),
+        ),
+      )
+    : "N/A";
 
-    const { createParticipant } = useDashhProgram();
-const handleparticipate =async (e:any) => {
-  e.preventDefault();
-  await createParticipant.mutateAsync({
-    id:  Number(id),
-    user: provider.wallet.publicKey,
-    points: 0,
-  }).then
-  (function(){
-    console.log("done");
-  })
-  .catch(function(){
-    console.log("error");
-  });
-
-}
-    const getDashboardLink = () => {
-      if (typeof window !== 'undefined') {
-        const hostname = window.location.hostname;
-        if (hostname === 'localhost') {
-          return `/dashboard/${id}`;
-        } else {
-          return `https://blinks.knowflow.study/dashboard/${id}`;
-        }
+  const { createParticipant } = useDashhProgram();
+  const handleparticipate = async (e: any) => {
+    e.preventDefault();
+    await createParticipant
+      .mutateAsync({
+        id: Number(id),
+        user: provider.wallet.publicKey,
+        points: 0,
+      })
+      .then(function () {
+        console.log("done");
+      })
+      .catch(function () {
+        console.log("error");
+      });
+  };
+  const getDashboardLink = () => {
+    if (typeof window !== "undefined") {
+      const hostname = window.location.hostname;
+      if (hostname === "localhost") {
+        return `/dashboard/${id}`;
+      } else {
+        return `https://blinks.knowflow.study/dashboard/${id}`;
       }
-      return `https://blinks.knowflow.study/dashboard/${id}`;
-    };
+    }
+    return `https://blinks.knowflow.study/dashboard/${id}`;
+  };
 
   return (
     <div className="relative w-full max-w-[22rem] min-w-80 rounded-xl overflow-hidden sm:w-[20rem] md:w-[25rem] bg-[#0a0a0a]/40 backdrop-blur-sm border border-white/5 font-mono shadow-xl">
@@ -58,9 +72,7 @@ const handleparticipate =async (e:any) => {
           #blinks
         </div>
         <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
-          <h2 className="text-xl font-bold text-white">
-            {content.title}
-          </h2>
+          <h2 className="text-xl font-bold text-white">{content.title}</h2>
         </div>
       </div>
 
@@ -78,15 +90,16 @@ const handleparticipate =async (e:any) => {
 
         <div className="text-center py-2 px-4 bg-[#1a1a1a]/40 rounded-lg backdrop-blur-sm">
           <span className="text-xs text-gray-400">
-            Current participants: <span className="text-white font-medium">{size}</span> users
+            Current participants:{" "}
+            <span className="text-white font-medium">{size}</span> users
           </span>
         </div>
 
         <div className="space-y-2">
-          <Button className='block w-full py-2 text-center font-bold text-white rounded-lg bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7] hover:opacity-90 transition-all duration-300' onClick={handleparticipate}>
-
-
-          
+          <Button
+            className="block w-full py-2 text-center font-bold text-white rounded-lg bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7] hover:opacity-90 transition-all duration-300"
+            onClick={handleparticipate}
+          >
             Participate
           </Button>
 
@@ -99,42 +112,42 @@ const handleparticipate =async (e:any) => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
- // <div className='flex justify-center items-center p-2'>
-      //   <div className="relative flex flex-col w-full max-w-[25rem] min-w-80 bg-black rounded-xl shadow-lg overflow-hidden sm:w-[20rem] md:w-[25rem]">
-      //     <div className="relative h-48">
-        
-      //   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-70"></div>
-      //   <div className="absolute inset-0 flex flex-col justify-between p-4">
-      //     <h2 className="text-xl font-bold text-white">{content.title}</h2>
-      //     <h3 className="text-lg font-semibold text-white">Total Prize - {content.amount} SOL</h3>
-      //   </div>
-      //     </div>
-      //     <div className="p-4 bg-black bg-opacity-70">
-      //   <p className="text-gray-400 mb-4">{content.description}</p>
-      //   <Link passHref={true} href={`https://dial.to/?action=solana-action:https://blinks.knowflow.study/api/donate/${id}&cluster=devnet`}>
-      //     <button
-      //       className="relative bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-2 px-4 rounded-full shadow-lg hover:from-indigo-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full transition-all duration-300 ease-in-out transform hover:scale-105 overflow-hidden"
-      //     >
-      //       Discover 0.1 SOL
-      //       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-50 w-2/3 h-full transform -translate-x-full -translate-y-full animate-slide-diagonal"></div>
-      //       <style jsx>{`
-      //     @keyframes slide-diagonal {
-      //       0% {
-      //         transform: translateX(-100%) translateY(-0%);
-      //       }
-      //       100% {
-      //         transform: translateX(200%) translateY(0%);
-      //       }
-      //     }
-      //     .animate-slide-diagonal {
-      //       animation: slide-diagonal 2s infinite;
-      //     }
-      //       `}</style>
-      //     </button>
-      //   </Link>
-      //     </div>
-      //   </div>
-      // </div>
+// <div className='flex justify-center items-center p-2'>
+//   <div className="relative flex flex-col w-full max-w-[25rem] min-w-80 bg-black rounded-xl shadow-lg overflow-hidden sm:w-[20rem] md:w-[25rem]">
+//     <div className="relative h-48">
+
+//   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-70"></div>
+//   <div className="absolute inset-0 flex flex-col justify-between p-4">
+//     <h2 className="text-xl font-bold text-white">{content.title}</h2>
+//     <h3 className="text-lg font-semibold text-white">Total Prize - {content.amount} SOL</h3>
+//   </div>
+//     </div>
+//     <div className="p-4 bg-black bg-opacity-70">
+//   <p className="text-gray-400 mb-4">{content.description}</p>
+//   <Link passHref={true} href={`https://dial.to/?action=solana-action:https://blinks.knowflow.study/api/donate/${id}&cluster=devnet`}>
+//     <button
+//       className="relative bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-2 px-4 rounded-full shadow-lg hover:from-indigo-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full transition-all duration-300 ease-in-out transform hover:scale-105 overflow-hidden"
+//     >
+//       Discover 0.1 SOL
+//       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-50 w-2/3 h-full transform -translate-x-full -translate-y-full animate-slide-diagonal"></div>
+//       <style jsx>{`
+//     @keyframes slide-diagonal {
+//       0% {
+//         transform: translateX(-100%) translateY(-0%);
+//       }
+//       100% {
+//         transform: translateX(200%) translateY(0%);
+//       }
+//     }
+//     .animate-slide-diagonal {
+//       animation: slide-diagonal 2s infinite;
+//     }
+//       `}</style>
+//     </button>
+//   </Link>
+//     </div>
+//   </div>
+// </div>

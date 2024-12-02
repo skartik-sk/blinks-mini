@@ -1,8 +1,6 @@
-
 "use client";
 import { useSearchParams } from "next/navigation";
-
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import QRCode from "react-qr-code";
 import { ReclaimProofRequest } from "@reclaimprotocol/js-sdk";
 
@@ -13,36 +11,32 @@ import { Instagram, Twitter } from "lucide-react";
 import { useDashhProgram } from "@/components/dashh/dashh-data-access";
 import { useAnchorProvider } from "@/components/solana/solana-provider";
 
-const APP_ID = "0x896b97E0915ae00C61D8bb88b9f6A76d273cfE76";
-const APP_SECRET =
-  "0xa24f2911de618188e78d5981f62a3bba7497bc87b1e1789bac933ec614ca11a8";
-const PROVIDER_ID = "d18dcace-d59b-4432-b77e-655b7248334d";
 
-interface irysdata {
-  uid: string | null;
-  likes: number;
-  keyword: boolean;
-}
-export async function sendtoIrys(dataToSend: irysdata) {
-  try {
-    const response = await fetch("/api/upload-to-arweave", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(dataToSend),
-    });
+// interface irysdata {
+//   uid: string | null;
+//   likes: number;
+//   keyword: boolean;
+// }
+//  async function sendtoIrys(dataToSend: irysdata) {
+//   try {
+//     const response = await fetch("/api/upload-to-arweave", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(dataToSend),
+//     });
 
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
+//     if (!response.ok) {
+//       throw new Error("Network response was not ok");
+//     }
 
-    const data = await response.json();
-    console.log(data);
-  } catch (error) {
-    console.log({ error });
-  }
-}
+//     const data = await response.json();
+//     console.log(data);
+//   } catch (error) {
+//     console.log({ error });
+//   }
+// }
 
 function extractAfterFavoriteCount(input: string): string | null {
   try {
@@ -69,18 +63,14 @@ function containsKeyword(input: string, ...keywords: string[]): boolean {
   });
 }
 
-export default function Page () {
-
-
+export default function Page() {
   // const { uid } = router;
   // const uid = "AAAA";
   // console.log(uid);
   const searchParams = useSearchParams();
-  const uid = searchParams?.get("id");
-  const title = searchParams?.get("title");
+  const uid = searchParams?.get("id") || "";
+  const title = searchParams?.get("title") || "";
   console.log(uid);
-const { accounts } = useDashhProgram();
-const myv = accounts.data?.find((account) => account.account.id.toNumber() === Number(uid));
   // const uid = "aa";
   // const title = "hello";
   const [res, setRes] = useState("");
@@ -88,17 +78,22 @@ const myv = accounts.data?.find((account) => account.account.id.toNumber() === N
   const [qrState, setQrState] = useState<
     "none" | "loading" | "failed" | "waiting" | "success"
   >("none");
+  console.log(res);
 
   const [qrUrl, setQrUrl] = useState("");
-  const {updateParticipant} = useDashhProgram();
+  const { accounts, updateParticipant } = useDashhProgram();
   const provider = useAnchorProvider();
- 
+
+  const myd = accounts.data?.find(
+    (account) => account.account.id.toNumber() === Number(uid),
+  );
+
   const verifyOnReclaim = async () => {
     setQrState("loading");
     const reclaimProofRequest = await ReclaimProofRequest.init(
-      APP_ID,
-      APP_SECRET,
-      PROVIDER_ID
+        process.env.APP_ID || "",
+        process.env.APP_SECRET || "",
+        process.env.PROVIDER_ID || "",
     );
     const requestUrl = await reclaimProofRequest.getRequestUrl();
     if (requestUrl) {
@@ -111,32 +106,34 @@ const myv = accounts.data?.find((account) => account.account.id.toNumber() === N
         const likes = extractAfterFavoriteCount(proofs.claimData.context);
         const isKeyword = containsKeyword(
           proofs.claimData.context,
-          "won",
-          "@superteamin"
+          myd?.account.lable || "won",
+          "@superteamin",
         );
-        
+
         console.log(likes);
         if (likes && isKeyword) {
-            const points = Number(likes) * 10;
-            updateParticipant.mutateAsync({
-                id: Number(uid),
-                user:provider.wallet.publicKey,
-                points: points,
-            }).then((result) => {
-                // Your logic here
-                setDeploying(true);
-                console.log("done", result);
-              })
-              .catch((error) => {
-                console.error(error);
-              });
-        //   const dataToSend = {
-        //     uid: uid,
-        //     likes: Number(likes),
-        //     keyword: isKeyword,
-        //   };
-        //   sendtoIrys(dataToSend);
-        //   setQrState("success");
+          const points = Number(likes) * 10;
+          updateParticipant
+            .mutateAsync({
+              id: Number(uid),
+              user: provider.wallet.publicKey,
+              points: points,
+            })
+            .then((result) => {
+              // Your logic here
+              setDeploying(true);
+              console.log("done", result);
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+          //   const dataToSend = {
+          //     uid: uid,
+          //     likes: Number(likes),
+          //     keyword: isKeyword,
+          //   };
+          //   sendtoIrys(dataToSend);
+          //   setQrState("success");
         } else {
           setQrState("success");
         }
@@ -254,4 +251,4 @@ const myv = accounts.data?.find((account) => account.account.id.toNumber() === N
       </div>
     </div>
   );
-};
+}

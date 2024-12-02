@@ -1,36 +1,38 @@
-'use client'
+"use client";
 
 // import { ArrowRightIcon } from "lucide-react"
-import React, { useState } from "react"
-import { useRouter } from 'next/navigation';
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface ToggleProps {
-  options?: [string, string]
-  onChange?: (selectedOption: string) => void
+  options?: [string, string];
+  onChange?: (selectedOption: string) => void;
 }
 
-export default function CustomToggle({ options = ["User", "Creator"], onChange }: ToggleProps) {
+export default function CustomToggle({
+  options = ["User", "Creator"],
+  onChange,
+}: ToggleProps) {
   const [activeOption, setActiveOption] = useState(options[0]);
   const router = useRouter();
 
   const handleToggle = (option: string) => {
-    setActiveOption(option)
-    console.log(option)
-    console.log(activeOption)
+    setActiveOption(option);
+    console.log(option);
+    console.log(activeOption);
     if (onChange) {
-      onChange(option)
+      onChange(option);
     }
-    
+
     console.log(activeOption);
 
     // Navigate to the dashboard
     if (option === "User") {
-      router.push('/dashboard');
-    } else if(option === "Creator") {
-      router.push('/creatordashboard');
+      router.push("/dashboard");
+    } else if (option === "Creator") {
+      router.push("/creatordashboard");
     }
-  }
-  
+  };
 
   return (
     // Here is the custom toggle component
@@ -46,12 +48,12 @@ export default function CustomToggle({ options = ["User", "Creator"], onChange }
                   <button
                     key={option}
                     onClick={() => handleToggle(option)}
-                    className={`py-2 px-4 rounded-full text-sm lg:text-base font-medium transition-colors duration-200 ${activeOption === option
-                        ? 'bg-white text-[#353348]'
-                        : 'bg-transparent text-white'
-                      }`}
+                    className={`py-2 px-4 rounded-full text-sm lg:text-base font-medium transition-colors duration-200 ${
+                      activeOption === option
+                        ? "bg-white text-[#353348]"
+                        : "bg-transparent text-white"
+                    }`}
                   >
-
                     {option}
                   </button>
                 </>
@@ -62,5 +64,5 @@ export default function CustomToggle({ options = ["User", "Creator"], onChange }
         </div>
       </span>
     </div>
-  )
+  );
 }

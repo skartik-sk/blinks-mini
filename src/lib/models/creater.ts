@@ -1,6 +1,6 @@
 // lib/models/creator.ts
-import mongoose, { Schema, Model } from 'mongoose';
-import { ICreator } from '../interface/creater';
+import mongoose, { Schema, Model } from "mongoose";
+import { ICreator } from "../interface/creater";
 
 const CreatorSchema: Schema = new Schema({
   solAdd: { type: String, required: true },
@@ -10,9 +10,10 @@ const CreatorSchema: Schema = new Schema({
   amount: { type: Number, required: true },
   icons: { type: String, required: true },
   users: { type: [String] },
-end: { type: Date, required: true },
+  end: { type: Date, required: true },
 });
 
-const Creator: Model<ICreator> = mongoose.models.Creator || mongoose.model<ICreator>('Creator', CreatorSchema);
+const Creator: Model<ICreator> =
+  mongoose.models.Creator || mongoose.model<ICreator>("Creator", CreatorSchema);
 
 export default Creator;

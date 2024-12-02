@@ -2,11 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 import connectDB from "@/lib/dbconnect";
 import Header from "@/components/header";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import {SolanaProvider} from '@/components/solana/solana-provider'
-import {ReactQueryProvider} from './react-query-provider'
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { SolanaProvider } from "@/components/solana/solana-provider";
+import { ReactQueryProvider } from "./react-query-provider";
 
 export const metadata: Metadata = {
   title: "Dashh",
@@ -22,14 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-black">
-      <ReactQueryProvider>
+        <ReactQueryProvider>
           {/* <ClusterProvider> */}
-            <SolanaProvider>
+          <SolanaProvider>
+            {/* the div below is the grid background and can be used in any other projetc too */}
 
-         
-        {/* the div below is the grid background and can be used in any other projetc too */}
-
-        {/* <div className="fixed left-0 top-0 -z-10 h-full w-full">
+            {/* <div className="fixed left-0 top-0 -z-10 h-full w-full">
           <div className="relative h-full w-full bg-black">
             <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]">
             </div>
@@ -40,25 +37,20 @@ export default function RootLayout({
           </div>
         </div> */}
 
-
-
-
-
-
-        <div className="relative w-full bg-black z-0">
-          {/* Grid Pattern Background */}
-          <div
-            className="absolute inset-0 opacity-45 -z-10"
-            style={{
-
-              backgroundImage: `linear-gradient(#444 1px, transparent 1px), linear-gradient(to right, #444 1px, transparent 1px)`,
-              backgroundSize: '25px 25px'
-            }}
-          />
-          <Header /><ToastContainer />
-          {children}
-        </div>   
-        </SolanaProvider>
+            <div className="relative w-full bg-black z-0">
+              {/* Grid Pattern Background */}
+              <div
+                className="absolute inset-0 opacity-45 -z-10"
+                style={{
+                  backgroundImage: `linear-gradient(#444 1px, transparent 1px), linear-gradient(to right, #444 1px, transparent 1px)`,
+                  backgroundSize: "25px 25px",
+                }}
+              />
+              <Header />
+              <ToastContainer />
+              {children}
+            </div>
+          </SolanaProvider>
           {/* </ClusterProvider> */}
         </ReactQueryProvider>
       </body>

@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import * as THREE from 'three';
+import React, { useEffect, useRef } from "react";
+import * as THREE from "three";
 
 const Globe = () => {
   const mountRef = useRef<HTMLDivElement>(null);
@@ -8,20 +8,32 @@ const Globe = () => {
     if (!mountRef.current) return;
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000,
+    );
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     mountRef.current.appendChild(renderer.domElement);
 
     // Create the interior sphere
     const interiorGeometry = new THREE.SphereGeometry(5, 32, 32);
-    const interiorMaterial = new THREE.MeshStandardMaterial({ color: 0x0077ff, transparent: true, opacity: 0.6 });
+    const interiorMaterial = new THREE.MeshStandardMaterial({
+      color: 0x0077ff,
+      transparent: true,
+      opacity: 0.6,
+    });
     const interiorSphere = new THREE.Mesh(interiorGeometry, interiorMaterial);
     scene.add(interiorSphere);
 
     // Create the outline sphere
     const outlineGeometry = new THREE.SphereGeometry(5.1, 32, 32); // Slightly larger for the outline
-    const outlineMaterial = new THREE.MeshBasicMaterial({ color: 0xc0c0c0, wireframe: true });
+    const outlineMaterial = new THREE.MeshBasicMaterial({
+      color: 0xc0c0c0,
+      wireframe: true,
+    });
     const outlineSphere = new THREE.Mesh(outlineGeometry, outlineMaterial);
     scene.add(outlineSphere);
 
@@ -48,7 +60,7 @@ const Globe = () => {
     };
   }, []);
 
-  return <div ref={mountRef} style={{ width: '100%', height: '100vh' }} />;
+  return <div ref={mountRef} style={{ width: "100%", height: "100vh" }} />;
 };
 
 export default Globe;

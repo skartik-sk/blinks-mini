@@ -1,10 +1,8 @@
-import SolanaLoadingComponent from '@/components/loading'
-import React from 'react'
+import SolanaLoadingComponent from "@/components/loading";
+import React from "react";
 
 const Loading = () => {
-  return (
-    <SolanaLoadingComponent />
-  )
-}
+  return <SolanaLoadingComponent />;
+};
 
-export default Loading
+export default Loading;

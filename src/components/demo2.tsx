@@ -1,4 +1,4 @@
-import TiltCard from './tilt-card2'
+import TiltCard from "./tilt-card2";
 
 export default function Demo() {
   return (
@@ -16,6 +16,5 @@ export default function Demo() {
         /> */}
       </div>
     </div>
-  )
+  );
 }
-

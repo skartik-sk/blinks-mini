@@ -5,273 +5,228 @@
  * IDL can be found at `target/idl/dashh.json`.
  */
 export type Dashh = {
-  "address": "7qpRXNFY5PJQfwptK4BosJ5jCnVeEYRWATFu8BBDTVcr",
-  "metadata": {
-    "name": "dashh",
-    "version": "0.1.0",
-    "spec": "0.1.0",
-    "description": "Created with Anchor"
-  },
-  "instructions": [
+  address: "7qpRXNFY5PJQfwptK4BosJ5jCnVeEYRWATFu8BBDTVcr";
+  metadata: {
+    name: "dashh";
+    version: "0.1.0";
+    spec: "0.1.0";
+    description: "Created with Anchor";
+  };
+  instructions: [
     {
-      "name": "createCampaign",
-      "discriminator": [
-        111,
-        131,
-        187,
-        98,
-        160,
-        193,
-        114,
-        244
-      ],
-      "accounts": [
+      name: "createCampaign";
+      discriminator: [111, 131, 187, 98, 160, 193, 114, 244];
+      accounts: [
         {
-          "name": "signer",
-          "writable": true,
-          "signer": true
+          name: "signer";
+          writable: true;
+          signer: true;
         },
         {
-          "name": "campaign",
-          "writable": true,
-          "pda": {
-            "seeds": [
+          name: "campaign";
+          writable: true;
+          pda: {
+            seeds: [
               {
-                "kind": "arg",
-                "path": "campaignid"
-              }
-            ]
-          }
+                kind: "arg";
+                path: "campaignid";
+              },
+            ];
+          };
         },
         {
-          "name": "systemProgram",
-          "address": "11111111111111111111111111111111"
-        }
-      ],
-      "args": [
+          name: "systemProgram";
+          address: "11111111111111111111111111111111";
+        },
+      ];
+      args: [
         {
-          "name": "campaignid",
-          "type": "u64"
+          name: "campaignid";
+          type: "u64";
         },
         {
-          "name": "title",
-          "type": "string"
+          name: "title";
+          type: "string";
         },
         {
-          "name": "image",
-          "type": "string"
+          name: "image";
+          type: "string";
         },
         {
-          "name": "description",
-          "type": "string"
+          name: "description";
+          type: "string";
         },
         {
-          "name": "lable",
-          "type": "string"
+          name: "lable";
+          type: "string";
         },
         {
-          "name": "endtime",
-          "type": "u64"
+          name: "endtime";
+          type: "u64";
         },
         {
-          "name": "reward",
-          "type": "u64"
-        }
-      ]
+          name: "reward";
+          type: "u64";
+        },
+      ];
     },
     {
-      "name": "createParticipent",
-      "discriminator": [
-        71,
-        8,
-        24,
-        190,
-        154,
-        238,
-        185,
-        114
-      ],
-      "accounts": [
+      name: "createParticipent";
+      discriminator: [71, 8, 24, 190, 154, 238, 185, 114];
+      accounts: [
         {
-          "name": "signer",
-          "writable": true,
-          "signer": true
+          name: "signer";
+          writable: true;
+          signer: true;
         },
         {
-          "name": "participent",
-          "writable": true,
-          "pda": {
-            "seeds": [
+          name: "participent";
+          writable: true;
+          pda: {
+            seeds: [
               {
-                "kind": "arg",
-                "path": "campaignid"
+                kind: "arg";
+                path: "campaignid";
               },
               {
-                "kind": "arg",
-                "path": "useraccount"
-              }
-            ]
-          }
+                kind: "arg";
+                path: "useraccount";
+              },
+            ];
+          };
         },
         {
-          "name": "systemProgram",
-          "address": "11111111111111111111111111111111"
-        }
-      ],
-      "args": [
+          name: "systemProgram";
+          address: "11111111111111111111111111111111";
+        },
+      ];
+      args: [
         {
-          "name": "campaignid",
-          "type": "u64"
+          name: "campaignid";
+          type: "u64";
         },
         {
-          "name": "useraccount",
-          "type": "pubkey"
-        }
-      ]
+          name: "useraccount";
+          type: "pubkey";
+        },
+      ];
     },
     {
-      "name": "updatedParticipent",
-      "discriminator": [
-        53,
-        236,
-        20,
-        147,
-        92,
-        1,
-        150,
-        117
-      ],
-      "accounts": [
+      name: "updatedParticipent";
+      discriminator: [53, 236, 20, 147, 92, 1, 150, 117];
+      accounts: [
         {
-          "name": "signer",
-          "writable": true,
-          "signer": true
+          name: "signer";
+          writable: true;
+          signer: true;
         },
         {
-          "name": "participent",
-          "writable": true,
-          "pda": {
-            "seeds": [
+          name: "participent";
+          writable: true;
+          pda: {
+            seeds: [
               {
-                "kind": "arg",
-                "path": "campaignid"
+                kind: "arg";
+                path: "campaignid";
               },
               {
-                "kind": "arg",
-                "path": "useraccount"
-              }
-            ]
-          }
+                kind: "arg";
+                path: "useraccount";
+              },
+            ];
+          };
         },
         {
-          "name": "systemProgram",
-          "address": "11111111111111111111111111111111"
-        }
-      ],
-      "args": [
+          name: "systemProgram";
+          address: "11111111111111111111111111111111";
+        },
+      ];
+      args: [
         {
-          "name": "campaignid",
-          "type": "u64"
+          name: "campaignid";
+          type: "u64";
         },
         {
-          "name": "useraccount",
-          "type": "pubkey"
+          name: "useraccount";
+          type: "pubkey";
         },
         {
-          "name": "points",
-          "type": "u64"
-        }
-      ]
-    }
-  ],
-  "accounts": [
+          name: "points";
+          type: "u64";
+        },
+      ];
+    },
+  ];
+  accounts: [
     {
-      "name": "campaign",
-      "discriminator": [
-        50,
-        40,
-        49,
-        11,
-        157,
-        220,
-        229,
-        192
-      ]
+      name: "campaign";
+      discriminator: [50, 40, 49, 11, 157, 220, 229, 192];
     },
     {
-      "name": "participent",
-      "discriminator": [
-        44,
-        209,
-        38,
-        30,
-        148,
-        88,
-        55,
-        251
-      ]
-    }
-  ],
-  "types": [
+      name: "participent";
+      discriminator: [44, 209, 38, 30, 148, 88, 55, 251];
+    },
+  ];
+  types: [
     {
-      "name": "campaign",
-      "type": {
-        "kind": "struct",
-        "fields": [
+      name: "campaign";
+      type: {
+        kind: "struct";
+        fields: [
           {
-            "name": "id",
-            "type": "u64"
+            name: "id";
+            type: "u64";
           },
           {
-            "name": "title",
-            "type": "string"
+            name: "title";
+            type: "string";
           },
           {
-            "name": "image",
-            "type": "string"
+            name: "image";
+            type: "string";
           },
           {
-            "name": "description",
-            "type": "string"
+            name: "description";
+            type: "string";
           },
           {
-            "name": "lable",
-            "type": "string"
+            name: "lable";
+            type: "string";
           },
           {
-            "name": "endtime",
-            "type": "u64"
+            name: "endtime";
+            type: "u64";
           },
           {
-            "name": "reward",
-            "type": "u64"
+            name: "reward";
+            type: "u64";
           },
           {
-            "name": "owner",
-            "type": "pubkey"
-          }
-        ]
-      }
+            name: "owner";
+            type: "pubkey";
+          },
+        ];
+      };
     },
     {
-      "name": "participent",
-      "type": {
-        "kind": "struct",
-        "fields": [
+      name: "participent";
+      type: {
+        kind: "struct";
+        fields: [
           {
-            "name": "id",
-            "type": "u64"
+            name: "id";
+            type: "u64";
           },
           {
-            "name": "user",
-            "type": "pubkey"
+            name: "user";
+            type: "pubkey";
           },
           {
-            "name": "points",
-            "type": "u64"
-          }
-        ]
-      }
-    }
-  ]
+            name: "points";
+            type: "u64";
+          },
+        ];
+      };
+    },
+  ];
 };

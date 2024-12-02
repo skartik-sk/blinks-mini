@@ -1,43 +1,45 @@
-'use client';
-import React from 'react';
+"use client";
+import React from "react";
 import Footer from "@/components/footer";
 import Hero from "@/components/hero2";
 import Demo from "@/components/demo2";
 import APISection from "@/components/APISection2";
 import { cn } from "@/lib/utils";
 import {
-
   IconCloud,
   IconCurrencyDollar,
   IconEaseInOut,
-
   IconHelp,
   IconRouteAltLeft,
   IconTerminal2,
 } from "@tabler/icons-react";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default function FrontPage() {
   const features = [
     {
       title: "Transaction Tracking",
-      description: "Keep track of your transactions and ensure you meet the required amount to participate.",
+      description:
+        "Keep track of your transactions and ensure you meet the required amount to participate.",
       icon: <IconTerminal2 />,
     },
     {
       title: "Reclaim Protocol Signup",
-      description: "Sign up for the Reclaim Protocol to start getting views on your Instagram stories.",
+      description:
+        "Sign up for the Reclaim Protocol to start getting views on your Instagram stories.",
       icon: <IconEaseInOut />,
     },
     {
       title: "Engagement Tracking",
-      description: "Track the engagement on your Instagram stories and see how you rank.",
+      description:
+        "Track the engagement on your Instagram stories and see how you rank.",
       icon: <IconCurrencyDollar />,
     },
     {
       title: "Find Top Stories",
-      description: "Discover the top-performing Instagram stories and learn from the best.",
+      description:
+        "Discover the top-performing Instagram stories and learn from the best.",
       icon: <IconCloud />,
     },
     {
@@ -47,7 +49,8 @@ export default function FrontPage() {
     },
     {
       title: "Collaborative Engagement",
-      description: "Collaborate with others to boost your story views and engagement.",
+      description:
+        "Collaborate with others to boost your story views and engagement.",
       icon: <IconHelp />,
     },
   ];
@@ -104,7 +107,7 @@ const Feature = ({
       className={cn(
         "flex flex-col lg:border-r py-10 relative group/feature dark:border-neutral-800",
         (index === 0 || index === 3) && "lg:border-l dark:border-neutral-800",
-        index < 3 && "lg:border-b dark:border-neutral-800"
+        index < 3 && "lg:border-b dark:border-neutral-800",
       )}
     >
       {index < 3 && (
@@ -112,7 +115,6 @@ const Feature = ({
       )}
       {index >= 3 && (
         <div className="opacity-0 group-hover/feature:opacity-10 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-[#ff9a9e] via-[#ff6b95] dark:from-neutral-800 to-transparent pointer-events-none" />
-
       )}
       <div className="mb-4 relative z-5 px-10 text-white dark:text-neutral-400">
         {icon}

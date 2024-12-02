@@ -1,12 +1,10 @@
-import React from 'react'
+import React from "react";
 
 const Page = () => {
-  return (
-    <div>Page</div>
-  )
-}
+  return <div>Page</div>;
+};
 
-export default Page
+export default Page;
 // "use client"
 
 // import { useState } from 'react'
@@ -16,7 +14,6 @@ export default Page
 // import { Button } from "@/components/ui/button"
 // import { Wallet, Lock } from "lucide-react"
 // import { useRouter } from 'next/navigation'
-
 
 // export default page
 // export default function CreatorLogin() {

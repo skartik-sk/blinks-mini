@@ -1,18 +1,37 @@
-'use client';
+"use client";
 
-import { ICreator } from '@/lib/interface/creater';
-import { IUser } from '@/lib/interface/user';
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
-import { Connection, PublicKey, Transaction, SystemProgram, clusterApiUrl, LAMPORTS_PER_SOL } from '@solana/web3.js';
+import { ICreator } from "@/lib/interface/creater";
+import { IUser } from "@/lib/interface/user";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import {
+  Connection,
+  PublicKey,
+  Transaction,
+  SystemProgram,
+  clusterApiUrl,
+  LAMPORTS_PER_SOL,
+} from "@solana/web3.js";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
-const Getsoladd = ({ leaderboard, id, creator }: { leaderboard: IUser[], id: string, creator: ICreator }) => {
+const Getsoladd = ({
+  leaderboard,
+  id,
+  creator,
+}: {
+  leaderboard: IUser[];
+  id: string;
+  creator: ICreator;
+}) => {
   const [walletAddress, setWalletAddress] = useState<string | null>(null);
 
   const isPhantomInstalled = () => {
-    return typeof window !== 'undefined' && window.solana && (window.solana.isPhantom || window.solana.isMobile);
+    return (
+      typeof window !== "undefined" &&
+      window.solana &&
+      (window.solana.isPhantom || window.solana.isMobile)
+    );
   };
 
   useEffect(() => {
@@ -25,21 +44,21 @@ const Getsoladd = ({ leaderboard, id, creator }: { leaderboard: IUser[], id: str
         const { solana }: any = window;
         // Request connection to Phantom
         const response = await solana.connect();
-        console.log('Connected to wallet:', response.publicKey.toString());
+        console.log("Connected to wallet:", response.publicKey.toString());
         setWalletAddress(response.publicKey.toString());
       } catch (error) {
-        console.error('Error connecting to Phantom wallet:', error);
+        console.error("Error connecting to Phantom wallet:", error);
       }
     }
   }
 
   async function sendTransaction() {
     if (!walletAddress) {
-      console.log('Wallet not connected');
+      console.log("Wallet not connected");
       return;
     }
 
-    const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
+    const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
     const recipientAddress = new PublicKey(leaderboard[0].solAdd); // Public address of the recipient
     const senderPublicKey = new PublicKey(walletAddress); // Sender's public key (your wallet)
 
@@ -47,8 +66,8 @@ const Getsoladd = ({ leaderboard, id, creator }: { leaderboard: IUser[], id: str
       SystemProgram.transfer({
         fromPubkey: senderPublicKey,
         toPubkey: recipientAddress,
-        lamports: creator.amount * LAMPORTS_PER_SOL // Amount to send (in lamports, 1 SOL = 1e9 lamports)
-      })
+        lamports: creator.amount * LAMPORTS_PER_SOL, // Amount to send (in lamports, 1 SOL = 1e9 lamports)
+      }),
     );
 
     try {
@@ -58,18 +77,20 @@ const Getsoladd = ({ leaderboard, id, creator }: { leaderboard: IUser[], id: str
 
       const { solana }: any = window;
       const signedTransaction = await solana.signTransaction(transaction); // Sign transaction with Phantom
-      const signature = await connection.sendRawTransaction(signedTransaction.serialize()); // Send signed transaction
+      const signature = await connection.sendRawTransaction(
+        signedTransaction.serialize(),
+      ); // Send signed transaction
       await connection.confirmTransaction(signature); // Confirm the transaction
 
-      console.log('Transaction successful, signature:', signature);
+      console.log("Transaction successful, signature:", signature);
     } catch (error) {
-      console.error('Error sending transaction:', error);
+      console.error("Error sending transaction:", error);
     }
   }
 
   return (
-    <div className='text-white flex justify-end m-5 gap-3'>
-      {leaderboard.some(item => item.solAdd == walletAddress) && (
+    <div className="text-white flex justify-end m-5 gap-3">
+      {leaderboard.some((item) => item.solAdd == walletAddress) && (
         <Link href={`https://reclaim-verify-xmm5.vercel.app/?id=${id}`}>
           <button className="mt-4 px-4 py-2 bg-blue-600 text-white text-xl font-medium rounded hover:bg-blue-700">
             Verify with Reclaim
@@ -79,7 +100,10 @@ const Getsoladd = ({ leaderboard, id, creator }: { leaderboard: IUser[], id: str
 
       {creator.solAdd == walletAddress && (
         <>
-          <button onClick={sendTransaction} className="mt-4 px-4 py-2 bg-green-600 text-white text-xl font-medium rounded hover:bg-green-700">
+          <button
+            onClick={sendTransaction}
+            className="mt-4 px-4 py-2 bg-green-600 text-white text-xl font-medium rounded hover:bg-green-700"
+          >
             Disperse
           </button>
         </>

@@ -1,27 +1,36 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Button } from "@/components/ui/button"
-import { Wallet, Lock } from "lucide-react"
+import { useState } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { Wallet, Lock } from "lucide-react";
 
 export function CreatorLoginComponent() {
-  const [solAddress, setSolAddress] = useState("''")
-  const [password, setPassword] = useState("''")
+  const [solAddress, setSolAddress] = useState("''");
+  const [password, setPassword] = useState("''");
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // Here you would typically handle the login logic
-    console.log("'Login attempted with:'", { solAddress, password })
-  }
+    console.log("'Login attempted with:'", { solAddress, password });
+  };
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center p-4">
       <Card className="w-full max-w-md bg-gray-900 text-white border-gray-800">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold text-center">Creator Login</CardTitle>
+          <CardTitle className="text-2xl font-bold text-center">
+            Creator Login
+          </CardTitle>
           <CardDescription className="text-gray-400 text-center">
             Enter your SOL address and password to access your creator dashboard
           </CardDescription>
@@ -29,9 +38,14 @@ export function CreatorLoginComponent() {
         <form onSubmit={handleSubmit}>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="sol-address" className="text-gray-300">SOL Address</Label>
+              <Label htmlFor="sol-address" className="text-gray-300">
+                SOL Address
+              </Label>
               <div className="relative">
-                <Wallet className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" size={18} />
+                <Wallet
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                  size={18}
+                />
                 <Input
                   id="sol-address"
                   placeholder="Enter your SOL address"
@@ -42,9 +56,14 @@ export function CreatorLoginComponent() {
               </div>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-gray-300">Password</Label>
+              <Label htmlFor="password" className="text-gray-300">
+                Password
+              </Label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" size={18} />
+                <Lock
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                  size={18}
+                />
                 <Input
                   id="password"
                   type="password"
@@ -57,15 +76,20 @@ export function CreatorLoginComponent() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700 text-white">
+            <Button
+              type="submit"
+              className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+            >
               Log In
             </Button>
           </CardFooter>
         </form>
         <div className="text-center pb-6">
-          <a href="#" className="text-sm text-purple-400 hover:text-purple-300">Forgot password?</a>
+          <a href="#" className="text-sm text-purple-400 hover:text-purple-300">
+            Forgot password?
+          </a>
         </div>
       </Card>
     </div>
-  )
+  );
 }

@@ -9,16 +9,7 @@
   "instructions": [
     {
       "name": "create_campaign",
-      "discriminator": [
-        111,
-        131,
-        187,
-        98,
-        160,
-        193,
-        114,
-        244
-      ],
+      "discriminator": [111, 131, 187, 98, 160, 193, 114, 244],
       "accounts": [
         {
           "name": "signer",
@@ -75,16 +66,7 @@
     },
     {
       "name": "create_participent",
-      "discriminator": [
-        71,
-        8,
-        24,
-        190,
-        154,
-        238,
-        185,
-        114
-      ],
+      "discriminator": [71, 8, 24, 190, 154, 238, 185, 114],
       "accounts": [
         {
           "name": "signer",
@@ -125,16 +107,7 @@
     },
     {
       "name": "updated_participent",
-      "discriminator": [
-        53,
-        236,
-        20,
-        147,
-        92,
-        1,
-        150,
-        117
-      ],
+      "discriminator": [53, 236, 20, 147, 92, 1, 150, 117],
       "accounts": [
         {
           "name": "signer",
@@ -181,29 +154,11 @@
   "accounts": [
     {
       "name": "Campaign",
-      "discriminator": [
-        50,
-        40,
-        49,
-        11,
-        157,
-        220,
-        229,
-        192
-      ]
+      "discriminator": [50, 40, 49, 11, 157, 220, 229, 192]
     },
     {
       "name": "Participent",
-      "discriminator": [
-        44,
-        209,
-        38,
-        30,
-        148,
-        88,
-        55,
-        251
-      ]
+      "discriminator": [44, 209, 38, 30, 148, 88, 55, 251]
     }
   ],
   "types": [

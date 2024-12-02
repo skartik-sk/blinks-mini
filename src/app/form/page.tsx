@@ -5,9 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
-import {
-  PublicKey,
-} from "@solana/web3.js";
+import { PublicKey } from "@solana/web3.js";
 
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -85,7 +83,6 @@ export default function CreatorForm() {
       // Request connection to Phantom
       const response = await solana.connect();
 
-
       const formData = new FormData(e.target as HTMLFormElement);
       // console.log(endDate?.getTime());
       // const data = {
@@ -99,7 +96,7 @@ export default function CreatorForm() {
       // };
       try {
         if (response.publicKey) {
-    const res =   await createCampaign.mutateAsync({
+          const res = await createCampaign.mutateAsync({
             id: 0,
             title: formData.get("title") as string,
             description: formData.get("description") as string,
@@ -111,11 +108,10 @@ export default function CreatorForm() {
             reward: Number(formData.get("amount")) as number,
             owner: response.publicKey as PublicKey,
           });
-          if(res){
+          if (res) {
             seturl_data(res);
-          }
-          else {
-            return<div>Error Loading</div>
+          } else {
+            return <div>Error Loading</div>;
           }
         } else {
           <div>
@@ -126,8 +122,7 @@ export default function CreatorForm() {
         console.log(error);
       }
 
-
-       setOpen(true);
+      setOpen(true);
       // if (response.data.data._id != undefined) {
       //   // setFormAmount(Number(formData.get("amount")));
 
@@ -142,7 +137,7 @@ export default function CreatorForm() {
       new URL(url);
       return true;
     } catch (e) {
-console.log(e);
+      console.log(e);
       return false;
     }
   }
@@ -151,17 +146,17 @@ console.log(e);
   return (
     <>
       {open ? (
-        <Dialog  open={open} onOpenChange={setOpen} >
-          <DialogContent >
+        <Dialog open={open} onOpenChange={setOpen}>
+          <DialogContent>
             <DialogHeader>
-              <DialogTitle >Share Your Blink</DialogTitle>
+              <DialogTitle>Share Your Blink</DialogTitle>
             </DialogHeader>
             <div className="flex flex-col items-center space-y-4">
               <Button
                 className="mt-4 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 sm:mr-15 px-4 py-2 text-white text-xl font-medium rounded hover:from-purple-400 hover:via-pink-400 hover:to-orange-400 w-full "
                 onClick={() => {
                   navigator.clipboard.writeText(
-                    `https://dial.to/?action=solana-action:https://blinks.knowflow.study/api/donate/${url_data}&cluster=devnet`
+                    `https://dial.to/?action=solana-action:https://blinks.knowflow.study/api/donate/${url_data}&cluster=devnet`,
                   );
                   toast.success("Link copied to clipboard!");
                 }}
@@ -171,8 +166,6 @@ console.log(e);
             </div>
             <DialogFooter>
               <div className="flex opacity-70 justify-center align-middle items-center flex-col space-y-3">
-
-
                 <div className="flex space-x-2 ">
                   <Link
                     href={`https://www.facebook.com/sharer/sharer.php?u=https://dial.to/?action=solana-action:https://blinks.knowflow.study/api/donate/${url_data}&cluster=devnet`}
@@ -219,7 +212,8 @@ console.log(e);
                       Share on Discord
                     </Button>
                   </Link>
-                </div> </div>
+                </div>{" "}
+              </div>
             </DialogFooter>
           </DialogContent>
         </Dialog>
@@ -355,7 +349,6 @@ console.log(e);
             </CardContent>
           </div>
 
-
           {/* card */}
           <div className="flex justify-center items-center p-2">
             <div className="flex flex-col justify-center items-center">
@@ -398,8 +391,12 @@ console.log(e);
                   </p>
 
                   <div className="flex gap-1 m-1">
-                    <button className="bg-black border border-opacity-30 border-slate-300 text-white  hover:bg-gray-800 py-2 px-4 rounded-lg relative w-full">See Leaderboard</button>
-                    <button className="bg-black border border-opacity-30 border-slate-300 text-white  hover:bg-gray-800 py-2 px-4 rounded-lg relative w-full">Verify With Reclaim</button>
+                    <button className="bg-black border border-opacity-30 border-slate-300 text-white  hover:bg-gray-800 py-2 px-4 rounded-lg relative w-full">
+                      See Leaderboard
+                    </button>
+                    <button className="bg-black border border-opacity-30 border-slate-300 text-white  hover:bg-gray-800 py-2 px-4 rounded-lg relative w-full">
+                      Verify With Reclaim
+                    </button>
                   </div>
 
                   <button className="bg-black border border-opacity-30 border-slate-300 text-white  hover:bg-gray-800 py-2 px-4 rounded-lg relative w-full">
@@ -423,10 +420,8 @@ console.log(e);
               </div>
             </div>
           </div>
-          
         </div>
       )}
     </>
   );
-
 }
