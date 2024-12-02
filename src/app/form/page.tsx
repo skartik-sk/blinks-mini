@@ -40,41 +40,6 @@ export default function CreatorForm() {
   });
   const { createCampaign } = useDashhProgram();
 
-  // const [walletAddress, setWalletAddress] = useState<string | null>(null);
-  // async function sendTransaction() {
-  //   if (!walletAddress) {
-  //     console.log('Wallet not connected');
-  //     return;
-  //   }
-
-  //   const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
-  //   const recipientAddress = new PublicKey("8vbaCLhg1SZmiGNZfFzV2DEJHenFtdgg7G2JtY5v74i1"); // Public address of the recipient
-  //   const senderPublicKey = new PublicKey(walletAddress?walletAddress:"" ); // Sender's public key (your wallet)
-
-  //   const transaction = new Transaction().add(
-  //     SystemProgram.transfer({
-  //       fromPubkey: senderPublicKey,
-  //       toPubkey: recipientAddress,
-  //       lamports: formamount * LAMPORTS_PER_SOL // Amount to send (in lamports, 1 SOL = 1e9 lamports)
-  //     })
-  //   );
-
-  //   try {
-  //     const { blockhash } = await connection.getLatestBlockhash(); // Fetch recent blockhash
-  //     transaction.recentBlockhash = blockhash;
-  //     transaction.feePayer = senderPublicKey; // Set fee payer to sender's public key
-
-  //     const { solana }: any = window;
-  //     const signedTransaction = await solana.signTransaction(transaction); // Sign transaction with Phantom
-  //     const signature = await connection.sendRawTransaction(signedTransaction.serialize()); // Send signed transaction
-  //     await connection.confirmTransaction(signature); // Confirm the transaction
-
-  //     // console.log('Transaction successful, signature:', signature);
-  //   } catch (error) {
-  //     console.error('Error sending transaction:', error);
-  //   }
-  // }
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (typeof window !== "undefined") {

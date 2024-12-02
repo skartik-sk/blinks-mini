@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
+import { signIn, useSession } from "next-auth/react";
 import CustomToggle from "./custom-toggle";
 import Link from "next/link";
 import Image from "next/image";

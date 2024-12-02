@@ -1,10 +1,11 @@
 "use client";
 import { signIn, useSession } from "next-auth/react";
-import { useEffect } from "react";
-
-
+import { useEffect, useState } from "react";
+// import { useWalletMultiButton } from '@solana/wallet-adapter-base-ui';
 import axios from "axios";
 import Image from "next/image";
+import { useAnchorProvider, WalletButton } from "../solana/solana-provider";
+
 
 // const  { authenticate } = useOkto() as OktoContextType;
 
@@ -104,9 +105,28 @@ const createWalletOkto = async (auth_token: string) => {
 };
 
 const SignInButton = () => {
-  const { data: session } = useSession(); // Access session data
+  const { data: session } = useSession();
+  // const provider = useAnchorProvider();
+  // const { setVisible: setModalVisible } = useWalletModal();
+  //   const { , onConnect, onDisconnect, publicKey, walletIcon, walletName } = useWalletMultiButton({
+  //       onSelectWallet() {
+  //           setModalVisible(true);
+  //       },
+  //   });
+  // if(!session?.idToken && provider.wallet.publicKey){
+      
+  //       signIn("google"); //
+  //     }
+  // useEffect(() => {
+  //   // console.log(provider.wallet.publicKey);
+  //   if(provider.wallet.publicKey){
+  //     if(!session?.idToken)
+  //     signIn("google"); //
+  //   }
+  // }, []);
 
   const signInWithGoogle = async () => {
+    // onConnect();
     await signIn("google"); // Redirect after sign-in
   };
   const authenticate = async (idToken: string) => {
@@ -151,9 +171,15 @@ const SignInButton = () => {
 
   return (
     <>{
-        session?.idToken ? (<Image alt="profile" height={50} width={50} className="rounded-full" src={session.user?.image? session.user?.image: ""}/>):(<button className="mt-4 p-4 bg-white" onClick={signInWithGoogle}>
-      Sign in with Google
-    </button>)
+        session?.idToken ? (<Image alt="profile" height={50} width={50} className="rounded-full" src={session.user?.image? session.user?.image: ""}/>):(
+        <>
+        <div>
+
+        <WalletButton/>
+        </div>
+       
+        </>
+    )
     }
         </>
    
