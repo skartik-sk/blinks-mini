@@ -29,7 +29,7 @@ export const dynamic = "force-dynamic";
 export default function CreatorForm() {
   const [url_data, seturl_data] = useState("");
   const [endDate, setEndDate] = useState<Date | null>(new Date());
-
+//vercel
   const [content, setContent] = useState({
     title: "",
     description: "",
