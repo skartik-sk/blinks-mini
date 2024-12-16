@@ -16,7 +16,7 @@ interface Props {
   children: React.ReactNode;
   session: any;
 }
-export default function RootLayout({ children, session }: Props) {
+export default function RootLayout({ children, session }: any) {
   connectDB();
   return (
     <html lang="en">

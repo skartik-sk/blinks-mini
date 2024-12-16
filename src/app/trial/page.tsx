@@ -6,7 +6,7 @@ const dataToSend = {
   likes: 745,
   keyword: true,
 };
-export async function retrieveFromIrys(transactionId: String) {
+ async function retrieveFromIrys(transactionId: string) {
   const gatewayAddress = "https://gateway.irys.xyz/";
   const url = `${gatewayAddress}${transactionId}`;
 

@@ -23,7 +23,7 @@ interface irysdata {
   likes: number;
   keyword: boolean;
 }
-export async function sendtoIrys(dataToSend: irysdata) {
+ async function sendtoIrys(dataToSend: irysdata) {
   try {
     const response = await fetch("/api/upload-to-arweave", {
       method: "POST",
@@ -79,6 +79,7 @@ function useUrl() {
 }
 const Page = () => {
   const url = useUrl();
+  console.log(url);
   // const { uid } = router;
   // const uid = "AAAA";
   // console.log(uid);
@@ -88,7 +89,10 @@ const Page = () => {
   console.log(uid);
   // const uid = "aa";
   // const title = "hello";
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [res, setRes] = useState("");
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [deploying, setDeploying] = useState(false);
   const [qrState, setQrState] = useState<
     "none" | "loading" | "failed" | "waiting" | "success"
@@ -110,8 +114,8 @@ const Page = () => {
     await reclaimProofRequest.startSession({
       onSuccess: (proofs) => {
         console.log("Verification success", proofs);
-        let likes = extractAfterFavoriteCount(proofs.claimData.context);
-        let isKeyword = containsKeyword(
+const likes = extractAfterFavoriteCount(proofs.claimData.context);
+        const isKeyword = containsKeyword(
           proofs.claimData.context,
           "won",
           "@superteamin"
