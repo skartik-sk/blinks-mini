@@ -33,7 +33,13 @@ export default function Component() {
       (1000 * 60 * 60 * 24);
     return bDaysLeft - aDaysLeft;
   });
-
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+ 
+  const account = accounts.data?.filter(
+      (creato) =>
+        new Date(new BN(creato.account.endtime).toNumber()) > yesterday,
+    );
   return (
     <>
       {accounts.isLoading ? (
@@ -50,13 +56,16 @@ export default function Component() {
             Explore Events
           </div>
           <div className="flex flex-wrap gap-5 justify-center md:col-span-2 lg:col-span-1">
-            {accounts.data?.map((account) => {
+            {account?.map((account) => {
+        
               const val = paccounts.data?.filter((paccount) => {
+
                 return (
                   new BN(paccount.account.id || 0).toNumber() ==
                   new BN(account.account.id || 0).toNumber()
                 );
               });
+              
               return (
                 <>
                   <Preblink

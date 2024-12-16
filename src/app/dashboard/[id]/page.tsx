@@ -80,7 +80,7 @@ export default function Page({ params }: { params: { id: string } }) {
         <div className="text-white flex justify-center m-5 gap-3">
           {myData ? (
 
-              <button onClick={()=>setIsOpen(true)} className="mt-4 px-4 py-2 bg-blue-600 text-white text-xl font-medium rounded hover:bg-blue-700">
+              <button onClick={()=>setIsOpen(false)} className="mt-4 px-4 py-2 bg-blue-600 text-white text-xl font-medium rounded hover:bg-blue-700">
                 Verify with Reclaim
               </button>
             
@@ -200,7 +200,7 @@ export default function Page({ params }: { params: { id: string } }) {
                     </span>
                   </td>
                   <td className="p-2 sm:p-4">
-                    {player.account.user.toString()}
+                  {shortname(player.account.user.toString())}
                   </td>
                   <td className="p-2 sm:p-4 text-right flex items-center justify-end">
                     {player.account.points.toNumber()}
