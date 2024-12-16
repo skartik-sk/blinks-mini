@@ -9,10 +9,17 @@ import {
   useWallet,
   ConnectionProvider,
   WalletProvider,
+<<<<<<< HEAD
 } from "@solana/wallet-adapter-react";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { ReactNode, useCallback } from "react";
 import "@solana/wallet-adapter-react-ui/styles.css";
+=======
+} from '@solana/wallet-adapter-react'
+import { WalletModalProvider } from '@solana/wallet-adapter-react-ui'
+import { ReactNode, useCallback } from 'react'
+import '@solana/wallet-adapter-react-ui/styles.css';
+>>>>>>> main
 
 export const WalletButton = dynamic(
   async () =>
@@ -23,7 +30,11 @@ export const WalletButton = dynamic(
 );
 
 export function SolanaProvider({ children }: { children: ReactNode }) {
+<<<<<<< HEAD
   const endpoint = "https://api.devnet.solana.com";
+=======
+  const endpoint = "https://api.devnet.solana.com"
+>>>>>>> main
   const onError = useCallback((error: WalletError) => {
     console.error(error);
   }, []);

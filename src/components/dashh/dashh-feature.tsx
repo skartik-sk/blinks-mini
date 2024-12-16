@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client";
 
 import { useWallet } from "@solana/wallet-adapter-react";
@@ -9,6 +10,20 @@ import { useDashhProgram } from "./dashh-data-access";
 export default function DashhFeature() {
   const { publicKey } = useWallet();
   const { programId } = useDashhProgram();
+=======
+'use client'
+
+import { useWallet } from '@solana/wallet-adapter-react'
+import { WalletButton } from '../solana/solana-provider'
+import { AppHero, ellipsify } from '../ui/ui-layout'
+import { ExplorerLink } from '../cluster/cluster-ui'
+import { useDashhProgram } from './dashh-data-access'
+
+
+export default function DashhFeature() {
+  const { publicKey } = useWallet()
+  const { programId } = useDashhProgram()
+>>>>>>> main
 
   return publicKey ? (
     <div>
@@ -19,12 +34,19 @@ export default function DashhFeature() {
         }
       >
         <p className="mb-6">
+<<<<<<< HEAD
           <ExplorerLink
             path={`account/${programId}`}
             label={ellipsify(programId.toString())}
           />
         </p>
       </AppHero>
+=======
+          <ExplorerLink path={`account/${programId}`} label={ellipsify(programId.toString())} />
+        </p>
+      </AppHero>
+
+>>>>>>> main
     </div>
   ) : (
     <div className="max-w-4xl mx-auto">
@@ -34,5 +56,9 @@ export default function DashhFeature() {
         </div>
       </div>
     </div>
+<<<<<<< HEAD
   );
+=======
+  )
+>>>>>>> main
 }

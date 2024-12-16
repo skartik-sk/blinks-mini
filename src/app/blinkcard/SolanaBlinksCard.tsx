@@ -96,7 +96,12 @@ export function SolanaBlinksCard({
         </div>
 
         <div className="space-y-2">
+<<<<<<< HEAD
           <Button
+=======
+          <Link
+            href={`https://dial.to/?action=solana-action:http://localhost:3000/api/donate/${content.solAdd}&cluster=devnet`}
+>>>>>>> main
             className="block w-full py-2 text-center font-bold text-white rounded-lg bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7] hover:opacity-90 transition-all duration-300"
             onClick={handleparticipate}
           >

@@ -67,7 +67,11 @@ const Getsoladd = ({
         fromPubkey: senderPublicKey,
         toPubkey: recipientAddress,
         lamports: creator.amount * LAMPORTS_PER_SOL, // Amount to send (in lamports, 1 SOL = 1e9 lamports)
+<<<<<<< HEAD
       }),
+=======
+      })
+>>>>>>> main
     );
 
     try {
@@ -78,7 +82,11 @@ const Getsoladd = ({
       const { solana }: any = window;
       const signedTransaction = await solana.signTransaction(transaction); // Sign transaction with Phantom
       const signature = await connection.sendRawTransaction(
+<<<<<<< HEAD
         signedTransaction.serialize(),
+=======
+        signedTransaction.serialize()
+>>>>>>> main
       ); // Send signed transaction
       await connection.confirmTransaction(signature); // Confirm the transaction
 
@@ -91,8 +99,13 @@ const Getsoladd = ({
   return (
     <div className="text-white flex justify-end m-5 gap-3">
       {leaderboard.some((item) => item.solAdd == walletAddress) && (
+<<<<<<< HEAD
         <Link href={`https://reclaim-verify-xmm5.vercel.app/?id=${id}`}>
           <button className="mt-4 px-4 py-2 bg-blue-600 text-white text-xl font-medium rounded hover:bg-blue-700">
+=======
+        <Link href={`/verifyClaim?title=test&id=${id}`}>
+          <button className="mt-4 px-4 py-2 pt-10 bg-blue-600 text-white text-xl font-medium rounded hover:bg-blue-700">
+>>>>>>> main
             Verify with Reclaim
           </button>
         </Link>

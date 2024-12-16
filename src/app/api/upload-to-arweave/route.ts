@@ -13,6 +13,7 @@ export async function POST(req: NextRequest) {
   const irysUploader = await getIrysUploader();
 
   try {
+<<<<<<< HEAD
     const { data } = await req.json();
 
     const bufferData = Buffer.from(data, "utf-8");
@@ -25,6 +26,22 @@ export async function POST(req: NextRequest) {
       txid: `https://gateway.irys.xyz/${receipt.id}`,
       receipt: receipt,
     });
+=======
+    const data  = await req.json(); 
+    console.log("Received data: ", data);  // Debug: log the received data
+
+    if (!data) {
+      throw new Error("No data provided in request body");
+    }
+
+    const bufferData = Buffer.from(JSON.stringify(data), 'utf-8');
+    const tags = [{ name: "Content-Type", value: "application/json" }];
+    const receipt = await irysUploader.upload(bufferData, { tags }); 
+    
+    console.log(`Data uploaded ==> https://gateway.irys.xyz/${receipt.id}`);
+    
+    return NextResponse.json({ txurl: `https://gateway.irys.xyz/${receipt.id}`, txid: receipt.id });
+>>>>>>> main
   } catch (e) {
     console.error("Error when uploading ", e);
 

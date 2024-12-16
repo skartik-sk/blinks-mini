@@ -5,7 +5,13 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
+<<<<<<< HEAD
 import { PublicKey } from "@solana/web3.js";
+=======
+import {
+  PublicKey,
+} from "@solana/web3.js";
+>>>>>>> main
 
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -83,6 +89,10 @@ export default function CreatorForm() {
       // Request connection to Phantom
       const response = await solana.connect();
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
       const formData = new FormData(e.target as HTMLFormElement);
       // console.log(endDate?.getTime());
       // const data = {
@@ -96,7 +106,11 @@ export default function CreatorForm() {
       // };
       try {
         if (response.publicKey) {
+<<<<<<< HEAD
           const res = await createCampaign.mutateAsync({
+=======
+    const res =   await createCampaign.mutateAsync({
+>>>>>>> main
             id: 0,
             title: formData.get("title") as string,
             description: formData.get("description") as string,
@@ -107,12 +121,21 @@ export default function CreatorForm() {
               : (new Date().getTime() as number),
             reward: Number(formData.get("amount")) as number,
             owner: response.publicKey as PublicKey,
+<<<<<<< HEAD
           });  
        
           if (res) {
             seturl_data("done");
           } else {
             return <div>Error Loading</div>;
+=======
+          });
+          if(res){
+            seturl_data(res);
+          }
+          else {
+            return<div>Error Loading</div>
+>>>>>>> main
           }
         } else {
           <div>
@@ -123,7 +146,12 @@ export default function CreatorForm() {
         console.log(error);
       }
 
+<<<<<<< HEAD
       setOpen(true);
+=======
+
+       setOpen(true);
+>>>>>>> main
       // if (response.data.data._id != undefined) {
       //   // setFormAmount(Number(formData.get("amount")));
 
@@ -138,7 +166,7 @@ export default function CreatorForm() {
       new URL(url);
       return true;
     } catch (e) {
-      console.log(e);
+console.log(e);
       return false;
     }
   }
@@ -147,8 +175,13 @@ export default function CreatorForm() {
   return (
     <>
       {open ? (
+<<<<<<< HEAD
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogContent>
+=======
+        <Dialog  open={open} onOpenChange={setOpen} >
+          <DialogContent >
+>>>>>>> main
             <DialogHeader>
               <DialogTitle>Share Your Blink</DialogTitle>
             </DialogHeader>
@@ -167,6 +200,11 @@ export default function CreatorForm() {
             </div>
             <DialogFooter>
               <div className="flex opacity-70 justify-center align-middle items-center flex-col space-y-3">
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> main
                 <div className="flex space-x-2 ">
                   <Link
                     href={`https://www.facebook.com/sharer/sharer.php?u=https://dial.to/?action=solana-action:https://blinks.knowflow.study/api/donate/${url_data}&cluster=devnet`}
@@ -213,8 +251,12 @@ export default function CreatorForm() {
                       Share on Discord
                     </Button>
                   </Link>
+<<<<<<< HEAD
                 </div>{" "}
               </div>
+=======
+                </div> </div>
+>>>>>>> main
             </DialogFooter>
           </DialogContent>
         </Dialog>
@@ -350,6 +392,10 @@ export default function CreatorForm() {
             </CardContent>
           </div>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
           {/* card */}
           <div className="flex justify-center items-center p-2">
             <div className="flex flex-col justify-center items-center">
@@ -392,12 +438,17 @@ export default function CreatorForm() {
                   </p>
 
                   <div className="flex gap-1 m-1">
+<<<<<<< HEAD
                     <button className="bg-black border border-opacity-30 border-slate-300 text-white  hover:bg-gray-800 py-2 px-4 rounded-lg relative w-full">
                       See Leaderboard
                     </button>
                     <button className="bg-black border border-opacity-30 border-slate-300 text-white  hover:bg-gray-800 py-2 px-4 rounded-lg relative w-full">
                       Verify With Reclaim
                     </button>
+=======
+                    <button className="bg-black border border-opacity-30 border-slate-300 text-white  hover:bg-gray-800 py-2 px-4 rounded-lg relative w-full">See Leaderboard</button>
+                    <button className="bg-black border border-opacity-30 border-slate-300 text-white  hover:bg-gray-800 py-2 px-4 rounded-lg relative w-full">Verify With Reclaim</button>
+>>>>>>> main
                   </div>
 
                   <button className="bg-black border border-opacity-30 border-slate-300 text-white  hover:bg-gray-800 py-2 px-4 rounded-lg relative w-full">
@@ -421,8 +472,13 @@ export default function CreatorForm() {
               </div>
             </div>
           </div>
+<<<<<<< HEAD
+=======
+          
+>>>>>>> main
         </div>
       )}
     </>
   );
+
 }

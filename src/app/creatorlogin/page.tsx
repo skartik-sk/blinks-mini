@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 
 const Page = () => {
@@ -5,6 +6,17 @@ const Page = () => {
 };
 
 export default Page;
+=======
+import React from 'react'
+
+const Page = () => {
+  return (
+    <div>Page</div>
+  )
+}
+
+export default Page
+>>>>>>> main
 // "use client"
 
 // import { useState } from 'react'
@@ -15,6 +27,10 @@ export default Page;
 // import { Wallet, Lock } from "lucide-react"
 // import { useRouter } from 'next/navigation'
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 // export default page
 // export default function CreatorLogin() {
 //   const [solAddress, setSolAddress] = useState('')
@@ -84,4 +100,8 @@ export default Page;
 //       </Card>
 //     </div>
 //   )
+<<<<<<< HEAD
 // }
+=======
+// }
+>>>>>>> main

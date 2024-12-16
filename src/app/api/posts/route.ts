@@ -41,6 +41,7 @@ export const POST = async (req: Request) => {
 
     await newPost.save();
 
+<<<<<<< HEAD
     return Response.json({
       message: "Post created successfully",
       data: newPost,
@@ -72,3 +73,27 @@ export const PUT = async (req: Request, res: Response) => {
     return Response.json({ message: "Internal Server Error", error });
   }
 };
+=======
+      await newPost.save();
+
+      return Response.json({ message: 'Post created successfully', data: newPost });
+    } catch (error) {
+        return Response.json({ message: 'Internal Server Error', error });
+    }
+}
+
+export const PUT = async(req: Request, res:Response)=> {
+    await connectDB();
+    await runMiddleware(req, res, cors);
+    try {
+        const data = await req.json();
+
+        const { id, igProfile, views } = data;
+
+        const updatedPost = await User.findByIdAndUpdate(id, { igProfile, views }, { new: true });
+
+        return Response.json({ message: 'Post updated successfully', data: updatedPost }); } catch (error) {
+        return Response.json({ message: 'Internal Server Error', error });
+    }
+}
+>>>>>>> main

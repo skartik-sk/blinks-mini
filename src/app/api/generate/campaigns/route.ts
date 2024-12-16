@@ -12,8 +12,13 @@ export async function GET(request: Request) {
   return Response.redirect(redirectUrl, 302);
 }
 export const OPTIONS = async () => Response.json(null, { headers });
+<<<<<<< HEAD
 export async function POST(request: Request) {
   const body: ActionPostRequest = await request.json();
+=======
+export  async function POST(request:Request){
+    const body:ActionPostRequest=await request.json();
+>>>>>>> main
 
   const payload: ActionPostResponse = {
     type: "external-link",

@@ -6,9 +6,17 @@ import Demo from "@/components/demo2";
 import APISection from "@/components/APISection2";
 import { cn } from "@/lib/utils";
 import {
+<<<<<<< HEAD
   IconCloud,
   IconCurrencyDollar,
   IconEaseInOut,
+=======
+
+  IconCloud,
+  IconCurrencyDollar,
+  IconEaseInOut,
+
+>>>>>>> main
   IconHelp,
   IconRouteAltLeft,
   IconTerminal2,

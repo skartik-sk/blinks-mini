@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client";
 
 import { AppHero } from "../ui/ui-layout";
@@ -12,6 +13,19 @@ const links: { label: string; href: string }[] = [
     href: "https://github.com/solana-developers/",
   },
 ];
+=======
+'use client'
+
+import { AppHero } from '../ui/ui-layout'
+
+const links: { label: string; href: string }[] = [
+  { label: 'Solana Docs', href: 'https://docs.solana.com/' },
+  { label: 'Solana Faucet', href: 'https://faucet.solana.com/' },
+  { label: 'Solana Cookbook', href: 'https://solanacookbook.com/' },
+  { label: 'Solana Stack Overflow', href: 'https://solana.stackexchange.com/' },
+  { label: 'Solana Developers GitHub', href: 'https://github.com/solana-developers/' },
+]
+>>>>>>> main
 
 export default function DashboardFeature() {
   return (
@@ -22,12 +36,16 @@ export default function DashboardFeature() {
           <p>Here are some helpful links to get you started.</p>
           {links.map((link, index) => (
             <div key={index}>
+<<<<<<< HEAD
               <a
                 href={link.href}
                 className="link"
                 target="_blank"
                 rel="noopener noreferrer"
               >
+=======
+              <a href={link.href} className="link" target="_blank" rel="noopener noreferrer">
+>>>>>>> main
                 {link.label}
               </a>
             </div>
@@ -35,5 +53,9 @@ export default function DashboardFeature() {
         </div>
       </div>
     </div>
+<<<<<<< HEAD
   );
+=======
+  )
+>>>>>>> main
 }
