@@ -1,10 +1,10 @@
 "use client";
 import { signIn, useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 // import { useWalletMultiButton } from '@solana/wallet-adapter-base-ui';
 import axios from "axios";
 import Image from "next/image";
-import { useAnchorProvider, WalletButton } from "../solana/solana-provider";
+import {  WalletButton } from "../solana/solana-provider";
 
 
 // const  { authenticate } = useOkto() as OktoContextType;
@@ -173,9 +173,20 @@ const SignInButton = () => {
     <>{
         session?.idToken ? (<Image alt="profile" height={50} width={50} className="rounded-full" src={session.user?.image? session.user?.image: ""}/>):(
         <>
-        <div>
+        <div className="flex">
 
         <WalletButton/>
+        <div className="flex items-center justify-center  bg-white">
+
+    <button onClick={signInWithGoogle} className="px-4 py-2 border flex gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150">
+
+        <Image width={10} height={10} className="w-6 h-6" src="https://www.svgrepo.com/show/475656/google-color.svg" loading="lazy" alt="google logo"/>
+
+        <span>Login with Google</span>
+
+    </button>
+
+</div>
         </div>
        
         </>
