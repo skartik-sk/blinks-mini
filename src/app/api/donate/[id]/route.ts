@@ -1,4 +1,4 @@
-import {useDashhProgramAccount} from "@/components/dashh/dashh-data-access";
+import {useDashhProgramAccount,useDashhProgram} from "@/components/dashh/dashh-data-access";
 import Creator from "@/lib/models/creater";
 import User from "@/lib/models/user";
 
@@ -10,9 +10,13 @@ export  async function GET(request:Request ,params:{params:{id:string}  }){
     const id = await params.params.id;
  console.log(id);
     const { accountQuery } = useDashhProgramAccount({
-        account:new PublicKey(id as string),
+        account:new PublicKey(id),
        });
-       console.log("account query ",accountQuery);
+// const { accounts, getProgramAccount } = useDashhProgram();
+
+
+    // const data  = accounts.data?.filter((account) => account.publicKey.toString === id.toString);
+    //    console.log("account query ",data);
 
 const creator = {
     icons: accountQuery.data?.image ,

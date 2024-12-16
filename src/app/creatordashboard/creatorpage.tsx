@@ -8,18 +8,16 @@ import { useAnchorProvider } from "@/components/solana/solana-provider";
 import { BN } from "@coral-xyz/anchor";
 
 const Creatorpage = () => {
-  const provider = useAnchorProvider()
-  const { accounts, getProgramAccount } = useDashhProgram();
+  const provider = useAnchorProvider();
+  const { accounts, getProgramAccount, paccounts } = useDashhProgram();
   const [selectedOption, setSelectedOption] = useState("Live");
   if (getProgramAccount.isLoading) {
     return <span className="loading loading-spinner loading-lg"></span>;
   }
-  if(! provider.wallet.publicKey){
+  if (!provider.wallet.publicKey) {
     return (
       <div className="flex justify-center alert alert-info">
-        <span>
-          Please connect your wallet to view the events.
-        </span>
+        <span>Please connect your wallet to view the events.</span>
       </div>
     );
   }
@@ -33,22 +31,38 @@ const Creatorpage = () => {
       </div>
     );
   }
-  let creator  = accounts.data?.filter((account) => account.account.owner.toString == provider.wallet.publicKey.toString);
+
+  let creator = accounts.data?.filter(
+    (account) =>
+      account.account.owner.toString == provider.wallet.publicKey.toString,
+  );
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
   if (selectedOption === "Closed") {
-    creator = creator?.filter((creato) => new Date(new BN(creato.account.endtime).toNumber()) < yesterday);
+    creator = creator?.filter(
+      (creato) =>
+        new Date(new BN(creato.account.endtime).toNumber()) < yesterday,
+    );
   } else {
-    creator = creator?.filter((creato) => new Date(new BN(creato.account.endtime).toNumber()) > yesterday);
+    creator = creator?.filter(
+      (creato) =>
+        new Date(new BN(creato.account.endtime).toNumber()) > yesterday,
+    );
   }
-  if(accounts.data){
+  if (accounts.data) {
     creator = creator?.sort((a, b) => {
-      const aDaysLeft = (new Date(new BN(a.account.endtime).toNumber()).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24);
-      const bDaysLeft = (new Date(new BN(b.account.endtime).toNumber()).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24);
-      return   bDaysLeft-aDaysLeft;
+      const aDaysLeft =
+        (new Date(new BN(a.account.endtime).toNumber()).getTime() -
+          new Date().getTime()) /
+        (1000 * 60 * 60 * 24);
+      const bDaysLeft =
+        (new Date(new BN(b.account.endtime).toNumber()).getTime() -
+          new Date().getTime()) /
+        (1000 * 60 * 60 * 24);
+      return bDaysLeft - aDaysLeft;
     });
   }
-  const handleToggle = (option:any) => {
+  const handleToggle = (option: any) => {
     setSelectedOption(option);
   };
 
@@ -70,9 +84,20 @@ const Creatorpage = () => {
       </div>
       <div className="flex flex-wrap gap-5 justify-center md:col-span-2 lg:col-span-1">
         {creator?.map((cat) => {
+          const val = paccounts.data?.filter((paccount) => {
+            return (
+              new BN(paccount.account.id || 0).toNumber() ==
+              new BN(cat.account.id || 0).toNumber()
+            );
+          });
+
           return (
             <>
-              <Preblink key={cat.publicKey.toString()}  account={cat.publicKey} />
+              <Preblink
+                size={val?.length ? val?.length : 0}
+                key={cat.publicKey.toString()}
+                account={cat.publicKey}
+              />
             </>
           );
         })}
