@@ -33,8 +33,9 @@ const Creatorpage = () => {
   }
 
   let creator = accounts.data?.filter(
-    (account) =>
-      account.account.owner.toString == provider.wallet.publicKey.toString,
+    (account) => {
+      return account.account.owner.toString() == provider.wallet.publicKey.toString();
+    }
   );
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
@@ -83,7 +84,13 @@ const Creatorpage = () => {
         Creater's Event
       </div>
       <div className="flex flex-wrap gap-5 justify-center md:col-span-2 lg:col-span-1">
-        {creator?.map((cat) => {
+        {
+        creator?.length == 0?
+           <div className="text-white">No events found</div>
+          
+      :
+        
+        creator?.map((cat) => {
           const val = paccounts.data?.filter((paccount) => {
             return (
               new BN(paccount.account.id || 0).toNumber() ==
@@ -100,7 +107,8 @@ const Creatorpage = () => {
               />
             </>
           );
-        })}
+        })
+        }
       </div>
     </div>
   );
