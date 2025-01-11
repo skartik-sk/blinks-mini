@@ -6,13 +6,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 import {
+  Connection,
   PublicKey,
 } from "@solana/web3.js";
 
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShieldHalved } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {
@@ -76,6 +77,17 @@ export default function CreatorForm() {
   //     console.error('Error sending transaction:', error);
   //   }
   // }
+  useEffect(() => {
+    const getValue = async () => {
+
+    
+     
+      console.log('New account public key:',  );
+      }
+    getValue();
+  }
+  , []);
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -84,8 +96,7 @@ export default function CreatorForm() {
       const { solana }: any = window;
       // Request connection to Phantom
       const response = await solana.connect();
-
-
+      const connection = new Connection('https://api.devnet.solana.com', 'confirmed');
       const formData = new FormData(e.target as HTMLFormElement);
       // console.log(endDate?.getTime());
       // const data = {
@@ -112,7 +123,10 @@ export default function CreatorForm() {
             owner: response.publicKey as PublicKey,
           });
           if(res){
-            seturl_data(res);
+
+            const transactionDetails = await connection.getTransaction(res);
+            // console.log('accounts-ss',transactionDetails?.transaction.message.accountKeys[1].toBase58());
+            seturl_data(transactionDetails?.transaction.message.accountKeys[1].toBase58()?transactionDetails?.transaction.message.accountKeys[1].toBase58():"");
           }
           else {
             return<div>Error Loading</div>

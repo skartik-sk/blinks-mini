@@ -6,10 +6,10 @@ import { PublicKey } from "@solana/web3.js";
 import { ICreator } from "@/lib/interface/creater";
 import BN from "bn.js";
 const Preblink = ({ account, size }: { account: PublicKey; size: number }) => {
-console.log("account", account);
   const { accountQuery } = useDashhProgramAccount({
     account,
   });
+
 
   const title = accountQuery.data?.title;
   const icon = accountQuery.data?.image;
