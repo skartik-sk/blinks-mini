@@ -13,7 +13,7 @@ const programId = '7qpRXNFY5PJQfwptK4BosJ5jCnVeEYRWATFu8BBDTVcr';
 export  async function GET(request:Request ,params:{params:{id:string}  }){ 
     const url = new URL(request.url);
     const id = await params.params.id;
-
+ console.log(id);
 
    const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
@@ -22,8 +22,8 @@ export  async function GET(request:Request ,params:{params:{id:string}  }){
     // const program = getDashhProgram(provider);
     const program: Program<Dashh> = new Program(IDL as Dashh, {connection});
    const value = await program.account.campaign.fetch(id);
-
-    
+    console.log('value',value);
+    const id2 = value.id;
 const creator = {
     icons: value?.description ,
     title : value?.title,
@@ -64,7 +64,7 @@ const creator = {
             }, {
                 type:"transaction",
                 label:"Participate",
-                href:`${url.href}?amount=0`,
+                href:`${url.origin}/api/donate/${id2}?amount=0`,
             },
             
         ]
@@ -83,14 +83,10 @@ export const OPTIONS = GET;
 export  async function POST(request:Request){
     const body: ActionPostRequest = await request.json();
     const url = new URL(request.url);
-    const id = url.pathname.split('/').pop() || '';
-    console.log("htits i id",id);
+    const id =Number( url.pathname.split('/').pop() || 0);
+    console.log(" id",id);
 const amount  =  Number(url.searchParams.get("amount")) || 0;
-const candidate = url.searchParams.get("candidate");
 
-if (candidate != "Crunchy" && candidate != "Smooth") {
-  return new Response("Invalid candidate", { status: 400, headers: ACTIONS_CORS_HEADERS });
-}
 const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
 // const provider = useAnchorProvider();

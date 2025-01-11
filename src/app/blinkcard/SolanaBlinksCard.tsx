@@ -33,6 +33,7 @@ export function SolanaBlinksCard({
   const { createParticipant } = useDashhProgram();
   const handleparticipate = async (e: any) => {
     e.preventDefault();
+    console.log(id);
     await createParticipant
       .mutateAsync({
         id: Number(id),
