@@ -1,4 +1,4 @@
-"use client";
+
 import * as anchor from "@coral-xyz/anchor";
 
 import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
@@ -33,7 +33,7 @@ export function useDashhProgram() {
   const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
   const transactionToast = useTransactionToast();
   const provider = useAnchorProvider();
-  const programId = "Gdh4Jq1DY5t47vVVVGeK2Zx3EyeDm9L923bRfSWQ2aDJ";
+  const programId = "7qpRXNFY5PJQfwptK4BosJ5jCnVeEYRWATFu8BBDTVcr";
   const program = getDashhProgram(provider);
 
   const accounts = useQuery({

@@ -1,17 +1,31 @@
 import {useDashhProgramAccount,useDashhProgram} from "@/components/dashh/dashh-data-access";
 import Creator from "@/lib/models/creater";
 import User from "@/lib/models/user";
-
+import { BN, Program } from "@coral-xyz/anchor";
 import {  ActionGetResponse, ActionPostRequest, ActionPostResponse, ACTIONS_CORS_HEADERS } from "@solana/actions";
 import { clusterApiUrl, Connection, LAMPORTS_PER_SOL, PublicKey, SystemProgram, Transaction } from "@solana/web3.js";
-
+import { Dashh } from "../../../../../anchor/target/types/dashh";
+import Dash from "../../../../../anchor/target/idl/dashh.json";
+import { DashhIDL } from "../../../../../anchor/src";
+import { useQuery } from "@tanstack/react-query";
+const programId = '7qpRXNFY5PJQfwptK4BosJ5jCnVeEYRWATFu8BBDTVcr';
 export  async function GET(request:Request ,params:{params:{id:string}  }){ 
     const url = new URL(request.url);
     const id = await params.params.id;
  console.log(id);
-    const { accountQuery } = useDashhProgramAccount({
-        account:new PublicKey(id),
-       });
+ const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
+  const program: Program<Dashh> = new Program(DashhIDL, {connection});
+
+    const accounts = useQuery({
+      queryKey: ["das", "all", "devnet"],
+      queryFn: () => program.account.campaign.all(),
+    });
+    console.log('accounts',accounts)
+
+    // const { accountQuery } = useDashhProgramAccount({
+    //     account:new PublicKey(id),
+    //    });
+    
 // const { accounts, getProgramAccount } = useDashhProgram();
 
 

@@ -14,7 +14,7 @@ export default function Hero() {
           {/* Top Banner */}
           <div className="relative mb-16 mx-auto max-w-3xl">
             <div className="rounded bg-[#011714] bg-opacity-50 p-2 text-center text-emerald-400 transition-all hover:bg-opacity-90 text-sm">
-              <p>Community support, daily live office hours, and thousands of builders - all on Discord.</p>
+              <p>On-chain advertising platform to create a transparent, and secure ecosystem for  influencers</p>
             </div>
             <div className="absolute bottom-0 lef h-px bg-emerald-400 transform left-1/2 w-[87%] -translate-x-1/2"></div>
           </div>
@@ -27,7 +27,7 @@ export default function Hero() {
             </h1>
             
             <p className="mb-12 max-w-3xl text-lg text-gray-400 sm:text-xl">
-              The all-in-one web-3 platform for delivering AI agents powered by the latest LLMs.
+              The all-in-one web-3 platform for decentralized micro-influencer marketing.
             </p>
 
             {/* CTA Buttons */}
@@ -39,12 +39,7 @@ export default function Hero() {
                   Get started for free
                   <ArrowRight className="transition-transform group-hover:translate-x-1 h-4 w-4" />
                   </Link>
-                <Link
-                href="#"
-                className="inline-flex items-center rounded-md border border-neutral-200 bg-black px-5 py-2 text-sm font-thin text-white transition-all hover:border-gray-600 hover:brightness-110 hover:-translate-y-1 dark:border-neutral-800"
-                >
-                Contact Sales
-                </Link>
+                
             </div>
           </div>
         </div>

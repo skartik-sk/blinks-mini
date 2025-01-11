@@ -6,6 +6,7 @@ import { useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from 'lucide-react';
 import { motion, useAnimationFrame, useMotionTemplate, useMotionValue, useTransform } from 'framer-motion';
+import Link from 'next/link';
 
 const codeString = `
 import { Integration } from "@botpress/sdk";
@@ -36,19 +37,19 @@ export default function APISection() {
         {/* Left content */}
         <div className="flex flex-col justify-center space-y-4">
           <h1 className="text-white text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
-            An <span className='bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7] bg-clip-text text-transparent'>API</span> for everything
+             <span className='bg-gradient-to-r from-[#ff9a9e] via-[#ff6b95] to-[#a855f7] bg-clip-text text-transparent'>Zk-TLS</span> for everything
           </h1>
-          <p className="text-base sm:text-lg text-gray-300">
-            Extend your agents' functionality with our easy-to-use API and SDK.
-          </p>
+          
           <div className="pt-4">
+            <Link href='https://github.com/skartik-sk/blinks-mini'>
             <Button
               variant="outline"
               className="group border-white/20 bg-transparent text-white hover:bg-white/10"
-            >
+              >
               Read docs
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
+              </Link>
           </div>
         </div>
 
