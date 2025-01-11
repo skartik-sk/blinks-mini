@@ -22,7 +22,7 @@ const Header = () => {
     const handleToggle = (selected: string) => {
         setSelectedOption(selected);
       };
-      console.log(selectedOption);
+
      
       
 

@@ -15,13 +15,12 @@ export default function CustomToggle({ options = ["User", "Creator"], onChange }
 
   const handleToggle = (option: string) => {
     setActiveOption(option)
-    console.log(option)
-    console.log(activeOption)
+
     if (onChange) {
       onChange(option)
     }
     
-    console.log(activeOption);
+
 
     // Navigate to the dashboard
     if (option === "User") {

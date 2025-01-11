@@ -67,7 +67,7 @@ const Page = () => {
     }
     await reclaimProofRequest.startSession({
       onSuccess: (proofs) => {
-        console.log("Verification success", proofs);
+        // console.log("Verification success", proofs);
         setQrState("success");
         setRes(proofs.claimData.context);
       },

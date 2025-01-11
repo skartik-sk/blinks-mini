@@ -90,10 +90,10 @@ export function ClusterUiModal({ hideModal, show }: { hideModal: () => void; sho
             addCluster({ name, network, endpoint })
             hideModal()
           } else {
-            console.log('Invalid cluster name')
+            // console.log('Invalid cluster name')
           }
         } catch {
-          console.log('Invalid cluster endpoint')
+          // console.log('Invalid cluster endpoint')
         }
       }}
       submitLabel="Save"

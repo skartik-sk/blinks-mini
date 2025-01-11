@@ -70,7 +70,7 @@ export default function Verify({uid}: {uid: string}) {
   // const searchParams = useSearchParams();
 
   // const title = searchParams?.get("title") || "";
-  console.log(uid);
+
   // const uid = "aa";
   // const title = "hello";
   const [res, setRes] = useState("");
@@ -78,7 +78,7 @@ export default function Verify({uid}: {uid: string}) {
   const [qrState, setQrState] = useState<
     "none" | "loading" | "failed" | "waiting" | "success"
   >("none");
-  console.log(res);
+
 
   const [qrUrl, setQrUrl] = useState("");
   const { accounts, updateParticipant } = useDashhProgram();
@@ -102,15 +102,13 @@ export default function Verify({uid}: {uid: string}) {
     }
     await reclaimProofRequest.startSession({
       onSuccess: (proofs) => {
-        console.log("Verification success", proofs);
+        // console.log("Verification success", proofs);
         const likes = extractAfterFavoriteCount(proofs.claimData.context);
         const isKeyword = containsKeyword(
           proofs.claimData.context,
           myd?.account.lable || "won",
           "@superteamin",
         );
-
-        console.log(likes);
         if (likes && isKeyword) {
           const points = Number(likes) * 10;
           updateParticipant
@@ -122,7 +120,7 @@ export default function Verify({uid}: {uid: string}) {
             .then((result) => {
               // Your logic here
               setDeploying(true);
-              console.log("done", result);
+              // console.log("done", result);
             })
             .catch((error) => {
               console.error(error);

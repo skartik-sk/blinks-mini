@@ -36,7 +36,7 @@ export function SolanaBlinksCard({
     await createParticipant
       .mutateAsync({
         id: Number(id),
-        user: provider.wallet.publicKey,
+       user: provider.wallet.publicKey, 
         points: 0,
       })
       .then(function () {

@@ -2,47 +2,39 @@ import {useDashhProgramAccount,useDashhProgram} from "@/components/dashh/dashh-d
 import Creator from "@/lib/models/creater";
 import User from "@/lib/models/user";
 import { BN, Program } from "@coral-xyz/anchor";
-import {  ActionGetResponse, ActionPostRequest, ActionPostResponse, ACTIONS_CORS_HEADERS } from "@solana/actions";
+import {  ActionGetResponse, ActionPostRequest, ActionPostResponse, ACTIONS_CORS_HEADERS, createPostResponse } from "@solana/actions";
 import { clusterApiUrl, Connection, LAMPORTS_PER_SOL, PublicKey, SystemProgram, Transaction } from "@solana/web3.js";
 import { Dashh } from "../../../../../anchor/target/types/dashh";
-import Dash from "../../../../../anchor/target/idl/dashh.json";
-import { DashhIDL } from "../../../../../anchor/src";
+import IDL from "../../../../../anchor/target/idl/dashh.json";
+import { DashhIDL, getDashhProgram } from "../../../../../anchor/src";
 import { useQuery } from "@tanstack/react-query";
+import { useAnchorProvider } from "@/components/solana/solana-provider";
 const programId = '7qpRXNFY5PJQfwptK4BosJ5jCnVeEYRWATFu8BBDTVcr';
 export  async function GET(request:Request ,params:{params:{id:string}  }){ 
     const url = new URL(request.url);
     const id = await params.params.id;
- console.log(id);
- const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
-  const program: Program<Dashh> = new Program(DashhIDL, {connection});
 
-    const accounts = useQuery({
-      queryKey: ["das", "all", "devnet"],
-      queryFn: () => program.account.campaign.all(),
-    });
-    console.log('accounts',accounts)
 
-    // const { accountQuery } = useDashhProgramAccount({
-    //     account:new PublicKey(id),
-    //    });
+   const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
+
+    // const provider = useAnchorProvider();
+    const programId = "7qpRXNFY5PJQfwptK4BosJ5jCnVeEYRWATFu8BBDTVcr";
+    // const program = getDashhProgram(provider);
+    const program: Program<Dashh> = new Program(IDL as Dashh, {connection});
+   const value = await program.account.campaign.fetch(id);
+
     
-// const { accounts, getProgramAccount } = useDashhProgram();
-
-
-    // const data  = accounts.data?.filter((account) => account.publicKey.toString === id.toString);
-    //    console.log("account query ",data);
-
 const creator = {
-    icons: accountQuery.data?.image ,
-    title : accountQuery.data?.title,
-    description : accountQuery.data?.description,
-     label : accountQuery.data?.lable,
+    icons: value?.description ,
+    title : value?.title,
+    description : value?.image,
+     label : value?.lable,
 };
 
     
 
   const payload:ActionGetResponse = {
-    icon: creator.icons?  creator.icons : "https://cdn.vectorstock.com/i/500p/04/45/solana-logo-coin-icon-isolated-vector-43670445.jpg",
+    icon: creator.icons ? creator.icons : "https://solana.com/favicon.ico",
     title: creator.title ? creator.title : "Donate to Solana",
     description:creator.description ? creator.description : "Donate to the Solana Foundation to support the Solana ecosystem.",
     label:creator.label ? creator.label : "Donate",
@@ -91,83 +83,51 @@ export const OPTIONS = GET;
 export  async function POST(request:Request){
     const body: ActionPostRequest = await request.json();
     const url = new URL(request.url);
+    const id = url.pathname.split('/').pop() || '';
+    console.log("htits i id",id);
 const amount  =  Number(url.searchParams.get("amount")) || 0;
+const candidate = url.searchParams.get("candidate");
 
-    let sender ;
+if (candidate != "Crunchy" && candidate != "Smooth") {
+  return new Response("Invalid candidate", { status: 400, headers: ACTIONS_CORS_HEADERS });
+}
+const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
-    try{
-        sender = new PublicKey(body.account);
+// const provider = useAnchorProvider();
+const programId = "7qpRXNFY5PJQfwptK4BosJ5jCnVeEYRWATFu8BBDTVcr";
+// const program = getDashhProgram(provider);
+const program: Program<Dashh> = new Program(IDL as Dashh, {connection});
 
-//         const Post = await Creator.findById(url.pathname.split("/")[3])
-// imgurl=Post?.icons
+let user;
 
-    }catch(e){
-        return Response.json({error:e},{status:400,headers:ACTIONS_CORS_HEADERS});
-    }
+try {
+  user = new PublicKey(body.account);
+} catch (error) {
+  return new Response("Invalid account", { status: 400, headers: ACTIONS_CORS_HEADERS });
+}
 
-    const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
-    // const payer = Keypair.generate(); // Replace with your payer Keypair
-    
-    const transaction = new Transaction().add(
-        SystemProgram.transfer({
-            fromPubkey: sender,
-            toPubkey: new PublicKey("8vbaCLhg1SZmiGNZfFzV2DEJHenFtdgg7G2JtY5v74i1"),
-            lamports: amount * LAMPORTS_PER_SOL,
-        })
-    );
+const instruction = await program.methods
+  .createParticipent(new BN(id, 16), user)
+  .accounts({
+    signer: user,
+  })
+  .instruction();
 
-    const blockheight = await connection.getLatestBlockhash();
-    transaction.recentBlockhash = blockheight.blockhash;
-    transaction.lastValidBlockHeight = blockheight.lastValidBlockHeight;
-    transaction.feePayer = sender;
-    // transaction.sign(payer);
+const blockhash = await connection.getLatestBlockhash();
 
-    const payload: ActionPostResponse = {
-        type: "transaction",
-        transaction: transaction.serialize({ verifySignatures: false }).toString("base64"),
-        message: `Participation done successfully`,
+const transaction = new Transaction({
+    feePayer: user,
+    blockhash: blockhash.blockhash,
+    lastValidBlockHeight: blockhash.lastValidBlockHeight,
+  }).add(instruction);
 
-        // links: {
-        //     next: {
-        //         type:"post",
-        //         href: `${url.origin}/api/redirect/${url.pathname.split("/")[3]}`,
-        //     },
-        // }
-    };
-    try {
-        const creater = await Creator.findById(url.pathname.split("/")[3]);
-        if (creater) {
-            creater.users.push(sender.toString());
-            await creater.save();
-        }
-      const newUser = new User({
-        solAdd: sender.toString(),
-  post:  url.href.toString(), 
-  isAwarded: false,
-      });
+const response = await createPostResponse({
+  fields: {
+    type: "transaction",
+    transaction: transaction
+  }
+});
 
-      await newUser.save();
-
-    //   redirect("https://blinks.knowflow.study");
-      return Response.json(payload,{
-        headers : ACTIONS_CORS_HEADERS,
-      });
-
-        
-    } catch (error) {
-        return Response.json({error:error},{status:400,headers:ACTIONS_CORS_HEADERS});
-        
-    }
-
-
-    // // Redirect to a specific page after transaction creation
-    // const redirectUrl = new URL('/some-page', url.origin);
-    // redirectUrl.searchParams.set('transaction', payload.transaction);
-    // redirectUrl.searchParams.set('message', payload.message);
-
-    // return Response.redirect(redirectUrl.toString(), 302);
-    // return Response.json(payload, {
-    //     headers: ACTIONS_CORS_HEADERS,
-    // });
+return Response.json(response, { headers: ACTIONS_CORS_HEADERS });
         
 }

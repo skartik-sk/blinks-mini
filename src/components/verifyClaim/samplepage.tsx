@@ -23,7 +23,7 @@ function ReclaimDemo() {
     // Generate the verification request URL
     const requestUrl = await reclaimProofRequest.getRequestUrl();
 
-    console.log('Request URL:', requestUrl);
+    // console.log('Request URL:', requestUrl);
 
     setRequestUrl(requestUrl);
  
@@ -33,7 +33,7 @@ function ReclaimDemo() {
       // Called when the user successfully completes the verification
       onSuccess: (proofs) => {
 
-        console.log('Verification success', proofs);
+        // console.log('Verification success', proofs);
         setProofs(proofs);
 
         // Add your success logic here, such as:

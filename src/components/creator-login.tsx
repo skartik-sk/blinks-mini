@@ -14,7 +14,7 @@ export function CreatorLoginComponent() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     // Here you would typically handle the login logic
-    console.log("'Login attempted with:'", { solAddress, password })
+    // console.log("'Login attempted with:'", { solAddress, password })
   }
 
   return (

@@ -6,6 +6,7 @@ import { PublicKey } from "@solana/web3.js";
 import { ICreator } from "@/lib/interface/creater";
 import BN from "bn.js";
 const Preblink = ({ account, size }: { account: PublicKey; size: number }) => {
+console.log("account", account);
   const { accountQuery } = useDashhProgramAccount({
     account,
   });
@@ -48,8 +49,6 @@ const Preblink = ({ account, size }: { account: PublicKey; size: number }) => {
     users: [],
     _id: idAsNumber.toString(), // Ensure _id is a string if that's the type in ICreator
   };
-
-  console.log("id", accountQuery);
   return (
     <>
       <Card className="bg-black text-white h-fit border-gray-800">
