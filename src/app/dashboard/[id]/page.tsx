@@ -88,15 +88,7 @@ export default function Page({ params }: { params: { id: string } }) {
             <></>
           )}
 
-          {creator ? (
-            <>
-             // <button className="mt-4 px-4 py-2 bg-green-600 text-white text-xl font-medium rounded hover:bg-green-700">
-               // Disperse
-              // </button>
-            </>
-          ) : (
-            <></>
-          )}
+
         </div>
 
         {/* Header */}
