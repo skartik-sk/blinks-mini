@@ -5,7 +5,7 @@ export default function Demo() {
     <div className="flex items-center justify-center min-h-screen  ">
       <div className="flex items-center justify-center">
         <TiltCard
-          imageUrl="https://www.dialect.to/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ffirst-block.fad681f9.png&w=1920&q=75"
+          imageUrl="https://docs.dialect.to/img/hero-banner%20(1).png"
           alt="Dialect first block"
           maxTilt={15}
         />
