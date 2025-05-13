@@ -103,7 +103,8 @@ const Getsoladd = ({
         </Link>
       )}
 
-     // {creator.solAdd == walletAddress && (
+      {
+     //creator.solAdd == walletAddress && (
        // <>
          // <button
            // onClick={sendTransaction}
@@ -112,7 +113,8 @@ const Getsoladd = ({
             // Disperse
           // </button>
         // </>
-      // )}
+      // )
+      }
     </div>
   );
 };
